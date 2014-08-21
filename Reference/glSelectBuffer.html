@@ -134,14 +134,14 @@ first.
 
 <p>
 Depth values (which are in the range <nobr>[0, 1]</nobr>) are multiplied by
-<nobr>2<sup>32</sup> <img src="symbols/Minus.xbm" alt="-"> 1</nobr> before
+<nobr>2<sup>32</sup> <img src="symbols/Minus.gif" alt="-"> 1</nobr> before
 being placed in the hit record.
 
 <p>
 An internal index into <tt><i>buffer</i></tt> is reset to 0 whenever selection
 mode is entered.  Each time a hit record is copied into
 <tt><i>buffer</i></tt>, the index is incremented to point to the cell just
-past the end of the block of names <img src="symbols/Minus.xbm" alt="-">
+past the end of the block of names <img src="symbols/Minus.gif" alt="-">
 that is, to the next available cell.  If the hit record is larger than the
 number of remaining locations in <tt><i>buffer</i></tt>, as much data as can
 fit is copied, and the overflow flag is set.  If the name stack is empty when

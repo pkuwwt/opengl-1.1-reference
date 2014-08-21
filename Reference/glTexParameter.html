@@ -173,28 +173,28 @@ symbols are accepted in <tt><i>pname</i></tt>:
 
     <p>A mipmap is an ordered set of arrays representing the same image at
     progressively lower resolutions: 2<sup><i>a</i></sup> for 1D mipmaps,
-    2<sup><i>a</i></sup><img src="symbols/Times.xbm"
+    2<sup><i>a</i></sup><img src="symbols/Times.gif"
     alt="x">2<sup><i>b</i></sup> for 2D mipmaps, <font color=green>and
-    2<sup><i>a</i></sup><img src="symbols/Times.xbm"
-    alt="x">2<sup><i>b</i></sup><img src="symbols/Times.xbm"
+    2<sup><i>a</i></sup><img src="symbols/Times.gif"
+    alt="x">2<sup><i>b</i></sup><img src="symbols/Times.gif"
     alt="x">2<sup><i>c</i></sup> for 3D mipmaps.</font>
 
     <p>For example, if a 2D texture has dimensions
-    <nobr>2<sup><i>m</i></sup><img src="symbols/Times.xbm"
+    <nobr>2<sup><i>m</i></sup><img src="symbols/Times.gif"
     alt="x">2<sup><i>n</i></sup></nobr>, there are <nobr>max(<i>m</i>,
     <i>n</i>) + 1</nobr> mipmaps.  The first mipmap is the original texture,
-    with dimensions <nobr>2<sup><i>m</i></sup><img src="symbols/Times.xbm"
+    with dimensions <nobr>2<sup><i>m</i></sup><img src="symbols/Times.gif"
     alt="x">2<sup><i>n</i></sup></nobr>.  Each subsequent mipmap has
-    dimensions <nobr>2<sup><i>k</i>-1</sup><img src="symbols/Times.xbm"
+    dimensions <nobr>2<sup><i>k</i>-1</sup><img src="symbols/Times.gif"
     alt="x">2<sup><i>l</i>-1</sup></nobr>, where
-    <nobr>2<sup><i>k</i></sup><img src="symbols/Times.xbm"
+    <nobr>2<sup><i>k</i></sup><img src="symbols/Times.gif"
     alt="x">2<sup><i>l</i></sup></nobr> are the dimensions of the previous
     mipmap, until either <nobr><i>k</i>=0</nobr> or <nobr><i>l</i>=0</nobr>.
     At that point, subsequent mipmaps have dimension <nobr>1<img
-    src="symbols/Times.xbm" alt="x">2<sup><i>l</i>-1</sup></nobr> or
-    <nobr>2<sup><i>k</i>-1</sup><img src="symbols/Times.xbm"
+    src="symbols/Times.gif" alt="x">2<sup><i>l</i>-1</sup></nobr> or
+    <nobr>2<sup><i>k</i>-1</sup><img src="symbols/Times.gif"
     alt="x">1</nobr> until the final mipmap, which has dimension <nobr>1<img
-    src="symbols/Times.xbm" alt="x">1</nobr>.  To define the mipmaps, call
+    src="symbols/Times.gif" alt="x">1</nobr>.  To define the mipmaps, call
     <a href="glTexImage1D.html"><tt>glTexImage1D</tt></a>, <a
     href="glTexImage2D.html"><tt>glTexImage2D</tt></a>, <a
     href="glCopyTexImage1D.html"><tt>glCopyTexImage1D</tt></a>, <a
@@ -202,7 +202,7 @@ symbols are accepted in <tt><i>pname</i></tt>:
     color=green>or <tt>glCopyTexImage3DEXT</tt></font> with the
     <tt><i>level</i></tt> argument indicating the order of the mipmaps.  Level
     0 is the original texture; level <nobr>max(<i>m</i>, <i>n</i> )</nobr> is
-    the final <nobr>1<img src="symbols/Times.xbm" alt="x">1</nobr>
+    the final <nobr>1<img src="symbols/Times.gif" alt="x">1</nobr>
     mipmap. <tt><i>params</i></tt> supplies a function for minifying the
     texture as one of the following:<p>
     
@@ -319,7 +319,7 @@ symbols are accepted in <tt><i>pname</i></tt>:
 <dd>Sets a border color.  <tt><i>params</i></tt> contains four values that
     comprise the RGBA color of the texture border.  Integer color components
     are interpreted linearly such that the most positive integer maps to 1.0,
-    and the most negative integer maps to <img src="symbols/Minus.xbm"
+    and the most negative integer maps to <img src="symbols/Minus.gif"
     alt="-">1.0.  The values are clamped to the range <nobr>[0, 1]</nobr> when
     they are specified.  Initially, the border color is <nobr>(0, 0, 0,
     0)</nobr>.

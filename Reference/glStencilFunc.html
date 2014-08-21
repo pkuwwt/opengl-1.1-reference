@@ -98,7 +98,7 @@ void glStencilFunc(
 <dt><tt><i>ref</i></tt>
 <dd>Specifies the reference value for the stencil test.  <tt><i>ref</i></tt>
     is clamped to the range <nobr>[0, 2<sup><i>n</i></sup> <img
-    src="symbols/Minus.xbm" alt="-"> 1]</nobr>, where <i>n</i> is the
+    src="symbols/Minus.gif" alt="-"> 1]</nobr>, where <i>n</i> is the
     number of bitplanes in the stencil buffer. The initial value is 0.
 
 <dt><tt><i>mask</i></tt>
@@ -135,7 +135,7 @@ the stencil test, call <a href="glStencilOp.html"><tt>glStencilOp</tt></a>.
 comparison function.  It accepts one of eight values, shown in the following
 list.  <tt><i>ref</i></tt> is an integer reference value that is used in the
 stencil comparison.  It is clamped to the range <nobr>[0, 2<sup><i>n</i></sup>
-<img src="symbols/Minus.xbm" alt="-"> 1]</nobr>, where <i>n</i> is the
+<img src="symbols/Minus.gif" alt="-"> 1]</nobr>, where <i>n</i> is the
 number of bitplanes in the stencil buffer. <tt><i>mask</i></tt> is bitwise
 <i>and</i>ed with both the reference value and the stored stencil value, with
 the <i>and</i>ed values participating in the comparison.
@@ -148,7 +148,7 @@ the comparison succeeds is the pixel passed through to the next stage in the
 rasterization process (see <a
 href="glStencilOp.html"><tt>glStencilOp</tt></a>).  All tests treat
 <tt><i>stencil</i></tt> values as unsigned integers in the range <nobr>[0,
-2<sup><i>n</i></sup> <img src="symbols/Minus.xbm" alt="-"> 1]</nobr>, where
+2<sup><i>n</i></sup> <img src="symbols/Minus.gif" alt="-"> 1]</nobr>, where
 <i>n</i> is the number of bitplanes in the stencil buffer.
 
 <p>
@@ -164,7 +164,7 @@ The following values are accepted by <tt><i>func</i></tt>:
 
 <dt><tt><b>GL_LEQUAL</b></tt>
 <dd>Passes if (<tt><i>ref</i></tt> &amp; <tt><i>mask</i></tt>)
-    <img src="symbols/LessEq.xbm" alt=".le.">
+    <img src="symbols/LessEq.gif" alt=".le.">
     (<tt><i>stencil</i></tt> &amp; <tt><i>mask</i></tt> ).
 
 <dt><tt><b>GL_GREATER</b></tt>
@@ -173,7 +173,7 @@ The following values are accepted by <tt><i>func</i></tt>:
 
 <dt><tt><b>GL_GEQUAL</b></tt>
 <dd>Passes if (<tt><i>ref</i></tt> &amp; <tt><i>mask</i></tt>)
-    <img src="symbols/GreatEq.xbm" alt=".ge.">
+    <img src="symbols/GreatEq.gif" alt=".ge.">
     (<tt><i>stencil</i></tt> &amp; <tt><i>mask</i></tt> ).
 
 <dt><tt><b>GL_EQUAL</b></tt>
@@ -182,7 +182,7 @@ The following values are accepted by <tt><i>func</i></tt>:
 
 <dt><tt><b>GL_NOTEQUAL</b></tt>
 <dd>Passes if (<tt><i>ref</i></tt> &amp; <tt><i>mask</i></tt>)
-    <img src="symbols/NotEq.xbm" alt="!=">
+    <img src="symbols/NotEq.gif" alt="!=">
     (<tt><i>stencil</i></tt> &amp; <tt><i>mask</i></tt> ).
 
 <dt><tt><b>GL_ALWAYS</b></tt>

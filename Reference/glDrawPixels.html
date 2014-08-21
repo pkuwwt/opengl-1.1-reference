@@ -155,7 +155,7 @@ components are referred to as pixels.  If <tt><i>type</i></tt> is
 href="glPixelStore.html"><tt>glPixelStore</tt></a>).
 
 <p>
-<nobr><tt><i>width</i></tt><img src="symbols/Times.xbm"
+<nobr><tt><i>width</i></tt><img src="symbols/Times.gif"
 alt="x"><tt><i>height</i></tt></nobr> pixels are read from memory, starting at
 location <tt><i>pixels</i></tt>.  By default, these pixels are taken from
 adjacent memory locations, except that after all <tt><i>width</i></tt> pixels
@@ -170,7 +170,7 @@ href="glPixelStore.html"><tt>glPixelStore</tt></a> reference page for details
 on these options.
 
 <p>
-The <tt><i>width</i></tt><img src="symbols/Times.xbm"
+The <tt><i>width</i></tt><img src="symbols/Times.gif"
 alt="x"><tt><i>height</i></tt> pixels that are read from memory are each
 operated on in the same way, based on the values of several parameters
 specified by <a href="glPixelTransfer.html"><tt>glPixelTransfer</tt></a> and
@@ -203,7 +203,7 @@ specific to the format of the pixels, as specified by <tt><i>format</i></tt>.
     <tt><b>GL_PIXEL_MAP_I_TO_I</b></tt>.  Whether the lookup replacement of
     the index is done or not, the integer part of the index is then
     <i>and</i>ed with <nobr>2<sup><i>b</i></sup> <img
-    src="symbols/Minus.xbm" alt="-"> 1</nobr>, where <i>b</i> is the number
+    src="symbols/Minus.gif" alt="-"> 1</nobr>, where <i>b</i> is the number
     of bits in a color index buffer.
 
     <p>The GL then converts the resulting indices or RGBA colors to fragments
@@ -215,9 +215,9 @@ specific to the format of the pixels, as specified by <tt><i>format</i></tt>.
     <i>x<sub>n</sub></i> = <i>x<sub>r</sub></i> +
                            <i>n</i> mod <tt><i>width</i></tt><br>
     <i>y<sub>n</sub></i> = <i>y<sub>r</sub></i> +
-    <img src="symbols/LFloor.xbm" alt="floor(">
+    <img src="symbols/LFloor.gif" alt="floor(">
     <i>n</i>/<tt><i>width</i></tt>
-    <img src="symbols/RFloor.xbm" alt=")">
+    <img src="symbols/RFloor.gif" alt=")">
     
     <p>where <nobr>(<i>x<sub>r</sub></i>, <i>y<sub>r</sub></i>)</nobr> is the
     current raster position.  These pixel fragments are then treated just like
@@ -243,7 +243,7 @@ specific to the format of the pixels, as specified by <tt><i>format</i></tt>.
     <tt><b>GL_PIXEL_MAP_S_TO_S</b></tt>.  Whether the lookup replacement of
     the index is done or not, the integer part of the index is then
     <i>and</i>ed with <nobr>2<sup><i>b</i></sup> <img
-    src="symbols/Minus.xbm" alt="-"> 1</nobr>, where <i>b</i> is the number
+    src="symbols/Minus.gif" alt="-"> 1</nobr>, where <i>b</i> is the number
     of bits in the stencil buffer.  The resulting stencil indices are then
     written to the stencil buffer such that the <nobr><i>n</i></nobr>th index
     is written to location
@@ -252,9 +252,9 @@ specific to the format of the pixels, as specified by <tt><i>format</i></tt>.
     <i>x<sub>n</sub></i> = <i>x<sub>r</sub></i> +
                            <i>n</i> mod <tt><i>width</i></tt><br>
     <i>y<sub>n</sub></i> = <i>y<sub>r</sub></i> +
-    <img src="symbols/LFloor.xbm" alt="floor(">
+    <img src="symbols/LFloor.gif" alt="floor(">
     <i>n</i>/<tt><i>width</i></tt>
-    <img src="symbols/RFloor.xbm" alt=")">
+    <img src="symbols/RFloor.gif" alt=")">
 
     <p>where <nobr>(<i>x<sub>r</sub></i>, <i>y<sub>r</sub></i>)</nobr> is the
     current raster position.  Only the pixel ownership test, the scissor test,
@@ -266,7 +266,7 @@ specific to the format of the pixels, as specified by <tt><i>format</i></tt>.
     Signed integer data is mapped linearly to the internal floating-point
     format such that the most positive representable integer value maps to
     1.0, and the most negative representable value maps to <img
-    src="symbols/Minus.xbm" alt="-">1.0.  Unsigned integer data is mapped
+    src="symbols/Minus.gif" alt="-">1.0.  Unsigned integer data is mapped
     similarly: the largest integer value maps to 1.0, and 0 maps to 0.0.  The
     resulting floating-point depth value is then multiplied by by
     <tt><b>GL_DEPTH_SCALE</b></tt> and added to <tt><b>GL_DEPTH_BIAS</b></tt>.
@@ -281,9 +281,9 @@ specific to the format of the pixels, as specified by <tt><i>format</i></tt>.
     <i>x<sub>n</sub></i> = <i>x<sub>r</sub></i> +
                            <i>n</i> mod <tt><i>width</i></tt><br>
     <i>y<sub>n</sub></i> = <i>y<sub>r</sub></i> +
-    <img src="symbols/LFloor.xbm" alt="floor(">
+    <img src="symbols/LFloor.gif" alt="floor(">
     <i>n</i>/<tt><i>width</i></tt>
-    <img src="symbols/RFloor.xbm" alt=")">
+    <img src="symbols/RFloor.gif" alt=")">
 
     <p>where <nobr>(<i>x<sub>r</sub></i>, <i>y<sub>r</sub></i>)</nobr> is the
     current raster position.  These pixel fragments are then treated just like
@@ -298,7 +298,7 @@ specific to the format of the pixels, as specified by <tt><i>format</i></tt>.
     floating-point format with unspecified precision.  Signed integer values
     are mapped linearly to the internal floating-point format such that the
     most positive representable integer value maps to 1.0, and the most
-    negative representable value maps to <img src="symbols/Minus.xbm"
+    negative representable value maps to <img src="symbols/Minus.gif"
     alt="-">1.0. (Note that this mapping does not convert 0 precisely to 0.0.)
     Unsigned integer data is mapped similarly: the largest integer value maps
     to 1.0, and 0 maps to 0.0.  The resulting floating-point color values are
@@ -323,9 +323,9 @@ specific to the format of the pixels, as specified by <tt><i>format</i></tt>.
     <i>x<sub>n</sub></i> = <i>x<sub>r</sub></i> +
                            <i>n</i> mod <tt><i>width</i></tt><br>
     <i>y<sub>n</sub></i> = <i>y<sub>r</sub></i> +
-    <img src="symbols/LFloor.xbm" alt="floor(">
+    <img src="symbols/LFloor.gif" alt="floor(">
     <i>n</i>/<tt><i>width</i></tt>
-    <img src="symbols/RFloor.xbm" alt=")">
+    <img src="symbols/RFloor.gif" alt=")">
 
     <p>where <nobr>(<i>x<sub>r</sub></i>, <i>y<sub>r</sub></i>)</nobr> is the
     current raster position.  These pixel fragments are then treated just like

@@ -147,14 +147,14 @@ Addison-Wesley and shipped with HP's implementation of OpenGL:
 
 <ul type=disc>
 <li><i><a href="../AddisonWesley.html">OpenGL Programming Guide</a></i>
-    <img src="symbols/EmDash.xbm" alt="--"> Instruction on programming in
+    <img src="symbols/EmDash.gif" alt="--"> Instruction on programming in
     OpenGL, offered in a tutorial format.
 <li><i><a href="../AddisonWesley.html">OpenGL Reference Manual</a></i>
-    <img src="symbols/EmDash.xbm" alt="--"> A reference that contains
+    <img src="symbols/EmDash.gif" alt="--"> A reference that contains
     details on all standard OpenGL functions, as well as utility (GLU)
     functions and X-windows (GLX) functions.
 <li><i><a href="../AddisonWesley.html">OpenGL Programming for the X Window
-    System</a></i> <img src="symbols/EmDash.xbm" alt="--"> Instruction on
+    System</a></i> <img src="symbols/EmDash.gif" alt="--"> Instruction on
     interfacing OpenGL with the X Window system.
 </ul>
 
@@ -183,9 +183,9 @@ Topics covered in this section are:
 HP's implementation of OpenGL provides the following libraries:
 
 <ul type=disc>
-<li><tt>libGL.sl</tt> <img src="symbols/EmDash.xbm" alt="--"> OpenGL shared
+<li><tt>libGL.sl</tt> <img src="symbols/EmDash.gif" alt="--"> OpenGL shared
     library
-<li><tt>libGLU.sl</tt> <img src="symbols/EmDash.xbm" alt="--"> OpenGL
+<li><tt>libGLU.sl</tt> <img src="symbols/EmDash.gif" alt="--"> OpenGL
     utilities library
 </ul>
 
@@ -1345,9 +1345,9 @@ href="../AddisonWesley.html">OpenGL Programming for the X Window System</a>.
 Texture-clamp extensions provide techniques to either clamp to the edge texels
 or border texels even when using a filter that uses linear filtering.
 "Nearest" filtering always selects exactly one of the texels from the texture
-map.  However, when using linear filtering<img src="symbols/EmDash.xbm"
+map.  However, when using linear filtering<img src="symbols/EmDash.gif"
 alt="--">whether from the minification or magnification filters<img
-src="symbols/EmDash.xbm" alt="--">the filtered texels can be an average of
+src="symbols/EmDash.gif" alt="--">the filtered texels can be an average of
 texels from both the texture map and the texture border.  To only use the
 texture-map texels when clamping, use the clamp-edge extension.  To allow the
 selection of border texels when clamping, use the clamp-border extension.
@@ -1438,8 +1438,8 @@ The 3D-texture extension is useful for volumetric rendering of solid surfaces
 such as a marble vase, or for rendering images where geometric alignment is
 important (such as an MRI medical image).  For this extension, the texture
 maps have width and height as they did for 2D, but also an additional
-dimension<img src="symbols/EmDash.xbm" alt="--">depth<img
-src="symbols/EmDash.xbm" alt="--">not included in 2D.  The third coordinate
+dimension<img src="symbols/EmDash.gif" alt="--">depth<img
+src="symbols/EmDash.gif" alt="--">not included in 2D.  The third coordinate
 forms a right-handed coordinate system, illustrated below.
 
 <p align=center><img src="images/tex3D.gif" height=276 width=354><br>
@@ -1450,8 +1450,8 @@ Each MIP-map level consists of a block of data (see Figure 1-6 below).  Each
 MIP-map level of the texture map is treated as being arranged in a sequence of
 adjacent rectangles.  Each rectangle is a 2-dimensional image, so each MIP-map
 level is a <nobr>(2<sup><i>m</i></sup> + 2<i>b</i>) <img
-src="symbols/Times.xbm"> (2<sup><i>n</i></sup> + 2<i>b</i>) <img
-src="symbols/Times.xbm"> (2<sup><i>l</i></sup> + 2<i>b</i>)</nobr> block
+src="symbols/Times.gif"> (2<sup><i>n</i></sup> + 2<i>b</i>) <img
+src="symbols/Times.gif"> (2<sup><i>l</i></sup> + 2<i>b</i>)</nobr> block
 where <i>b</i> is a border width of either 0 or 1, and <i>m</i>, <i>n</i> and
 <i>l</i> are non-negative integers.
 
@@ -2062,7 +2062,7 @@ texture map will cause the computation of a complete MIP map for that base
 level.  The internal formats and border widths of the derived MIP map will
 match those of the base map, and the dimensions of the derived MIP map follow
 the requirements set forth in OpenGL for a valid MIP map.  A simple 2<img
-src="symbols/Times.xbm">2 box filter is used to generate the MIP-map
+src="symbols/Times.gif">2 box filter is used to generate the MIP-map
 levels.
 
 <p>
@@ -2399,7 +2399,7 @@ Here is a list of environment variables used by HP's implementation of OpenGL.
 <dd>This variable sets a fence for the use of process memory vs. shared
     memory.  Any 2D or 3D texture that has a size greater than or equal to the
     threshold set is stored in shared memory.  The initial value is set to
-    1024<img src="symbols/Times.xbm" alt="x">1024 bytes.  This variable
+    1024<img src="symbols/Times.gif" alt="x">1024 bytes.  This variable
     should be set to the byte size desired for shared memory usage.
 </dl>
 
