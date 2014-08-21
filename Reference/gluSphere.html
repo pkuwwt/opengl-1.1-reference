@@ -1,0 +1,170 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: gluSphere</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: gluSphere">
+</head>
+<!-- Version: Version 1.2 -->
+<!-- Date:    1 April 1996 -->
+<!-- Release: Release 1.2.0 -->
+<!-- Dp:      Oct 30 00:02 -->
+<!-- Dm:      Oct 28 14:1 -->
+<!-- Xs:      9146 4 sphere.gl -->
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img name="Reference1"
+   src="../buttons/ReferenceOff.gif" alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img name="ImpGuide1"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img name="Index1"
+   src="../buttons/IndexOff.gif" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name">gluSphere</a><br>
+<a href="glShadeModel.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glStencilFunc.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+<tt>gluSphere</tt>: draw a sphere.
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+void gluSphere(
+    GLUquadric*	 <i>quad</i>,
+    GLdouble	 <i>radius</i>,
+    GLint	 <i>slices</i>,
+    GLint	 <i>stacks</i>)
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+<dt><tt><i>quad</i></tt>
+<dd>Specifies the quadrics object (created with <tt>gluNewQuadric</tt>).
+
+<dt><tt><i>radius</i></tt>
+<dd>Specifies the radius of the sphere.
+
+<dt><tt><i>slices</i></tt>
+<dd>Specifies the number of subdivisions around the Z axis (similar to lines
+    of longitude).
+
+<dt><tt><i>stacks</i></tt>
+<dd>Specifies the number of subdivisions along the Z axis (similar to lines of
+    latitude).
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+<tt>gluSphere</tt> draws a sphere of the given radius centered around the
+origin. The sphere is subdivided around the Z axis into slices and along the Z
+axis into stacks (similar to lines of longitude and latitude).
+
+<p>
+If the orientation is set to <tt><b>GLU_OUTSIDE</b></tt> (with <a
+href="gluQuadricOrientation.html"><tt>gluQuadricOrientation</tt></a>), then
+any normals generated point away from the center of the sphere.  Otherwise,
+they point toward the center of the sphere.
+
+<p>
+If texturing is turned on (with <a
+href="gluQuadricTexture.html"><tt>gluQuadricTexture</tt></a>), then texture
+coordinates are generated so that <i>t</i> ranges from 0.0 at <nobr>Z = <img
+src="symbols/Minus.png" alt="-"><tt><i>radius</i></tt></nobr> to 1.0 at
+<nobr>Z = <tt><i>radius</i></tt> </nobr> (<tt><i>t</i></tt> increases linearly
+along longitudinal lines), and <i>s</i> ranges from 0.0 at the +Y axis, to
+0.25 at the +X axis, to 0.5 at the <img src="symbols/Minus.png" alt="-">Y
+axis, to 0.75 at the <img src="symbols/Minus.png" alt="-">X axis, and back
+to 1.0 at the +Y axis.
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<tt><a href="gluCylinder.html">gluCylinder</a></tt>,<br>
+<tt><a href="gluDisk.html">gluDisk</a></tt>,<br>
+<tt><a href="Reference/gluNewQuadric.html">gluNewQuadric</a></tt>,<br>
+<tt><a href="gluPartialDisk.html">gluPartialDisk</a></tt>,<br>
+<tt><a href="gluQuadricOrientation.html">gluQuadricOrientation</a></tt>,<br>
+<tt><a href="gluQuadricTexture.html">gluQuadricTexture</a></tt>
+
+
+<p>
+<a href="glShadeModel.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glStencilFunc.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img name="Reference2"
+   src="../buttons/ReferenceOff.gif" alt="Reference" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img name="ImpGuide2"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img name="Index2"
+   src="../buttons/IndexOff.gif" alt="Index" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>

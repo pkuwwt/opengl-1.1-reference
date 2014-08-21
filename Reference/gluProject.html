@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: gluProject</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: gluProject">
+</head>
+<!-- Version: Version 1.2 -->
+<!-- Date:    1 April 1996 -->
+<!-- Release: Release 1.2.0 -->
+<!-- Dp:      Oct 25 19:26 -->
+<!-- Dm:      Oct 25 19:1 -->
+<!-- Xs:      23281 4 project.gl -->
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img name="Reference1"
+   src="../buttons/ReferenceOff.gif" alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img name="ImpGuide1"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img name="Index1"
+   src="../buttons/IndexOff.gif" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name">gluProject</a><br>
+<a href="glPrioritizeTextures.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glPushAttrib.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+<tt>gluProject</tt>: map object coordinates to window coordinates.
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+GLint gluProject(
+    GLdouble	   <i>objX</i>,
+    GLdouble	   <i>objY</i>,
+    GLdouble	   <i>objZ</i>,
+    const GLdouble <i>*model</i>, 
+    const GLdouble <i>*proj</i>, 
+    const GLint    <i>*view</i>, 
+    GLdouble*	   <i>winX</i>,
+    GLdouble*	   <i>winY</i>,
+    GLdouble*	   <i>winZ</i>)
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+<dt><tt><i>objX</i></tt>, <tt><i>objY</i></tt>, <tt><i>objZ</i></tt>
+<dd>Specify the object coordinates.
+
+<dt><tt><i>model</i></tt>
+<dd>Specifies the current modelview matrix (as from a <tt>glGetDoublev</tt>
+    call).
+
+<dt><tt><i>proj</i></tt>
+<dd>Specifies the current projection matrix (as from a <tt>glGetDoublev</tt>
+    call).
+
+<dt><tt><i>view</i></tt>
+<dd>Specifies the current viewport (as from a <tt>glGetIntegerv</tt> call).
+
+<dt><tt><i>winX</i></tt>, <tt><i>winY</i></tt>, <tt><i>winZ</i></tt>
+<dd>Return the computed window coordinates.
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+<tt>gluProject</tt> transforms the specified object coordinates into window
+coordinates using <tt><i>model</i></tt>, <tt><i>proj</i></tt>, and
+<tt><i>view</i></tt>. The result is stored in <tt><i>winX</i></tt>,
+<tt><i>winY</i></tt>, and <tt><i>winZ</i></tt>. A return value of
+<tt><b>GL_TRUE</b></tt> indicates success, a return value of
+<tt><b>GL_FALSE</b></tt> indicates failure.
+
+<p>
+To compute the coordinates, let <nobr><i>v</i> = (<tt><i>objX</i></tt>,
+<tt><i>objY</i></tt>, <tt><i>objZ</i></tt>, 1.0)</nobr> represented as a
+matrix with 4 rows and 1 column.  Then <tt>gluProject</tt> computes
+<i>v</i><img src="symbols/Prime.png" alt="'"> as follows:
+
+<p align=center>
+<i>v</i><img src="symbols/Prime.png" alt="'"> = <i>P</i> <img
+src="symbols/Times.png" alt="x"> <i>M</i> <img src="symbols/Times.png"
+alt="x"> <i>v</i>
+
+<p>
+where <i>P</i> is the current projection matrix <tt><i>proj</i></tt>, <i>M</i>
+is the current modelview matrix <tt><i>model</i></tt> (both represented as
+4<img src="symbols/Times.png" alt="x">4 matrices in column-major order) and
+"<img src="symbols/Times.png" alt="x">" represents matrix multiplication.
+
+<p> 
+The window coordinates are then computed as follows: 
+
+<p align=center>
+<tt><i>winX</i></tt> = <tt><i>view</i></tt>(0) + <tt><i>view</i></tt>(2) <img
+src="symbols/Times.png" alt="x"> (<i>v</i><img src="symbols/Prime.png"
+alt="'">(0) + 1)/2<br>
+
+<tt><i>winY</i></tt> = <tt><i>view</i></tt>(1) + <tt><i>view</i></tt>(3) <img
+src="symbols/Times.png" alt="x"> (<i>v</i><img src="symbols/Prime.png"
+alt="'">(1) + 1)/2<br>
+
+<tt><i>winZ</i></tt> = (<i>v</i><img src="symbols/Prime.png" alt="'">(2) +
+1)/ 2
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<tt><a href="glGet.html">glGet</a></tt>,<br>
+<tt><a href="gluUnProject.html">gluUnProject</a></tt>
+
+
+
+<p>
+<a href="glPrioritizeTextures.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glPushAttrib.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img name="Reference2"
+   src="../buttons/ReferenceOff.gif" alt="Reference" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img name="ImpGuide2"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img name="Index2"
+   src="../buttons/IndexOff.gif" alt="Index" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>

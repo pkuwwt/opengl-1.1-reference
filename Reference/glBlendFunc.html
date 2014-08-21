@@ -1,0 +1,388 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: glBlendFunc</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: glBlendFunc">
+</head>
+<!-- Version: Version 1.1 -->
+<!-- Date:    1 April 1996 -->
+<!-- Release: Release 1.1.0 -->
+<!-- Dp:      Oct 25 19:24 -->
+<!-- Dm:      Oct 25 19:1 -->
+<!-- Xs:      22838 13 blendfunc.gl -->
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img name="Reference1"
+   src="../buttons/ReferenceOff.gif" alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img name="ImpGuide1"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img name="Index1"
+   src="../buttons/IndexOff.gif" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name">glBlendFunc</a><br>
+<a href="glBlendColorEXT.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="gluBuild1DMipmaps.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+<tt>glBlendFunc</tt>: specify pixel arithmetic.
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#Examples">Examples</a> |
+<a href="#Notes">Notes</a> |
+<a href="#Errors">Errors</a> |
+<a href="#AssociatedGets">Associated Gets</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+void glBlendFunc(
+    GLenum	 <i>sfactor</i>,
+    GLenum	 <i>dfactor</i>)
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+
+<dt><tt><i>sfactor</i></tt>
+<dd>Specifies how the red, green, blue, and alpha source blending factors are
+    computed.  Nine symbolic constants are accepted: <tt><b>GL_ZERO</b></tt>,
+    <tt><b>GL_ONE</b></tt>, <tt><b>GL_DST_COLOR</b></tt>,
+    <tt><b>GL_ONE_MINUS_DST_COLOR</b></tt>, <tt><b>GL_SRC_ALPHA</b></tt>,
+    <tt><b>GL_ONE_MINUS_SRC_ALPHA</b></tt>, <tt><b>GL_DST_ALPHA</b></tt>,
+    <tt><b>GL_ONE_MINUS_DST_ALPHA</b></tt>, and
+    <tt><b>GL_SRC_ALPHA_SATURATE</b></tt>. The initial value is
+    <tt><b>GL_ONE</b></tt>.
+
+<dt><tt><i>dfactor</i></tt>
+<dd>Specifies how the red, green, blue, and alpha destination blending factors
+    are computed.  Eight symbolic constants are accepted:
+    <tt><b>GL_ZERO</b></tt>, <tt><b>GL_ONE</b></tt>,
+    <tt><b>GL_SRC_COLOR</b></tt>, <tt><b>GL_ONE_MINUS_SRC_COLOR</b></tt>,
+    <tt><b>GL_SRC_ALPHA</b></tt>, <tt><b>GL_ONE_MINUS_SRC_ALPHA</b></tt>,
+    <tt><b>GL_DST_ALPHA</b></tt>, and
+    <tt><b>GL_ONE_MINUS_DST_ALPHA</b></tt>. The initial value is
+    <tt><b>GL_ZERO</b></tt>.
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+In RGBA mode, pixels can be drawn using a function that blends the incoming
+(source) RGBA values with the RGBA values that are already in the frame buffer
+(the destination values).  Blending is initially disabled.  Use <a
+href="glEnable.html"><tt>glEnable</tt></a> and <a
+href="glEnable.html"><tt>glDisable</tt></a> with argument
+<tt><b>GL_BLEND</b></tt> to enable and disable blending.
+
+<p>
+<tt>glBlendFunc</tt> defines the operation of blending when it is enabled.
+<tt><i>sfactor</i></tt> specifies which of nine methods is used to scale the
+source color components.  <tt><i>dfactor</i></tt> specifies which of eight
+methods is used to scale the destination color components.  The eleven
+possible methods are described in the following table.  Each method defines
+four scale factors, one each for red, green, blue, and alpha.
+
+<p>
+In the table and in subsequent equations, source and destination color
+components are referred to as <nobr>( <i>R<sub>s</sub></i> ,
+<i>G<sub>s</sub></i> , <i>B<sub>s</sub></i> , <i>A<sub>s</sub></i> )</nobr> and
+<nobr>( <i>R<sub>d</sub></i> , <i>G<sub>d</sub></i> , <i>B<sub>d</sub></i> ,
+<i>A<sub>d</sub></i> )</nobr>.  They are understood to have integer values
+between 0 and <nobr>( <i>k<sub>R</sub></i> , <i>k<sub>G</sub></i> ,
+<i>k<sub>B</sub></i> , <i>k<sub>A</sub></i> )</nobr>, where
+
+<p align=center>
+<i>k<sub>c</sub></i> = 2<i><sup>m<sub>c</sub></sup></i>
+<img src="symbols/Minus.png" alt="-"> 1
+
+<p>
+and <nobr>( <i>m<sub>R</sub></i> , <i>m<sub>G</sub></i> , <i>m<sub>B</sub></i>
+, <i>m<sub>A</sub></i> )</nobr> is the number of red, green, blue, and alpha
+bitplanes.
+
+<p>
+Source and destination scale factors are referred to as <nobr>(
+<i>s<sub>R</sub></i> , <i>s<sub>G</sub></i> , <i>s<sub>B</sub></i> ,
+<i>s<sub>A</sub></i> )</nobr> and <nobr>( <i>d<sub>R</sub></i> ,
+<i>d<sub>G</sub></i> , <i>d<sub>B</sub></i> , <i>d<sub>A</sub></i> )</nobr>.
+The scale factors described in the table, denoted <nobr>( <i>f<sub>R</sub></i>
+, <i>f<sub>G</sub></i> , <i>f<sub>B</sub></i> , <i>f<sub>A</sub></i> )</nobr>,
+represent either source or destination factors.  All scale factors have range
+<nobr>[0,1]</nobr>.
+
+<p>
+<center>
+<table border cellpadding=3>
+<tr><th><i>Parameter</i></th>
+    <th>( <i>f<sub>R</sub></i>, <i>f<sub>G</sub></i>, <i>f<sub>B</sub></i>,
+        <i>f<sub>A</sub></i> )</th></tr> 
+<tr><td align=center><tt><b>GL_ZERO</b></tt></td>
+    <td align=center>(0, 0, 0, 0)</td></tr>
+<tr><td align=center><tt><b>GL_ONE</b></tt></td>
+    <td align=center>(1, 1, 1, 1)</td></tr>
+<tr><td align=center><tt><b>GL_SRC_COLOR</b></tt></td>
+    <td align=center>(<i>R<sub>s</sub></i>/<i>k<sub>R</sub></i>,
+        <i>G<sub>s</sub></i>/<i>k<sub>G</sub></i>,
+        <i>B<sub>s</sub></i>/<i>k<sub>B</sub></i>,
+        <i>A<sub>s</sub></i>/<i>k<sub>A</sub></i>)</td></tr>
+<tr><td align=center><tt><b>GL_ONE_MINUS_SRC_COLOR</b></tt></td>
+    <td align=center>(1, 1, 1, 1) <img src="symbols/Minus.png" alt="-">
+        (<i>R<sub>s</sub></i>/<i>k<sub>R</sub></i>,
+        <i>G<sub>s</sub></i>/<i>k<sub>G</sub></i>,
+        <i>B<sub>s</sub></i>/<i>k<sub>B</sub></i>,
+        <i>A<sub>s</sub></i>/<i>k<sub>A</sub></i> )</td></tr>
+<tr><td align=center><tt><b>GL_DST_COLOR</b></tt></td>
+    <td align=center>(<i>R<sub>d</sub></i>/<i>k<sub>R</sub></i>,
+        <i>G<sub>d</sub></i>/<i>k<sub>G</sub></i>,
+        <i>B<sub>d</sub></i>/<i>k<sub>B</sub></i>,
+        <i>A<sub>d</sub></i>/<i>k<sub>A</sub></i>)</td></tr>
+<tr><td align=center><tt><b>GL_ONE_MINUS_DST_COLOR</b></tt></td>
+    <td align=center>(1, 1, 1, 1) <img src="symbols/Minus.png" alt="-">
+        (<i>R<sub>d</sub></i>/<i>k<sub>R</sub></i>,
+        <i>G<sub>d</sub></i>/<i>k<sub>G</sub></i>,
+        <i>B<sub>d</sub></i>/<i>k<sub>B</sub></i>,
+        <i>A<sub>d</sub></i>/<i>k<sub>A</sub></i> )</td></tr>
+<tr><td align=center><tt><b>GL_SRC_ALPHA</b></tt></td>
+    <td align=center>(<i>A<sub>s</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>s</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>s</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>s</sub></i>/<i>k<sub>A</sub></i>)</td></tr>
+<tr><td align=center><tt><b>GL_ONE_MINUS_SRC_ALPHA</b></tt></td>
+    <td align=center>(1, 1, 1, 1) <img src="symbols/Minus.png" alt="-">
+        (<i>A<sub>s</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>s</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>s</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>s</sub></i>/<i>k<sub>A</sub></i> )</td></tr>
+<tr><td align=center><tt><b>GL_DST_ALPHA</b></tt></td>
+    <td align=center>(<i>A<sub>d</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>d</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>d</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>d</sub></i>/<i>k<sub>A</sub></i>)</td></tr>
+<tr><td align=center><tt><b>GL_ONE_MINUS_DST_ALPHA</b></tt></td>
+    <td align=center>(1, 1, 1, 1) <img src="symbols/Minus.png" alt="-">
+        (<i>A<sub>d</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>d</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>d</sub></i>/<i>k<sub>A</sub></i>,
+        <i>A<sub>d</sub></i>/<i>k<sub>A</sub></i> )</td></tr>
+<tr><td align=center><tt><b>GL_SRC_ALPHA_SATURATE</b></tt></td>
+    <td align=center>(<i>i</i>, <i>i</i>, <i>i</i>, 1)</td></tr>
+</table>
+</center>
+
+<p>
+In the table,
+
+<p align=center>
+<i>i</i> = min(<i>A<sub>s</sub></i>, <i>k<sub>A</sub></i>
+           <img src="symbols/Minus.png" alt="-">
+           <i>A<sub>d</sub></i>) / <i>k<sub>A</sub></i>
+
+<p>
+To determine the blended RGBA values of a pixel when drawing in RGBA mode,
+the system uses the following equations:
+
+<p align=center>
+<i>R<sub>d</sub></i> = min(<i>k<sub>R</sub></i>,
+  <i>R<sub>s</sub></i> <i>s<sub>R</sub></i> +
+  <i>R<sub>d</sub></i> <i>d<sub>R</sub></i>)<br>
+<i>G<sub>d</sub></i> = min(<i>k<sub>G</sub></i>,
+  <i>G<sub>s</sub></i> <i>s<sub>G</sub></i> +
+  <i>G<sub>d</sub></i> <i>d<sub>G</sub></i>)<br>
+<i>B<sub>d</sub></i> = min(<i>k<sub>B</sub></i>,
+  <i>B<sub>s</sub></i> <i>s<sub>B</sub></i> +
+  <i>B<sub>d</sub></i> <i>d<sub>B</sub></i>)<br>
+<i>A<sub>d</sub></i> = min(<i>k<sub>A</sub></i>,
+  <i>A<sub>s</sub></i> <i>s<sub>A</sub></i> +
+  <i>A<sub>d</sub></i> <i>d<sub>A</sub></i>)
+
+<p>
+Despite the apparent precision of the above equations, blending arithmetic is
+not exactly specified, because blending operates with imprecise integer color
+values.  However, a blend factor that should be equal to 1 is guaranteed not
+to modify its multiplicand, and a blend factor equal to 0 reduces its
+multiplicand to 0.  For example, when <tt><i>sfactor</i></tt> is
+<tt><b>GL_SRC_ALPHA</b></tt>, <tt><i>dfactor</i></tt> is
+<tt><b>GL_ONE_MINUS_SRC_ALPHA</b></tt>, and <i>A<sub>s</sub></i> is equal to
+<i>k<sub>A</sub></i>, the equations reduce to simple replacement:
+
+<p align=center>
+<i>R<sub>d</sub></i> = <i>R<sub>s</sub></i><br>
+<i>G<sub>d</sub></i> = <i>G<sub>s</sub></i><br>
+<i>B<sub>d</sub></i> = <i>B<sub>s</sub></i><br>
+<i>A<sub>d</sub></i> = <i>A<sub>s</sub></i>
+
+
+<!-- === Examples ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Examples">Examples</a></h2>
+
+Transparency is best implemented using blend function
+(<tt><b>GL_SRC_ALPHA</b></tt>, <tt><b>GL_ONE_MINUS_SRC_ALPHA</b></tt>) with
+primitives sorted from farthest to nearest.  Note that this transparency
+calculation does not require the presence of alpha bitplanes in the frame
+buffer.
+
+<p>
+Blend function (<tt><b>GL_SRC_ALPHA</b></tt>,
+<tt><b>GL_ONE_MINUS_SRC_ALPHA</b></tt>) is also useful for rendering
+antialiased points and lines in arbitrary order.
+
+<p>
+Polygon antialiasing is optimized using blend function
+(<tt><b>GL_SRC_ALPHA_SATURATE</b></tt>, <tt><b>GL_ONE</b></tt>) with polygons
+sorted from nearest to farthest.  (See the <a
+href="glEnable.html"><tt>glEnable</tt></a>, <a
+href="glEnable.html"><tt>glDisable</tt></a> reference page and the
+<tt><b>GL_POLYGON_SMOOTH</b></tt> argument for information on polygon
+antialiasing.)  Destination alpha bitplanes, which must be present for this
+blend function to operate correctly, store the accumulated coverage.
+
+
+<!-- === Notes ============================================================ -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp5', 1)"
+   onMouseOut="ChangeBtn('ArrowUp5', 0)"><img name="ArrowUp5"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Notes">Notes</a></h2>
+
+Incoming (source) alpha is correctly thought of as a material opacity, ranging
+from 1.0 (<i>K<sub>A</sub></i>), representing complete opacity, to 0.0 (0),
+representing complete transparency.
+
+<p>
+When more than one color buffer is enabled for drawing, the GL performs
+blending separately for each enabled buffer, using the contents of that buffer
+for destination color.  (See <a
+href="glDrawBuffer.html"><tt>glDrawBuffer</tt></a>.)
+
+<p>
+Blending affects only RGBA rendering.  It is ignored by color index renderers.
+
+
+<!-- === Errors =========================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp6', 1)"
+   onMouseOut="ChangeBtn('ArrowUp6', 0)"><img name="ArrowUp6"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Errors">Errors</a></h2>
+
+<ul>
+<li><tt><b>GL_INVALID_ENUM</b></tt> is generated if either
+    <tt><i>sfactor</i></tt> or <tt><i>dfactor</i></tt> is not an accepted
+    value.
+
+<li><tt><b>GL_INVALID_OPERATION</b></tt> is generated if <a
+    href="glBlendFunc.html"><tt>glBlendFunc</tt></a> is executed between the
+    execution of <a href="glBegin.html"><tt>glBegin</tt></a> and the
+    corresponding execution of <a href="glBegin.html"><tt>glEnd</tt></a>.
+</ul>
+
+
+<!-- === Associated Gets ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp7', 1)"
+   onMouseOut="ChangeBtn('ArrowUp7', 0)"><img name="ArrowUp7"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="AssociatedGets">Associated Gets</a></h2>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_BLEND_SRC</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_BLEND_DST</b></tt><br>
+
+<tt><a href="glIsEnabled.html">glIsEnabled</a></tt> with argument
+<tt><b>GL_BLEND</b></tt>
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp8', 1)"
+   onMouseOut="ChangeBtn('ArrowUp8', 0)"><img name="ArrowUp8"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<tt><a href="glAlphaFunc.html">glAlphaFunc</a></tt>,<br>
+<tt><a href="glClear.html">glClear</a></tt>,<br>
+<tt><a href="glDrawBuffer.html">glDrawBuffer</a></tt>,<br>
+<tt><a href="glEnable.html">glEnable</a></tt>,<br>
+<tt><a href="glLogicOp.html">glLogicOp</a></tt>,<br>
+<tt><a href="glStencilFunc.html">glStencilFunc</a></tt>
+
+
+<p>
+<a href="glBlendColorEXT.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="gluBuild1DMipmaps.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img name="Reference2"
+   src="../buttons/ReferenceOff.gif" alt="Reference" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img name="ImpGuide2"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img name="Index2"
+   src="../buttons/IndexOff.gif" alt="Index" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>

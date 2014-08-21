@@ -1,0 +1,263 @@
+<html><head>
+<title>Running OpenGL Programs</title>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="Running OpenGL Programs">
+</head>
+
+<body background="../images/WhiteMarble.jpg"
+text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html"><img src="../buttons/Reference.gif"
+   alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html"><img src="../buttons/ImpGuide.gif"
+   alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html"><img src="../buttons/Index.gif"
+   alt="[Index]" border=0></a>
+
+
+<h1>Chapter 3: Running OpenGL Programs<br>
+<a href="02_Install.html"><img src="../buttons/ArrowLeft.gif"
+   alt="[Prev]" border=0></a>
+<a href="04_CompLink.html"><img src="../buttons/ArrowRight.gif"
+   alt="[Next]" border=0></a></h1>
+
+
+<h2>Table of Contents</h2>
+
+<ul type=disc>
+<li><a href="#Introduction"> Introduction</a>
+<li><a href="#VirtualGLXMode">Virtual GLX (VGL) Mode</a>
+    <ul type=disc>
+    <li><a href="#VisualSupportForTheVGLMode">Visual Support for the VGL
+        Mode</a>
+    <li><a href="#SpecialConsiderations">Special Considerations</a>
+    </ul>
+<li><a href="#TheVirtualMemoryDriver">The Virtual Memory Driver (VMD)</a>
+<li><a href="#RunningHPsImplementationOfTheOpenGLStereoApplication"> Running
+    HP's Implementation of the OpenGL Stereo Application</a>
+</ul>
+
+
+<hr>
+<h2><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="Introduction"> Introduction</a></h2>
+
+This chapter gives a description of the Virtual GLX mode, Virtual Memory
+Driver (VMD), and support of threaded applications.
+
+<h2><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="VirtualGLXMode"> Virtual GLX (VGL) Mode</a></h2>
+
+Virtual GLX (VGL) defines a special transparent mode within HP's
+implementation of OpenGL that allows an HP client to render through OpenGL to
+X servers and/or X terminals that do not support OpenGL or the X server
+extension for GLX.
+
+<p>
+This mode is implemented by emulating the X server extension within the OpenGL
+API client-side library and using the HP Virtual Memory Driver (VMD) to
+perform Xlib rendering.
+
+<p>
+VGL provides flexibility for OpenGL users, but does not provide the same level
+of performance as is available to servers supporting GLX.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="VisualSupportForTheVGLMode"> Visual Support for the VGL Mode</a></h3>
+
+In VGL mode, the visual capabilities incorporated in
+<tt>glXChooseVisual()</tt> and <tt>glXGetConfig()</tt> are synthesized from
+the list of X Visuals supported on the target X Server and the capabilities of
+the Virtual Memory Driver (VMD).  Table 1-5 in Chapter 1 lists the X Visuals
+that are supported through the OpenGL Extension to the X Window System (GLX)
+in the Virtual GLX (VGL) mode.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="SpecialConsiderations"> Special Considerations</a></h3>
+
+When you are in the VGL mode, you will notice the following differences
+between it and the GLX mode.
+
+<ul type=disc>
+<li>VGL deals with X servers that do <i>not</i> support replicated X visuals
+    that provide extended GLX capabilities.  This results in a GLX visual list
+    that is synthesized from available X visuals.  This list is assigned the
+    maximum set of capabilities supported by the Virtual Memory Driver (VMD)
+    for each particular visual.  For example, if a visual is found to be
+    supported by the Double-Buffered Extension (DBE), then it will be reported
+    as having the capability of doing double-buffering.  Note that there will
+    <i>not</i> be a counterpart for the GLX visual with the same type and
+    depth that is single buffered.  If a request is made for a single buffered
+    visual, a double-buffered visual will match the request, but that visual
+    will only be available for single-buffered rendering unless a new display
+    connection is opened to the VGL display.<p>
+
+<li>OpenGL and Xlib rendering when mixed and sent to the same drawable in VGL
+    mode may behave differently than if a GLX capable X server were used.
+    This is because in VGL mode OpenGL rendering is not strictly bounded by
+    the limits of primitives rendered as is the case when a GLX server is
+    used.  In fact, rendering a single GLX primitive can result in repainting
+    the entire drawable.  This means that in the VGL mode it may not be safe
+    to rely upon the fact that Xlib and OpenGL render to different regions of
+    the drawable.  The best way to avoid this issue is to always perform Xlib
+    rendering after OpenGL rendering.<p>
+
+<li>The <tt>glReadPixels</tt> routine when used in the VGL mode will return
+    only pixel data rendered via OpenGL.  Xlib rendering will <i>not</i> be
+    included.<p>
+
+<li>A call to <tt>glXSwapBuffers</tt> is the only approved way to achieve
+    double buffering for VGL visuals.  Note that calls made to
+    <tt>XdbeSwapBuffers</tt> will not work correctly.<p>
+
+<li>A call can be made to:
+    <pre>
+    Bool hpglXDisplayIsVGL(Display *dpy,
+                           int     screen)
+    </pre>
+    to determine if a particular display connection is operating in VGL mode.
+    The return value is "True" if <tt>dpy</tt> is VGL; otherwise, the value
+    returned is "False."  This is an HP function that is not available on
+    other implementations of OpenGL.
+</ul>
+
+
+<h2><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="TheVirtualMemoryDriver"> The Virtual Memory Driver (VMD)</a></h2>
+
+Instead of rendering OpenGL graphics to a dedicated graphics-display
+subsystem, VMD is designed to render these images to a virtual-memory frame
+buffer and send these images to an X11 drawable using standard X11 protocol.
+
+<p>
+Because HP VMD uses the X11 protocol to display the images, this targeted
+drawable may be local or remote.  This may include rendering to X terminals,
+older HP devices, or a personal computer.  The only requirement is that the
+output is directed to an X11 drawable.  (See <a
+href="01_Overview.html">Chapter 1</a> for a list of supported VMD
+configurations) VMD is also the driver used to render to GLX pixmaps.
+
+<p>
+When a GLX context is created for rendering three-dimensional graphics using
+OpenGL, GLX first checks to see if the X server supports the GLX extension.
+If it does not, the Virtual Memory Driver will be used.  GLX examines the
+available list of X visuals and decides which ones can be software extended to
+be GLX visuals (see the supported visuals list).  Buffers are allocated in
+virtual memory for the OpenGL color and ancillary buffers.  When the
+application issues a <tt>glFlush()</tt>, <tt>glFinish()</tt>, or a
+<tt>glXSwapBuffers()</tt> call, the contents of the corresponding
+virtual-memory-color buffers are sent to the X11 window using X protocol.
+
+<p>
+Double buffering for VMD is implemented using the X11 Double-Buffering
+Extension (DBE).  Double-buffered visuals are not available for HP OpenGL
+rendering with VMD on X servers that do not support DBE.
+
+<p>
+Because of the way VMD works (rendering to a VM buffer and then displaying the
+images through X11 protocol), it will behave a bit differently than hardware
+devices.  In particular, since VMD renders to VM buffers, changes to the X11
+window will not appear until a buffer swap or a
+<tt>glFlush</tt>/<tt>glFinish</tt>.
+
+<p>
+Resource usage needs to be taken into consideration,as well.  VM buffers are
+allocated for all of the OpenGL color and ancillary buffers.  Color buffers
+are allocated when the context is created.  Other buffers (depth, stencil,
+accumulation) are allocated at first use.  These buffers can be quite large.
+
+<p>
+For example, consider an X11 window 750 pixels wide and 600 pixels high.  The
+size of each VM color buffer for an 8-bit visual is:
+
+<p align=center>
+(750 <img src="symbols/Times.png"> 600) pixels <img
+src="symbols/Times.png"> 1 byte/pixel = 450,000 bytes
+
+<p>
+Consider that an OpenGL application may use two color buffers (for double
+buffering), a 32-bit depth/stencil buffer, and a 48-bit accumulation buffer.
+The size of the virtual memory required then becomes 5,400,000 bytes.  In
+addition, the amount of virtual memory required is correspondingly larger for
+12-bit and 24-bit color buffers.
+
+
+<h2><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="RunningHPsImplementationOfTheOpenGLStereoApplication"> Running HP's Implementation of the OpenGL Stereo Application</a></h2>
+
+With HP's implementation of OpenGL and the V<font size=-1>ISUALIZE</font>-FX
+family of graphics devices, it is now possible to run HP's implementation of
+OpenGL "stereo in a window" mode.  Unlike previous HP stereo implementations,
+"stereo in a window" affects only OpenGL windows that have been created with
+"stereo capable" <tt>GLX</tt> visuals.  The remainder of the X11 screen is
+rendered in non-stereo mode without any flickering or color artifacts.
+
+<p>
+Following are the steps required to run HP's implementation of OpenGL "stereo
+in a window" mode:
+
+<ol> 
+<li>Find out if your monitor is currently configured in a mode that supports
+    stereo.  This can be done by running the command:
+    <pre>
+    export DISPLAY=myhost:x.y
+    /opt/graphics/OpenGL/contrib/xglinfo/xglinfo
+    </pre>
+
+    The output from <tt>xglinfo</tt> lists the OpenGL capabilities of the
+    specified X Display, and includes all <tt>GLX</tt> visuals that are
+    supported. If one or more of the listed <tt>GLX</tt> visuals are marked as
+    stereo capable, then you can proceed to step three.<p>
+
+<li>If none of the <tt>GLX</tt> visuals support stereo, you will need to
+    re-configure your monitor to a configuration that supports stereo.  Note
+    that you can use the "Monitor Configuration" component of SAM to
+    re-configure you monitor, or you can execute the following command:
+    <pre>
+    /opt/graphics/common/bin/setmon <i>graphics device</i>
+    </pre>
+
+    Note that <i>graphics device</i> is a name such as "<tt>/dev/crt</tt>"
+    that is included on the <tt>Screen</tt> line in the
+    <tt>/etc/X11/X*screens</tt> file for the X Server that you want to
+    configure for stereo.  The <tt>setmon</tt> command is interactive and will
+    present you with the possible monitor configurations allowable for the
+    specified device. You should select one of the configurations that is
+    listed by <tt>setmon</tt> as stereo capable.  If none of the
+    configurations indicate stereo capability, then your graphics device
+    cannot be used for OpenGL stereo rendering.
+
+    <p>
+    After successfully re-configuring your monitor, the X Server will be
+    restarted, and you can verify the availability of GLX stereo visuals by
+    running the <tt>xglinfo</tt> command again.<p>
+
+<li>To select one of the stereo  capable <tt>GLX</tt> visuals through
+    OpenGL, the <tt>GLX_STEREO</tt> enumerated type should be passed to either
+    <tt>glXChooseVisual()</tt> or <tt>glXGetConfig()</tt>.  Once a stereo
+    visual has been selected, it can be used to create a stereo window,
+    and <tt>glDrawBuffer()</tt> can then be called to utilize both the
+    right and left buffers for rendering stereo images.
+</ol>
+
+<p>
+<a href="02_Install.html"><img src="../buttons/ArrowLeft.gif"
+   alt="[Prev]" border=0></a>
+<a href="#TOC"><img src="../buttons/ArrowUp.gif"
+   alt="[Up]" border=0></a>
+<a href="04_CompLink.html"><img src="../buttons/ArrowRight.gif"
+   alt="[Next]" border=0></a><br>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html"><img src="../buttons/Reference.gif"
+   alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html"><img src="../buttons/ImpGuide.gif"
+   alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html"><img src="../buttons/Index.gif"
+   alt="[Index]" border=0></a>
+
+<spacer type=vertical size=500>
+
+</body>
+</html>
