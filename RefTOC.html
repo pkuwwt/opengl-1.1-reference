@@ -1,0 +1,1621 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: Table of Contents</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+//  alert("Btn: '" + Btn + "'\nDoc: '" + Doc + "'");
+    eval("document." + Btn + ".src=\042buttons/" + Doc + (State?"On":"Off") +
+      ".gif\042");
+}
+//============================================================================
+function PrintAbstract(TheColor, TheText) {
+    if (parent.frames.length != 0) {			// loaded in frames
+        parent.Color.document.bgColor=TheColor;
+        parent.Abstract.document.open("text/HTML");
+        parent.Abstract.document.writeln(TheText);
+        parent.Abstract.document.bgColor="ffffff";
+        parent.Abstract.document.fgColor="000000";
+        parent.Abstract.document.close();
+    }
+}
+//============================================================================
+function Reset () {
+    if (parent.frames.length != 0) {			// loaded in frames
+        parent.Color.document.bgColor="bbbbbb";
+        //parent.Abstract.document.open("text/HTML");
+        //parent.Abstract.document.close();
+        parent.Abstract.document.bgColor="ffffff";
+    }
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: Table of Contents">
+</head>
+
+<body background="images/WhiteMarble.jpg"
+text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"> </a>
+<a href="OpenGL.html" target=_top><img src="images/OpenGL2.gif"
+   alt="[Front]" border=0></a>
+<a href="ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide', 1)"
+   onMouseOut="ChangeBtn('ImpGuide', 0)" target=_top><img
+   src="buttons/ImpGuideOff.gif" name="ImpGuide" alt="[Imp. Guide]"
+   border=0></a>
+<a href="Index.html" onMouseOver="ChangeBtn('Index', 1)"
+   onMouseOut="ChangeBtn('Index', 0)" target=_top><img
+   src="buttons/IndexOff.gif" name="Index" alt="[Index]" border=0></a>
+
+<h1>OpenGL 1.1 Reference: Table of Contents</h1>
+
+This is an alphabetical list (excluding the "<tt>gl</tt>", "<tt>glu</tt>", and
+"<tt>glX</tt>" prefixes) of the OpenGL functions in this on-line reference.
+The color of the bullets indicate the functional area the functions fit into:
+"<img src="buttons/RedBtn.gif" alt="s">" indicates a standard function, "<img
+src="buttons/GreenBtn.gif" alt="u">" indicates a utility function, and "<img
+src="buttons/BlueBtn.gif" alt="x">" indicates an X-windows function, and <img
+src="buttons/YellowBtn.gif" alt="e"> indicates a new extension function
+written by HP.  <font color=green>On any standard reference page for which HP
+has extended the functionality (noted below), the text describing that new
+functionality is green.</font>
+
+<p>
+These two buttons are used in the various reference pages as follows:<br>
+
+<blockquote>
+<table>
+<tr><td><a href="Reference/glAccum.html"
+        onMouseOver="ChangeBtn('ArrowRight', 1)"
+        onMouseOut="ChangeBtn('ArrowRight', 0)" target=_top><img
+        src="buttons/ArrowRightOff.gif" name="ArrowRight" align=absmiddle
+        border=0></a></td><td>Go to the next reference page.</td></tr>
+<tr><td><a href="Reference/glXWaitX.html"
+        onMouseOver="ChangeBtn('ArrowLeft', 1)"
+        onMouseOut="ChangeBtn('ArrowLeft', 0)" target=_top><img
+        src="buttons/ArrowLeftOff.gif" name="ArrowLeft" align=absmiddle
+        border=0></a></td><td>Go to the previous reference page.</td></tr>
+</table>
+</blockquote>
+
+<p>
+Please select the desired letter:<br>
+<font size=+2><a href="#A"><b>A</b></a>
+<a href="#B"><b>B</b></a>
+<a href="#C"><b>C</b></a>
+<a href="#D"><b>D</b></a>
+<a href="#E"><b>E</b></a>
+<a href="#F"><b>F</b></a>
+<a href="#G"><b>G</b></a>
+<a href="#H"><b>H</b></a>
+<a href="#I"><b>I</b></a>
+<a href="#L"><b>J</b></a>
+<a href="#L"><b>K</b></a>
+<a href="#L"><b>L</b></a>
+<a href="#M"><b>M</b></a>
+<a href="#N"><b>N</b></a>
+<a href="#O"><b>O</b></a>
+<a href="#P"><b>P</b></a>
+<a href="#Q"><b>Q</b></a>
+<a href="#R"><b>R</b></a>
+<a href="#S"><b>S</b></a>
+<a href="#T"><b>T</b></a>
+<a href="#U"><b>U</b></a>
+<a href="#V"><b>V</b></a>
+<a href="#W"><b>W</b></a>
+<a href="#W"><b>X</b></a>
+<a href="#W"><b>Y</b></a>
+<a href="#W"><b>Z</b></a></font>
+<br>(Use the alpha buttons to return to this alphabet.)
+
+
+<table>
+<tr><td colspan=2><a name="A"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha1', 1)"
+        onMouseOut="ChangeBtn('Alpha1', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha1" alt="TOC" border=0></a>
+        <font size=+2><b>A</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glAccum.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glAccum: operate on the accumulation buffer.');"
+          onMouseOut="Reset();" target=_top>glAccum</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glAlphaFunc.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glAlphaFunc: specify the alpha test function.');"
+          onMouseOut="Reset();" target=_top>glAlphaFunc</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glAreTexturesResident.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glAreTexturesResident: determine if textures are loaded '+
+          'in texture memory.');"
+          onMouseOut="Reset();" target=_top>glAreTexturesResident</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glArrayElement.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glArrayElement: render a vertex using the specified '+
+          'vertex array element.');"
+          onMouseOut="Reset();" target=_top>glArrayElement</a>
+</dl></td></tr>
+
+
+<tr><td colspan=2><a name="B"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha2', 1)"
+        onMouseOut="ChangeBtn('Alpha2', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha2" alt="TOC" border=0></a>
+        <font size=+2><b>B</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glBegin.html"
+          onMouseOver="PrintAbstract('ff0000',
+         'glBegin, glEnd: delimit the vertices of a '+
+          'primitive or a group of like primitives.');"
+          onMouseOut="Reset();" target=_top>glBegin</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluBeginCurve.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluBeginCurve, gluEndCurve: delimit a NURBS '+
+          'curve definition.');"
+          onMouseOut="Reset();" target=_top>gluBeginCurve</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluBeginPolygon.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluBeginPolygon, gluEndPolygon: delimit a '+
+          'polygon description.');"
+          onMouseOut="Reset();" target=_top>gluBeginPolygon</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluBeginSurface.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluBeginSurface, gluEndSurface: delimit a '+
+          'NURBS surface definition.');"
+          onMouseOut="Reset();" target=_top>gluBeginSurface</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluBeginTrim.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluBeginTrim, gluEndTrim: delimit a NURBS '+
+          'trimming loop definition.');"
+          onMouseOut="Reset();" target=_top>gluBeginTrim</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glBindTexture.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glBindTexture: bind a named texture to a texture '+
+          'target.');"
+          onMouseOut="Reset();" target=_top>glBindTexture</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glBitmap.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glBitmap: draw a bitmap.');"
+          onMouseOut="Reset();" target=_top>glBitmap</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glBlendColorEXT.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glBlendColorEXT: set the blend color.');"
+          onMouseOut="Reset();" target=_top>glBlendColorEXT</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glBlendFunc.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glBlendFunc: specify pixel arithmetic.');"
+          onMouseOut="Reset();" target=_top>glBlendFunc</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluBuild1DMipmaps.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluBuild1DMipmaps: create 1D mipmaps.');"
+          onMouseOut="Reset();" target=_top>gluBuild1DMipmaps</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluBuild2DMipmaps.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluBuild2DMipmaps: create 2D mipmaps.');"
+          onMouseOut="Reset();" target=_top>gluBuild2DMipmaps</a>
+        </dl></td></tr>
+
+<tr><td colspan=2><a name="C"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha3', 1)"
+        onMouseOut="ChangeBtn('Alpha3', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha3" alt="TOC" border=0></a>
+        <font size=+2><b>C</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glCallList.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glCallList: execute a display list.');"
+          onMouseOut="Reset();" target=_top>glCallList</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glCallLists.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glCallLists: execute a list of display lists.');"
+          onMouseOut="Reset();" target=_top>glCallLists</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXChooseVisual.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXChooseVisual: return a visual that matches '+
+          'specified attributes.');"
+          onMouseOut="Reset();" target=_top>glXChooseVisual</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glClear.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glClear: clear buffers to preset values.');"
+          onMouseOut="Reset();" target=_top>glClear</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glClearAccum.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glClearAccum: specify clear values for the '+
+          'accumulation buffer.');"
+          onMouseOut="Reset();" target=_top>glClearAccum</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glClearColor.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glClearColor: specify clear values for the color '+
+          'buffers.');"
+          onMouseOut="Reset();" target=_top>glClearColor</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glClearDepth.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glClearDepth: specify the clear value for the depth '+
+          'buffer.');"
+          onMouseOut="Reset();" target=_top>glClearDepth</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glClearIndex.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glClearIndex: specify the clear value for the color '+
+          'index buffers.');"
+          onMouseOut="Reset();" target=_top>glClearIndex</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glClearStencil.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glClearStencil: specify the clear value for the '+
+          'stencil buffer.');"
+          onMouseOut="Reset();" target=_top>glClearStencil</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glClipPlane.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glClipPlane: specify a plane against which all '+
+          'geometry is clipped.');"
+          onMouseOut="Reset();" target=_top>glClipPlane</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glColor.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glColor3b, glColor3d, glColor3f, '+
+          'glColor3i, glColor3s, glColor3ub, '+
+          'glColor3ui, glColor3us, glColor4b, '+
+          'glColor4d, glColor4f, glColor4i, '+
+          'glColor4s, glColor4ub, glColor4ui, '+
+          'glColor4us, glColor3bv, glColor3dv, '+
+          'glColor3fv, glColor3iv, glColor3sv, '+
+          'glColor3ubv, glColor3uiv, glColor3usv, '+
+          'glColor4bv, glColor4dv, glColor4fv, '+
+          'glColor4iv, glColor4sv, glColor4ubv, '+
+          'glColor4uiv, glColor4usv: set the current '+
+          'color.');"
+          onMouseOut="Reset();" target=_top>glColor</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glColorMask.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glColorMask: enable and disable writing of frame '+
+          'buffer color components.');"
+          onMouseOut="Reset();" target=_top>glColorMask</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glColorMaterial.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glColorMaterial: cause a material color to track the '+
+          'current color.');"
+          onMouseOut="Reset();" target=_top>glColorMaterial</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glColorPointer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glColorPointer: define an array of colors.');"
+          onMouseOut="Reset();" target=_top>glColorPointer</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXCopyContext.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXCopyContext: copy state from one rendering context '+
+          'to another.');"
+          onMouseOut="Reset();" target=_top>glXCopyContext</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glCopyPixels.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glCopyPixels: copy pixels in the frame buffer.');"
+          onMouseOut="Reset();" target=_top>glCopyPixels</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glCopyTexImage1D.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glCopyTexImage1D: copy pixels into a 1D texture image.');"
+          onMouseOut="Reset();" target=_top>glCopyTexImage1D</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glCopyTexImage2D.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glCopyTexImage2D: copy pixels into a 2D texture image.');"
+          onMouseOut="Reset();" target=_top>glCopyTexImage2D</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glCopyTexSubImage1D.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glCopyTexSubImage1D: copy a one-dimensional texture '+
+          'subimage.');"
+          onMouseOut="Reset();" target=_top>glCopyTexSubImage1D</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glCopyTexSubImage2D.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glCopyTexSubImage2D: copy a two-dimensional texture '+
+          'subimage.');"
+          onMouseOut="Reset();" target=_top>glCopyTexSubImage2D</a>
+        <dd><img src="buttons/YellowBtn.gif" alt="e">
+          <a href="Reference/glCopyTexSubImage3DEXT.html"
+          onMouseOver="PrintAbstract('ffff00',
+          'glCopyTexSubImage3DEXT: copy pixels into a 3D texture '+
+          'subimage.');"
+          onMouseOut="Reset();" target=_top>glCopyTexSubImage3DEXT</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXCreateContext.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXCreateContext: create a new GLX rendering context.');"
+          onMouseOut="Reset();" target=_top>glXCreateContext</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXCreateGLXPixmap.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXCreateGLXPixmap: create an off-screen GLX rendering '+
+          'area.');"
+          onMouseOut="Reset();" target=_top>glXCreateGLXPixmap</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glCullFace.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glCullFace: specify whether front- or back-facing '+
+          'facets can be culled.');"
+          onMouseOut="Reset();" target=_top>glCullFace</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluCylinder.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluCylinder: draw a cylinder.');"
+          onMouseOut="Reset();" target=_top>gluCylinder</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="D"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha4', 1)"
+        onMouseOut="ChangeBtn('Alpha4', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha4" alt="TOC" border=0></a>
+        <font size=+2><b>D</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glDeleteLists.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glDeleteLists: delete a contiguous group of display '+
+          'lists.');"
+          onMouseOut="Reset();" target=_top>glDeleteLists</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluDeleteNurbsRenderer.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluDeleteNurbsRenderer: destroy a NURBS object.');"
+          onMouseOut="Reset();" target=_top>gluDeleteNurbsRenderer</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluDeleteQuadric.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluDeleteQuadric: destroy a quadrics object.');"
+          onMouseOut="Reset();" target=_top>gluDeleteQuadric</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluDeleteTess.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluDeleteTess: destroy a tessellation object.');"
+          onMouseOut="Reset();" target=_top>gluDeleteTess</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glDeleteTextures.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glDeleteTextures: delete named textures.');"
+          onMouseOut="Reset();" target=_top>glDeleteTextures</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glDepthFunc.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glDepthFunc: specify the value used for depth buffer '+
+          'comparisons.');"
+          onMouseOut="Reset();" target=_top>glDepthFunc</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glDepthMask.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glDepthMask: enable or disable writing into the depth '+
+          'buffer.');"
+          onMouseOut="Reset();" target=_top>glDepthMask</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glDepthRange.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glDepthRange: specify mapping of depth values from '+
+          'normalized device coordinates to window coordinates.');"
+          onMouseOut="Reset();" target=_top>glDepthRange</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXDestroyContext.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXDestroyContext: destroy a GLX context.');"
+          onMouseOut="Reset();" target=_top>glXDestroyContext</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXDestroyGLXPixmap.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXDestroyGLXPixmap: destroy a GLX pixmap.');"
+          onMouseOut="Reset();" target=_top>glXDestroyGLXPixmap</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glEnable.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glEnable, glDisable: enable or disable server-'+
+          'side GL capabilities.');"
+          onMouseOut="Reset();" target=_top>glDisable</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluDisk.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluDisk: draw a disk.');"
+          onMouseOut="Reset();" target=_top>gluDisk</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glDrawArrays.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glDrawArrays: render primitives from array data.');"
+          onMouseOut="Reset();" target=_top>glDrawArrays</a>
+        <dd><img src="buttons/YellowBtn.gif" alt="s">
+          <a href="Reference/glDrawArraySetHP.html"
+          onMouseOver="PrintAbstract('ffff00',
+          'glDrawArraySetHP: render multiple primitives from array data.');"
+          onMouseOut="Reset();" target=_top>glDrawArraySetHP</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glDrawBuffer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glDrawBuffer: specify which color buffers are to be '+
+          'drawn into.');"
+          onMouseOut="Reset();" target=_top>glDrawBuffer</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glDrawElements.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glDrawElements: render primitives from array data.');"
+          onMouseOut="Reset();" target=_top>glDrawElements</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glDrawPixels.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glDrawPixels: write a block of pixels to the frame '+
+          'buffer.');"
+          onMouseOut="Reset();" target=_top>glDrawPixels</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="E"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha5', 1)"
+        onMouseOut="ChangeBtn('Alpha5', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha5" alt="TOC" border=0></a>
+        <font size=+2><b>E</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glEdgeFlag.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glEdgeFlag, glEdgeFlagv: flag edges as either '+
+          'boundary or nonboundary.');"
+          onMouseOut="Reset();" target=_top>glEdgeFlag</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glEdgeFlagPointer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glEdgeFlagPointer: define an array of edge flags.');"
+          onMouseOut="Reset();" target=_top>glEdgeFlagPointer</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glEnable.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glEnable, glDisable: enable or disable server-'+
+          'side GL capabilities.');"
+          onMouseOut="Reset();" target=_top>glEnable</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glEnableClientState.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glEnableClientState, glDisableClientState: '+
+          'enable or disable client-side capability.');"
+          onMouseOut="Reset();" target=_top>glEnableClientState</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluErrorString.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluErrorString: produce an error string from a GL or '+
+          'GLU error code.');"
+          onMouseOut="Reset();" target=_top>gluErrorString</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glEvalCoord.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glEvalCoord1d, glEvalCoord1f, '+
+          'glEvalCoord2d, glEvalCoord2f, '+
+          'glEvalCoord1dv, glEvalCoord1fv, '+
+          'glEvalCoord2dv, glEvalCoord2fv: evaluate '+
+          'enabled one- and two-dimensional maps.');"
+          onMouseOut="Reset();" target=_top>glEvalCoord</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glEvalMesh.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glEvalMesh1, glEvalMesh2: compute a one- or '+
+          'two-dimensional grid of points or lines.');"
+          onMouseOut="Reset();" target=_top>glEvalMesh</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glEvalPoint.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glEvalPoint1, glEvalPoint2: generate and '+
+          'evaluate a single point in a mesh.');"
+          onMouseOut="Reset();" target=_top>glEvalPoint</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="F"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha6', 1)"
+        onMouseOut="ChangeBtn('Alpha6', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha6" alt="TOC" border=0></a>
+        <font size=+2><b>F</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glFeedbackBuffer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glFeedbackBuffer: controls feedback mode.');"
+          onMouseOut="Reset();" target=_top>glFeedbackBuffer</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glFinish.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glFinish: block until all GL execution is complete.');"
+          onMouseOut="Reset();" target=_top>glFinish</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glFlush.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glFlush: force execution of GL commands in finite time.');"
+          onMouseOut="Reset();" target=_top>glFlush</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glFog.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glFogf, glFogi, glFogfv, '+
+          'glFogiv: specify fog parameters.');"
+          onMouseOut="Reset();" target=_top>glFog</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXFreeContextEXT.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXFreeContextEXT: free client-side memory for '+
+          'imported context.');"
+          onMouseOut="Reset();" target=_top>glXFreeContextEXT</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glFrontFace.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glFrontFace: define front- and back-facing polygons.');"
+          onMouseOut="Reset();" target=_top>glFrontFace</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glFrustum.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glFrustum: multiply the current matrix by a '+
+          'perspective matrix.');"
+          onMouseOut="Reset();" target=_top>glFrustum</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="G"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha7', 1)"
+        onMouseOut="ChangeBtn('Alpha7', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha7" alt="TOC" border=0></a>
+        <font size=+2><b>G</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGenLists.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGenLists: generate a contiguous set of empty display '+
+          'lists.');"
+          onMouseOut="Reset();" target=_top>glGenLists</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGenTextures.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGenTextures: generate texture names.');"
+          onMouseOut="Reset();" target=_top>glGenTextures</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGet.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetBooleanv, glGetDoublev, '+
+          'glGetFloatv, glGetIntegerv: return the value or '+
+          'values of a selected parameter.');"
+          onMouseOut="Reset();" target=_top>glGet</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXGetClientString.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXGetClientString: return a string describing the '+
+          'client.');"
+          onMouseOut="Reset();" target=_top>glXGetClientString</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetClipPlane.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetClipPlane: return the coefficients of the '+
+          'specified clipping plane.');"
+          onMouseOut="Reset();" target=_top>glGetClipPlane</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXGetConfig.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXGetConfig: return information about GLX visuals.');"
+          onMouseOut="Reset();" target=_top>glXGetConfig</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXGetContextIDEXT.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXGetContextIDEXT: get the XID for a context.');"
+          onMouseOut="Reset();" target=_top>glXGetContextIDEXT</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXGetCurrentContext.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXGetCurrentContext: return the current context.');"
+          onMouseOut="Reset();" target=_top>glXGetCurrentContext</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXGetCurrentDisplay.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXGetCurrentDisplay: get display for current context.');"
+          onMouseOut="Reset();" target=_top>glXGetCurrentDisplay</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXGetCurrentDrawable.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXGetCurrentDrawable: return the current drawable.');"
+          onMouseOut="Reset();" target=_top>glXGetCurrentDrawable</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetError.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetError: return error information.');"
+          onMouseOut="Reset();" target=_top>glGetError</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetLight.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetLightfv, glGetLightiv: return light '+
+          'source parameter values.');"
+          onMouseOut="Reset();" target=_top>glGetLight</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetMap.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetMapdv, glGetMapfv, glGetMapiv: '+
+          'return evaluator parameters.');"
+          onMouseOut="Reset();" target=_top>glGetMap</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetMaterial.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetMaterialfv, glGetMaterialiv: return '+
+          'material parameters.');"
+          onMouseOut="Reset();" target=_top>glGetMaterial</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluGetNurbsProperty.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluGetNurbsProperty: get a NURBS property.');"
+          onMouseOut="Reset();" target=_top>gluGetNurbsProperty</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetPixelMap.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetPixelMapfv, glGetPixelMapuiv, '+
+          'glGetPixelMapusv: return the specified pixel map.');"
+          onMouseOut="Reset();" target=_top>glGetPixelMap</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetPointer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetPointer: return the address of the specified '+
+          'pointer.');"
+          onMouseOut="Reset();" target=_top>glGetPointer</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetPolygonStipple.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetPolygonStipple: return the polygon stipple '+
+          'pattern.');"
+          onMouseOut="Reset();" target=_top>glGetPolygonStipple</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetString.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetString: return a string describing the current GL '+
+          'connection.');"
+          onMouseOut="Reset();" target=_top>glGetString</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluGetString.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluGetString: return a string describing the GLU '+
+          'version or GLU extensions.');"
+          onMouseOut="Reset();" target=_top>gluGetString</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluGetTessProperty.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluGetTessProperty: get a tessellation object property.');"
+          onMouseOut="Reset();" target=_top>gluGetTessProperty</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetTexEnv.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetTexEnvfv, glGetTexEnviv: return texture '+
+          'environment parameters.');"
+          onMouseOut="Reset();" target=_top>glGetTexEnv</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetTexGen.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetTexGendv, glGetTexGenfv, '+
+          'glGetTexGeniv: return texture coordinate generation '+
+          'parameters.');"
+          onMouseOut="Reset();" target=_top>glGetTexGen</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetTexImage.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetTexImage: return a texture image.');"
+          onMouseOut="Reset();" target=_top>glGetTexImage</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetTexLevelParameter.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetTexLevelParameterfv, '+
+          'glGetTexLevelParameteriv: return texture parameter '+
+          'values for a specific level of detail.');"
+          onMouseOut="Reset();" target=_top>glGetTexLevelParameter</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glGetTexParameter.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glGetTexParameterfv, glGetTexParameteriv: '+
+          'return texture parameter values.');"
+          onMouseOut="Reset();" target=_top>glGetTexParameter</a>
+          <font color=green>(extended)</font>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="H"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha8', 1)"
+        onMouseOut="ChangeBtn('Alpha8', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha8" alt="TOC" border=0></a>
+        <font size=+2><b>H</b></font></td></tr>
+
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glHint.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glHint: specify implementation-specific hints.');"
+          onMouseOut="Reset();" target=_top>glHint</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="I"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha9', 1)"
+        onMouseOut="ChangeBtn('Alpha9', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha9" alt="TOC" border=0></a>
+        <font size=+2><b>I</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXImportContextEXT.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXImportContextEXT: import another process\'s indirect '+
+          'rendering context.');"
+          onMouseOut="Reset();" target=_top>glXImportContextEXT</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glIndex.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glIndexd, glIndexf, glIndexi, '+
+          'glIndexs, glIndexub, glIndexdv, '+
+          'glIndexfv, glIndexiv, glIndexsv, '+
+          'glIndexubv: set the current color index.');"
+          onMouseOut="Reset();" target=_top>glIndex</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glIndexMask.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glIndexMask: control the writing of individual bits in '+
+          'the color index buffers.');"
+          onMouseOut="Reset();" target=_top>glIndexMask</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glIndexPointer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glIndexPointer: define an array of color indexes.');"
+          onMouseOut="Reset();" target=_top>glIndexPointer</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glInitNames.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glInitNames: initialize the name stack.');"
+          onMouseOut="Reset();" target=_top>glInitNames</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glInterleavedArrays.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glInterleavedArrays: simultaneously specify and enable '+
+          'several interleaved arrays.');"
+          onMouseOut="Reset();" target=_top>glInterleavedArrays</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXIntro.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXIntro: Introduction to OpenGL in the X window '+
+          'system.');"
+          onMouseOut="Reset();" target=_top>glXIntro</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXIsDirect.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXIsDirect: indicate whether direct rendering is '+
+          'enabled.');"
+          onMouseOut="Reset();" target=_top>glXIsDirect</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glIsEnabled.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glIsEnabled: test whether a capability is enabled.');"
+          onMouseOut="Reset();" target=_top>glIsEnabled</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glIsList.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glIsList: determine if a name corresponds to a display-'+
+          'list.');"
+          onMouseOut="Reset();" target=_top>glIsList</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glIsTexture.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glIsTexture: determine if a name corresponds to a '+
+          'texture.');"
+          onMouseOut="Reset();" target=_top>glIsTexture</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="L"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha10', 1)"
+        onMouseOut="ChangeBtn('Alpha10', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha10" alt="TOC" border=0></a>
+        <font size=+2><b>L</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glLight.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glLightf, glLighti, glLightfv, '+
+          'glLightiv: set light source parameters.');"
+          onMouseOut="Reset();" target=_top>glLight</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glLightModel.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glLightModelf, glLightModeli, '+
+          'glLightModelfv, glLightModeliv: set the '+
+          'lighting model parameters.');"
+          onMouseOut="Reset();" target=_top>glLightModel</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glLineStipple.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glLineStipple: specify the line stipple pattern.');"
+          onMouseOut="Reset();" target=_top>glLineStipple</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glLineWidth.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glLineWidth: specify the width of rasterized lines.');"
+          onMouseOut="Reset();" target=_top>glLineWidth</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glListBase.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glListBase: set the display-list base for '+
+          'glCallLists.');"
+          onMouseOut="Reset();" target=_top>glListBase</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glLoadIdentity.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glLoadIdentity: replace the current matrix with the '+
+          'identity matrix.');"
+          onMouseOut="Reset();" target=_top>glLoadIdentity</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glLoadMatrix.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glLoadMatrixd, glLoadMatrixf: replace the '+
+          'current matrix with the specified matrix.');"
+          onMouseOut="Reset();" target=_top>glLoadMatrix</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glLoadName.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glLoadName: load a name onto the name stack.');"
+          onMouseOut="Reset();" target=_top>glLoadName</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluLoadSamplingMatrices.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluLoadSamplingMatrices: load NURBS sampling and '+
+          'culling matrices.');"
+          onMouseOut="Reset();" target=_top>gluLoadSamplingMatrices</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glLogicOp.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glLogicOp: specify a logical pixel operation for color '+
+          'index rendering.');"
+          onMouseOut="Reset();" target=_top>glLogicOp</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluLookAt.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluLookAt: define a viewing transformation.');"
+          onMouseOut="Reset();" target=_top>gluLookAt</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="M"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha11', 1)"
+        onMouseOut="ChangeBtn('Alpha11', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha11" alt="TOC" border=0></a>
+        <font size=+2><b>M</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXMakeCurrent.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXMakeCurrent: attach a GLX context to a window or a '+
+          'GLX pixmap.');"
+          onMouseOut="Reset();" target=_top>glXMakeCurrent</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glMap1.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glMap1d, glMap1f: define a one-dimensional '+
+          'evaluator.');"
+          onMouseOut="Reset();" target=_top>glMap1</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glMap2.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glMap2d, glMap2f: define a two-dimensional '+
+          'evaluator.');"
+          onMouseOut="Reset();" target=_top>glMap2</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glMapGrid.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glMapGrid1d, glMapGrid1f, glMapGrid2d, '+
+          'glMapGrid2f: define a one- or two-dimensional mesh.');"
+          onMouseOut="Reset();" target=_top>glMapGrid</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glMaterial.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glMaterialf, glMateriali, '+
+          'glMaterialfv, glMaterialiv: specify material '+
+          'parameters for the lighting model.');"
+          onMouseOut="Reset();" target=_top>glMaterial</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glMatrixMode.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glMatrixMode: specify which matrix is the current '+
+          'matrix.');"
+          onMouseOut="Reset();" target=_top>glMatrixMode</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glMultMatrix.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glMultMatrixd, glMultMatrixf: multiply the '+
+          'current matrix with the specified matrix.');"
+          onMouseOut="Reset();" target=_top>glMultMatrix</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="N"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha12', 1)"
+        onMouseOut="ChangeBtn('Alpha12', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha12" alt="TOC" border=0></a>
+        <font size=+2><b>N</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glNewList.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glNewList, glEndList: create or replace a '+
+          'display list.');"
+          onMouseOut="Reset();" target=_top>glNewList</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluNewNurbsRenderer.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluNewNurbsRenderer: create a NURBS object.');"
+          onMouseOut="Reset();" target=_top>gluNewNurbsRenderer</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluNewQuadric.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluNewQuadric: create a quadrics object.');"
+          onMouseOut="Reset();" target=_top>gluNewQuadric</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluNewTess.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluNewTess: create a tessellation object.');"
+          onMouseOut="Reset();" target=_top>gluNewTess</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluNextContour.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluNextContour: mark the beginning of another contour.');"
+          onMouseOut="Reset();" target=_top>gluNextContour</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glNormal.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glNormal3b, glNormal3d, glNormal3f, '+
+          'glNormal3i, glNormal3s, glNormal3bv, '+
+          'glNormal3dv, glNormal3fv, glNormal3iv, '+
+          'glNormal3sv: set the current normal vector.');"
+          onMouseOut="Reset();" target=_top>glNormal</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glNormalPointer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glNormalPointer: define an array of normals.');"
+          onMouseOut="Reset();" target=_top>glNormalPointer</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluNurbsCallback.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluNurbsCallback: define a callback for a NURBS object.');"
+          onMouseOut="Reset();" target=_top>gluNurbsCallback</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluNurbsCurve.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluNurbsCurve: define the shape of a NURBS curve.');"
+          onMouseOut="Reset();" target=_top>gluNurbsCurve</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluNurbsProperty.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluNurbsProperty: set a NURBS property.');"
+          onMouseOut="Reset();" target=_top>gluNurbsProperty</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluNurbsSurface.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluNurbsSurface: define the shape of a NURBS surface.');"
+          onMouseOut="Reset();" target=_top>gluNurbsSurface</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="O"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha13', 1)"
+        onMouseOut="ChangeBtn('Alpha13', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha13" alt="TOC" border=0></a>
+        <font size=+2><b>O</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glOrtho.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glOrtho: multiply the current matrix with an '+
+          'orthographic matrix.');"
+          onMouseOut="Reset();" target=_top>glOrtho</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluOrtho2D.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluOrtho2D: define a 2D orthographic projection matrix.');"
+          onMouseOut="Reset();" target=_top>gluOrtho2D</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="P"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha14', 1)"
+        onMouseOut="ChangeBtn('Alpha14', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha14" alt="TOC" border=0></a>
+        <font size=+2><b>P</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluPartialDisk.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluPartialDisk: draw an arc of a disk.');"
+          onMouseOut="Reset();" target=_top>gluPartialDisk</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPassThrough.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPassThrough: place a marker in the feedback buffer.');"
+          onMouseOut="Reset();" target=_top>glPassThrough</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluPerspective.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluPerspective: set up a perspective projection matrix.');"
+          onMouseOut="Reset();" target=_top>gluPerspective</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluPickMatrix.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluPickMatrix: define a picking region.');"
+          onMouseOut="Reset();" target=_top>gluPickMatrix</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPixelMap.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPixelMapfv, glPixelMapuiv, '+
+          'glPixelMapusv: set up pixel transfer maps.');"
+          onMouseOut="Reset();" target=_top>glPixelMap</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPixelStore.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPixelStoref, glPixelStorei: set pixel '+
+          'storage modes.');"
+          onMouseOut="Reset();" target=_top>glPixelStore</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPixelTransfer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPixelTransferf, glPixelTransferi: set pixel '+
+          'transfer modes.');"
+          onMouseOut="Reset();" target=_top>glPixelTransfer</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPixelZoom.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPixelZoom: specify the pixel zoom factors.');"
+          onMouseOut="Reset();" target=_top>glPixelZoom</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPointSize.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPointSize: specify the diameter of rasterized points.');"
+          onMouseOut="Reset();" target=_top>glPointSize</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPolygonMode.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPolygonMode: select a polygon rasterization mode.');"
+          onMouseOut="Reset();" target=_top>glPolygonMode</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPolygonOffset.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPolygonOffset: set the scale and bias used to '+
+          'calculate depth values.');"
+          onMouseOut="Reset();" target=_top>glPolygonOffset</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPolygonStipple.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPolygonStipple: set the polygon stippling pattern.');"
+          onMouseOut="Reset();" target=_top>glPolygonStipple</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPrioritizeTextures.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPrioritizeTextures: set texture residence priority.');"
+          onMouseOut="Reset();" target=_top>glPrioritizeTextures</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluProject.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluProject: map object coordinates to window '+
+          'coordinates.');"
+          onMouseOut="Reset();" target=_top>gluProject</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPushAttrib.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPushAttrib, glPopAttrib: push and pop the '+
+          'server attribute stack.');"
+          onMouseOut="Reset();" target=_top>glPushAttrib</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPushClientAttrib.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPushClientAttrib, glPopClientAttrib: push '+
+          'and pop the client attribute stack.');"
+          onMouseOut="Reset();" target=_top>glPushClientAttrib</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPushMatrix.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPushMatrix, glPopMatrix: push and pop the '+
+          'current matrix stack.');"
+          onMouseOut="Reset();" target=_top>glPushMatrix</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glPushName.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glPushName, glPopName: push and pop the name '+
+          'stack.');"
+          onMouseOut="Reset();" target=_top>glPushName</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluPwlCurve.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluPwlCurve: describe a piecewise linear NURBS '+
+          'trimming curve.');"
+          onMouseOut="Reset();" target=_top>gluPwlCurve</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="Q"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha15', 1)"
+        onMouseOut="ChangeBtn('Alpha15', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha15" alt="TOC" border=0></a>
+        <font size=+2><b>Q</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluQuadricCallback.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluQuadricCallback: define a callback for a quadrics '+
+          'object.');"
+          onMouseOut="Reset();" target=_top>gluQuadricCallback</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluQuadricDrawStyle.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluQuadricDrawStyle: specify the draw style desired '+
+          'for quadrics.');"
+          onMouseOut="Reset();" target=_top>gluQuadricDrawStyle</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluQuadricNormals.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluQuadricNormals: specify what kind of normals are '+
+          'desired for quadrics.');"
+          onMouseOut="Reset();" target=_top>gluQuadricNormals</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluQuadricOrientation.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluQuadricOrientation: specify inside/outside '+
+          'orientation for quadrics.');"
+          onMouseOut="Reset();" target=_top>gluQuadricOrientation</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluQuadricTexture.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluQuadricTexture: specify if texturing is desired for '+
+          'quadrics.');"
+          onMouseOut="Reset();" target=_top>gluQuadricTexture</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXQueryContextInfoEXT.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXQueryContextInfoEXT: query context information.');"
+          onMouseOut="Reset();" target=_top>glXQueryContextInfoEXT</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXQueryExtension.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXQueryExtension: indicate whether the GLX extension '+
+          'is supported.');"
+          onMouseOut="Reset();" target=_top>glXQueryExtension</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXQueryExtensionsString.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXQueryExtensionsString: return list of supported '+
+          'extensions.');"
+          onMouseOut="Reset();" target=_top>glXQueryExtensionsString</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXQueryServerString.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXQueryServerString: return string describing the '+
+          'server.');"
+          onMouseOut="Reset();" target=_top>glXQueryServerString</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXQueryVersion.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXQueryVersion: return the version numbers of the GLX '+
+          'extension.');"
+          onMouseOut="Reset();" target=_top>glXQueryVersion</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="R"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha16', 1)"
+        onMouseOut="ChangeBtn('Alpha16', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha16" alt="TOC" border=0></a>
+        <font size=+2><b>R</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glRasterPos.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glRasterPos2d, glRasterPos2f, '+
+          'glRasterPos2i, glRasterPos2s, '+
+          'glRasterPos3d, glRasterPos3f, '+
+          'glRasterPos3i, glRasterPos3s, '+
+          'glRasterPos4d, glRasterPos4f, '+
+          'glRasterPos4i, glRasterPos4s, '+
+          'glRasterPos2dv, glRasterPos2fv, '+
+          'glRasterPos2iv, glRasterPos2sv, '+
+          'glRasterPos3dv, glRasterPos3fv, '+
+          'glRasterPos3iv, glRasterPos3sv, '+
+          'glRasterPos4dv, glRasterPos4fv, '+
+          'glRasterPos4iv, glRasterPos4sv: specify the '+
+          'raster position for pixel operations.');"
+
+          onMouseOut="Reset();" target=_top>glRasterPos</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glReadBuffer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glReadBuffer: select a color buffer source for pixels.');"
+          onMouseOut="Reset();" target=_top>glReadBuffer</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glReadPixels.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glReadPixels: read a block of pixels from the frame '+
+          'buffer.');"
+          onMouseOut="Reset();" target=_top>glReadPixels</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glRect.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glRectd, glRectf, glRecti, '+
+          'glRects, glRectdv, glRectfv, '+
+          'glRectiv, glRectsv: draw a rectangle.');"
+          onMouseOut="Reset();" target=_top>glRect</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glRenderMode.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glRenderMode: set rasterization mode.');"
+          onMouseOut="Reset();" target=_top>glRenderMode</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glRotate.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glRotated, glRotatef: multiply the current '+
+          'matrix by a rotation matrix.');"
+          onMouseOut="Reset();" target=_top>glRotate</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="S"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha17', 1)"
+        onMouseOut="ChangeBtn('Alpha17', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha17" alt="TOC" border=0></a>
+        <font size=+2><b>S</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glScale.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glScale, glScalef: multiply the current '+
+          'matrix by a general scaling matrix.');"
+          onMouseOut="Reset();" target=_top>glScale</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluScaleImage.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluScaleImage: scale an image to an arbitrary size.');"
+          onMouseOut="Reset();" target=_top>gluScaleImage</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glScissor.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glScissor: define the scissor box.');"
+          onMouseOut="Reset();" target=_top>glScissor</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glSelectBuffer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glSelectBuffer: establish a buffer for selection mode '+
+          'values.');"
+          onMouseOut="Reset();" target=_top>glSelectBuffer</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glShadeModel.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glShadeModel: select flat or smooth shading.');"
+          onMouseOut="Reset();" target=_top>glShadeModel</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluSphere.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluSphere: draw a sphere.');"
+          onMouseOut="Reset();" target=_top>gluSphere</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glStencilFunc.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glStencilFunc: set function and reference value for '+
+          'stencil testing.');"
+          onMouseOut="Reset();" target=_top>glStencilFunc</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glStencilMask.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glStencilMask: control the writing of individual bits '+
+          'in the stencil planes.');"
+          onMouseOut="Reset();" target=_top>glStencilMask</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glStencilOp.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glStencilOp: set stencil test actions.');"
+          onMouseOut="Reset();" target=_top>glStencilOp</a>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXSwapBuffers.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXSwapBuffers: make back buffer visible.');"
+          onMouseOut="Reset();" target=_top>glXSwapBuffers</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="T"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha18', 1)"
+        onMouseOut="ChangeBtn('Alpha18', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha18" alt="TOC" border=0></a>
+        <font size=+2><b>T</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluTessBeginContour.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluTessBeginContour, gluTessEndContour: '+
+          'delimit a contour description.');"
+          onMouseOut="Reset();" target=_top>gluTessBeginContour</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluTessBeginPolygon.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluTessBeginPolygon: delimit a polygon description.');"
+          onMouseOut="Reset();" target=_top>gluTessBeginPolygon</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluTessCallback.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluTessCallback: define a callback for a tessellation '+
+          'object.');"
+          onMouseOut="Reset();" target=_top>gluTessCallback</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluTessEndPolygon.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluTessEndPolygon: delimit a polygon description.');"
+          onMouseOut="Reset();" target=_top>gluTessEndPolygon</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluTessNormal.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluTessNormal: specify a normal for a polygon.');"
+          onMouseOut="Reset();" target=_top>gluTessNormal</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluTessProperty.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluTessProperty: set a tessellation object property.');"
+          onMouseOut="Reset();" target=_top>gluTessProperty</a>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluTessVertex.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluTessVertex: specify a vertex on a polygon.');"
+          onMouseOut="Reset();" target=_top>gluTessVertex</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glTexCoord.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glTexCoord1d, glTexCoord1f, '+
+          'glTexCoord1i, glTexCoord1s, '+
+          'glTexCoord2d, glTexCoord2f, '+
+          'glTexCoord2i, glTexCoord2s, '+
+          'glTexCoord3d, glTexCoord3f, '+
+          'glTexCoord3i, glTexCoord3s, '+
+          'glTexCoord4d, glTexCoord4f, '+
+          'glTexCoord4i, glTexCoord4s, '+
+          'glTexCoord1dv, glTexCoord1fv, '+
+          'glTexCoord1iv, glTexCoord1sv, '+
+          'glTexCoord2dv, glTexCoord2fv, '+
+          'glTexCoord2iv, glTexCoord2sv, '+
+          'glTexCoord3dv, glTexCoord3fv, '+
+          'glTexCoord3iv, glTexCoord3sv, '+
+          'glTexCoord4dv, glTexCoord4fv, '+
+          'glTexCoord4iv, glTexCoord4sv: set the '+
+          'current texture coordinates.');"
+          onMouseOut="Reset();" target=_top>glTexCoord</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glTexCoordPointer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glTexCoordPointer: define an array of texture '+
+          'coordinates.');"
+          onMouseOut="Reset();" target=_top>glTexCoordPointer</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glTexEnv.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glTexEnvf, glTexEnvi, glTexEnvfv, '+
+          'glTexEnviv: set texture environment parameters.');"
+          onMouseOut="Reset();" target=_top>glTexEnv</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glTexGen.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glTexGend, glTexGenf, glTexGeni, '+
+          'glTexGendv, glTexGenfv, glTexGeniv: '+
+          'control the generation of texture coordinates.');"
+          onMouseOut="Reset();" target=_top>glTexGen</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glTexImage1D.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glTexImage1D: specify a one-dimensional texture image.');"
+          onMouseOut="Reset();" target=_top>glTexImage1D</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glTexImage2D.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glTexImage2D: specify a two-dimensional texture image.');"
+          onMouseOut="Reset();" target=_top>glTexImage2D</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/YellowBtn.gif" alt="e">
+          <a href="Reference/glTexImage3DEXT.html"
+          onMouseOver="PrintAbstract('ffff00',
+          'glTexImage3DEXT: Specify a three-dimensional texture '+
+          'image.');"
+          onMouseOut="Reset();" target=_top>glTexImage3DEXT</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glTexParameter.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glTexParameterf, glTexParameteri, '+
+          'glTexParameterfv, glTexParameteriv: set '+
+          'texture parameters.');"
+          onMouseOut="Reset();" target=_top>glTexParameter</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glTexSubImage1D.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glTexSubImage1D: specify a two-dimensional texture '+
+          'subimage.');"
+          onMouseOut="Reset();" target=_top>glTexSubImage1D</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glTexSubImage2D.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glTexSubImage2D: specify a two-dimensional texture '+
+          'subimage.');"
+          onMouseOut="Reset();" target=_top>glTexSubImage2D</a>
+          <font color=green>(extended)</font>
+        <dd><img src="buttons/YellowBtn.gif" alt="e">
+          <a href="Reference/glTexSubImage3DEXT.html"
+          onMouseOver="PrintAbstract('ffff00',
+          'glTexSubImage3DEXT: specify a three-dimensional '+
+          'texture subimage.');"
+          onMouseOut="Reset();" target=_top>glTexSubImage3DEXT</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glTranslate.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glTranslated, glTranslatef: multiply the '+
+          'current matrix by a translation matrix.');"
+          onMouseOut="Reset();" target=_top>glTranslate</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="U"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha19', 1)"
+        onMouseOut="ChangeBtn('Alpha19', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha19" alt="TOC" border=0></a>
+        <font size=+2><b>U</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/GreenBtn.gif" alt="u">
+          <a href="Reference/gluUnProject.html"
+          onMouseOver="PrintAbstract('00dd00',
+          'gluUnProject: map window coordinates to object '+
+          'coordinates.');"
+          onMouseOut="Reset();" target=_top>gluUnProject</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXUseXFont.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXUseXFont: create bitmap display lists from an X '+
+          'font.');"
+          onMouseOut="Reset();" target=_top>glXUseXFont</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="V"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha20', 1)"
+        onMouseOut="ChangeBtn('Alpha20', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha20" alt="TOC" border=0></a>
+        <font size=+2><b>V</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glVertex.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glVertex2d, glVertex2f, glVertex2i, '+
+          'glVertex2s, glVertex3d, glVertex3f, '+
+          'glVertex3i, glVertex3s, glVertex4d, '+
+          'glVertex4f, glVertex4i, glVertex4s, '+
+          'glVertex2dv, glVertex2fv, glVertex2iv, '+
+          'glVertex2sv, glVertex3dv, glVertex3fv, '+
+          'glVertex3iv, glVertex3sv, glVertex4dv, '+
+          'glVertex4fv, glVertex4iv, glVertex4sv: '+
+          'specify a vertex.');"
+          onMouseOut="Reset();" target=_top>glVertex</a>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glVertexPointer.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glVertexPointer: define an array of vertex data.');"
+          onMouseOut="Reset();" target=_top>glVertexPointer</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/RedBtn.gif" alt="s">
+          <a href="Reference/glViewport.html"
+          onMouseOver="PrintAbstract('ff0000',
+          'glViewport: set the viewport.');"
+          onMouseOut="Reset();" target=_top>glViewport</a>
+        </dl></td></tr>
+
+
+<tr><td colspan=2><a name="W"></a><a href="#TOC"
+        onMouseOver="ChangeBtn('Alpha21', 1)"
+        onMouseOut="ChangeBtn('Alpha21', 0)"><img src="buttons/AlphaOff.gif"
+        name="Alpha21" alt="TOC" border=0></a>
+        <font size=+2><b>W</b></font></td></tr>
+<tr valign=top><td><dl>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXWaitGL.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXWaitGL: complete GL execution prior to subsequent X '+
+          'calls.');"
+          onMouseOut="Reset();" target=_top>glXWaitGL</a>
+        </dl></td>
+    <td><dl>
+        <dd><img src="buttons/BlueBtn.gif" alt="x">
+          <a href="Reference/glXWaitX.html"
+          onMouseOver="PrintAbstract('00ffff',
+          'glXWaitX: complete X execution prior to subsequent GL '+
+          'calls.');"
+          onMouseOut="Reset();" target=_top>glXWaitX</a>
+        </dl></td></tr>
+</table>
+
+
+<a href="OpenGL.html" target=_top><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)" target=_top><img
+   src="buttons/ImpGuideOff.gif" name="ImpGuide2" alt="[Imp. Guide]"
+   border=0></a>
+<a href="Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)" target=_top><img
+   src="buttons/IndexOff.gif" name="Index2" alt="[Index]" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>
