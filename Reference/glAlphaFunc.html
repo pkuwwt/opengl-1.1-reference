@@ -1,0 +1,247 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: glAlphaFunc</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: glAlphaFunc">
+</head>
+<!-- Version: Version 1.1 -->
+<!-- Date:    1 April 1996 -->
+<!-- Release: Release 1.1.0 -->
+<!-- Dp:      Oct 25 19:23 -->
+<!-- Dm:      Oct 25 19:1 -->
+<!-- Xs:      7397 6 alphafunc.gl -->
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img name="Reference1"
+   src="../buttons/ReferenceOff.gif" alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img name="ImpGuide1"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img name="Index1"
+   src="../buttons/IndexOff.gif" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name">glAlphaFunc</a><br>
+<a href="glAccum.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glAreTexturesResident.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+<tt>glAlphaFunc</tt>: specify the alpha test function.
+
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#Notes">Notes</a> |
+<a href="#Errors">Errors</a> |
+<a href="#AssociatedGets">Associated Gets</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+void glAlphaFunc(
+    GLenum	 <i>func</i>,
+    GLclampf	 <i>ref</i>)
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+
+<dt><tt><i>func</i></tt>
+<dd>Specifies the alpha comparison function.  Symbolic constants
+    <tt><b>GL_NEVER</b></tt>, <tt><b>GL_LESS</b></tt>,
+    <tt><b>GL_EQUAL</b></tt>, <tt><b>GL_LEQUAL</b></tt>,
+    <tt><b>GL_GREATER</b></tt>, <tt><b>GL_NOTEQUAL</b></tt>,
+    <tt><b>GL_GEQUAL</b></tt>, and <tt><b>GL_ALWAYS</b></tt> are accepted. The
+    initial value is <tt><b>GL_ALWAYS</b></tt>.
+
+<dt><tt><i>ref</i></tt>
+<dd>Specifies the reference value that incoming alpha values are compared to.
+    This value is clamped to the range 0 through 1, where 0 represents the
+    lowest possible alpha value and 1 the highest possible value.  The initial
+    reference value is 0.
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+The alpha test discards fragments depending on the outcome of a comparison
+between an incoming fragment's alpha value and a constant reference value.
+
+<tt>glAlphaFunc</tt> specifies the reference value and the comparison function.
+The comparison is performed only if alpha testing is enabled. By default, it
+is not enabled.  (See <a href="glEnable.html"><tt>glEnable</tt></a> and <a
+href="glEnable.html"><tt>glDisable</tt></a> of <tt><b>GL_ALPHA_TEST</b></tt>.)
+
+<p>
+<tt><i>func</i></tt> and <tt><i>ref</i></tt> specify the conditions under
+which the pixel is drawn.  The incoming alpha value is compared to
+<tt><i>ref</i></tt> using the function specified by <tt><i>func</i></tt>.  If
+the value passes the comparison, the incoming fragment is drawn if it also
+passes subsequent stencil and depth buffer tests.  If the value fails the
+comparison, no change is made to the frame buffer at that pixel location. The
+comparison functions are as follows:
+    
+<dl>
+<dt><tt><b>GL_NEVER</b></tt>
+<dd>Never passes.
+
+<dt><tt><b>GL_LESS</b></tt>
+<dd>Passes if the incoming alpha value is less than the reference value.
+
+<dt><tt><b>GL_EQUAL</b></tt>
+<dd>Passes if the incoming alpha value is equal to the reference value.
+
+<dt><tt><b>GL_LEQUAL</b></tt>
+<dd>Passes if the incoming alpha value is less than or equal to the reference
+    value.
+
+<dt><tt><b>GL_GREATER</b></tt>
+<dd>Passes if the incoming alpha value is greater than the reference value.
+
+<dt><tt><b>GL_NOTEQUAL</b></tt>
+<dd>Passes if the incoming alpha value is not equal to the reference value.
+
+<dt><tt><b>GL_GEQUAL</b></tt>
+<dd>Passes if the incoming alpha value is greater than or equal to the
+    reference value.
+
+<dt><tt><b>GL_ALWAYS</b></tt>
+<dd>Always passes (initial value).
+</dl>
+
+<tt>glAlphaFunc</tt> operates on all pixel write operations, including those
+resulting from the scan conversion of points, lines, polygons, and bitmaps,
+and from pixel draw and copy operations.  <tt>glAlphaFunc</tt> does not affect
+screen-clear operations.
+
+
+<!-- === Notes ============================================================ -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Notes">Notes</a></h2>
+
+Alpha testing is performed only in RGBA mode.
+
+
+<!-- === Errors =========================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp5', 1)"
+   onMouseOut="ChangeBtn('ArrowUp5', 0)"><img name="ArrowUp5"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Errors">Errors</a></h2>
+
+<ul>
+<li><tt><b>GL_INVALID_ENUM</b></tt> is generated if <tt><i>func</i></tt> is
+    not an accepted value.
+
+<li><tt><b>GL_INVALID_OPERATION</b></tt> is generated if <a
+    href="glAlphaFunc.html"><tt>glAlphaFunc</tt></a> is executed between the
+    execution of <a href="glBegin.html"><tt>glBegin</tt></a> and the
+    corresponding execution of <a href="glBegin.html"><tt>glEnd</tt></a>.
+</ul>
+
+
+<!-- === Associated Gets ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp6', 1)"
+   onMouseOut="ChangeBtn('ArrowUp6', 0)"><img name="ArrowUp6"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="AssociatedGets">Associated Gets</a></h2>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_ALPHA_TEST_FUNC</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_ALPHA_TEST_REF</b></tt><br>
+
+<tt><a href="glIsEnabled.html">glIsEnabled</a></tt> with argument
+<tt><b>GL_ALPHA_TEST</b></tt>
+
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp7', 1)"
+   onMouseOut="ChangeBtn('ArrowUp7', 0)"><img name="ArrowUp7"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<tt><a href="glBlendFunc.html">glBlendFunc</a></tt>,<br>
+<tt><a href="glClear.html">glClear</a></tt>,<br>
+<tt><a href="glDepthFunc.html">glDepthFunc</a></tt>,<br>
+<tt><a href="glEnable.html">glEnable</a></tt>,<br>
+<tt><a href="glStencilFunc.html">glStencilFunc</a></tt>
+
+
+<p>
+<a href="glAccum.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glAreTexturesResident.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img name='Reference2'
+   src="../buttons/Reference.gif" alt="Reference" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img name="ImpGuide2"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img name="Index2"
+   src="../buttons/IndexOff.gif" alt="Index" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>
