@@ -1,0 +1,618 @@
+<html><head>
+<title>Programming Hints</title>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="Programming Hints">
+</head>
+
+<body background="../images/WhiteMarble.jpg"
+text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html"><img src="../buttons/Reference.gif"
+   alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html"><img src="../buttons/ImpGuide.gif"
+   alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html"><img src="../buttons/Index.gif"
+   alt="[Index]" border=0></a>
+
+
+<h1>Chapter 5: Programming Hints<br>
+<a href="04_CompLink.html"><img src="../buttons/ArrowLeft.gif"
+   alt="[Prev]" border=0></a>
+<a href="../ImpGuide.html"><img src="../buttons/ArrowRight.gif"
+   alt="[Next]" border=0></a></h1>
+
+
+<h2>Table of Contents</h2>
+
+<ul type=disc>
+<li><a href="#Introduction">Introduction</a>
+<li><a href="#OpenGLCorrectnessHints">OpenGL Correctness Hints</a>
+    <ul type=disc>
+    <li><a href="#FourDValues"> 4D Values</a>
+    <li><a href="#TextureCoordinates"> Texture Coordinates</a>
+    </ul>
+<li><a href="#OpenGLPerformanceHints"> OpenGL Performance Hints</a>
+    <ul type=disc>
+    <li><a href="#DisplayListPerformance">Display List Performance</a>
+        <ul type=disc>
+        <li><a href="#GeometricPrimitives">Geometric Primitives</a>
+        <li><a href="#GLCOMPILEandEXECUTEMode">GL_COMPILE_AND_EXECUTE Mode</a>
+        <li><a href="#Textures">Textures</a>
+        <li><a href="#StateChangesAndTheirEffectsOnDisplayLists"> State
+            Changes and Their Effects on Display Lists</a>
+        <li><a href="#RegularPrimitiveData">Regular Primitive Data</a>
+        </ul>
+    <li><a href="#TextureDownloadingPerformance">Texture Downloading
+        Performance</a>
+    <li><a href="#SelectionPerformance">Selection Performance</a>
+    <li><a href="#StateChange">State Change</a>
+    <li><a href="#LightingSpace">Lighting Space</a>
+    <li><a href="#OptimizationOfLighting"> Optimization of Lighting</a>
+    <li><a href="#OcclusionCulling"> Occlusion Culling</a>
+    <li><a href="#RescalingNormals"> Rescaling Normals</a>
+    </ul>
+</ul>
+<hr>
+
+
+<h2><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="Introduction"> Introduction</a></h2>
+
+The topics covered in this chapter are intended to give you some helpful
+programming hints as you begin to develop your OpenGL applications.  Note that
+these hints are specific to HP's implementation of OpenGL.  For further
+information on OpenGL programming hints that are not HP specific, see Appendix
+G in the <i><a href="../AddisonWesley.html">OpenGL Programming Guide</a></i>
+and section 6.6 "Maximizing OpenGL Performance" in the <i><a
+href="../AddisonWesley.html">OpenGL Programming for the X Window
+System</a></i> manual.
+
+<p>
+The programming hints in this chapter are covered in these sections:
+
+<ul type=disc>
+<li>OpenGL Correctness Hints
+<li>OpenGL Performance Hints
+</ul>
+
+
+<h2><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="OpenGLCorrectnessHints"> OpenGL Correctness Hints</a></h2>
+
+Hints provided in this section are intended to help you correctly use HP's
+implementation of OpenGL.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="FourDValues"> 4D Values</a></h3>
+
+When specifying 4D values, such as vertices, light positions, etc, if possible
+supply a <tt>w</tt> value that is not near the floating point limits of
+<tt>MINFLOAT</tt> or <tt>MAXFLOAT</tt>.  Using <tt>w</tt> values near the
+floating point limits increases the likelihood of floating point precision
+errors in calculations such as lighting, transformations, and perspective
+division.
+
+<p>
+Also, performance will be best when 4D positions are normalized such that
+<tt>w</tt> is 1.0.
+
+<p>
+For best accuracy and performance, if you want to specify some 4D position
+like <nobr>(0.0, 0.0, 5e10, 1.5e38)</nobr>, instead use the equivalent
+normalized position <nobr>(0.0, 0.0, 3.33e-28, 1.0)</nobr>.
+
+<p>
+If a light position must be specified with a <tt>w</tt> value that is near the
+floating point limits, consider setting
+
+<pre>
+HPOGL_LIGHTING_SPACE=EC
+</pre>
+
+to ensure that lighting occurs in Eye Space.  This will eliminate an extra
+transformation of the light position, giving the best possible solution.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="TextureCoordinates"> Texture Coordinates</a></h3>
+
+When using non-orthographic projection, keep in mind the texture coordinates
+will be divided by <tt>w</tt> as an intermediate calculation.  HP's
+implementation of OpenGL estimates that for VMD, the texture coordinates used
+in perspective projections will have only five significant digits of
+precision.  Therefore, when you have texturing close to a window edge and the
+decomposition of the primitive causes the vertices to have very closely-spaced
+texture coordinates after perspective projection, you may see loss of
+texturing precision.  This loss of precision may make the texture primitive
+seem locally smeared.
+
+
+<h2><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="OpenGLPerformanceHints"> OpenGL Performance Hints</a></h2>
+
+Hints provided in this section are intended to help improve your applications
+performance when using HP's implementation of OpenGL.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="DisplayListPerformance"> Display List Performance</a></h3>
+
+The topics covered here are areas where you can gain substantial improvements
+in program performance when using OpenGL display lists.  Here is a list of the
+topics that are covered:
+
+<ul type=disc>
+<li>Geometric Primitives
+<li>GL_COMPILE_AND_EXECUTE Mode
+<li>Textures
+<li>State Changes and their Effects on Display Lists
+<li>Regular Primitive Data.
+</ul>
+
+
+<h4><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="GeometricPrimitives"> Geometric Primitives</a></h4>
+
+Geometric primitives will typically be faster if put in a display list.  As a
+general rule, larger primitives will be faster than smaller ones.  Performance
+gains here can be dramatic.  For example, it is possible that a single
+<tt>GL_TRIANGLES</tt> primitive with 20 or so triangles will render three
+times faster than 20 <tt>GL_TRIANGLES</tt> primitives with a single triangle
+in each one.
+
+
+<h4><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="GLCOMPILEandEXECUTEMode"> GL_COMPILE_AND_EXECUTE Mode</a></h4>
+
+Due to the pre-processing of the display list, and execution performance
+enhancements, creating a display list using the
+<tt>GL_COMPILE_AND_EXECUTE</tt> mode will reduce program performance.  If you
+need to improve your programs performance, do not create a display list using
+the <tt>GL_COMPILE_AND_EXECUTE</tt> mode.  You will find that it is easier and
+faster to create the display list using the <tt>GL_COMPILE</tt> mode, and then
+execute the list after it is created.
+
+
+<h4><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="Textures"> Textures</a></h4>
+
+If calls to <tt>glTexImage</tt> are put into a display list, they may be
+cached.  Note that if you are going to use the same texture multiple times,
+you may gain better performance if you put the texture in a display list.
+Another solution would be to use texture objects.  Since 3D textures can
+potentially become very large, they <i>are not</i> cached.
+
+<h4><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="StateChangesAndTheirEffectsOnDisplayLists"> State Changes and their Effects on Display Lists</a></h4>
+
+If there are several state changes in a row, it is possible, in some
+circumstances, for the display list to optimize them.
+
+<p>
+It is more efficient to put a state change before a <tt>glBegin</tt>, than
+after it.  For example, this is always more efficient:
+
+<pre>
+    glColor3f(1,2,3);
+    glBegin(GL_TRIANGLES);
+    glVertex3f(...);
+    ... many more vertices ...
+    glEnd();
+</pre>
+
+than this:
+
+<pre>
+    glBegin(GL_TRIANGLES);
+    glColor3f(1,2,3);
+    glVertex3f(...);
+    ... many more vertices ...
+    glEnd();
+</pre>
+
+
+<h4><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="RegularPrimitiveData"> Regular Primitive Data</a></h4>
+
+If the vertex data that you give to a display list is regular (i.e. every
+vertex has the same data associated with it), it is possible for the display
+list to optimize the primitive much more effectively than if the data is not
+regular.
+
+<p>
+For example if you wanted to give only a single normal for each face in a
+<tt>GL_TRIANGLES</tt> primitive, the most intuitive way to get the best
+performance would look like this:
+
+<pre>
+    glBegin(GL_TRIANGLES);
+    glNormal3fv(&v);
+    glVertex3fv(&p1); glVertex3fv(&p2); glVertex3fv(&p3);
+    glNormal3fv(&v);
+    glVertex3fv(&p1); glVertex3fv(&p2); glVertex3fv(&p3);
+    ...
+    glEnd();
+</pre>
+
+In immediate mode, this would give you the best performance.  However, if you
+are putting these calls into a display list, you will get <i>much</i> better
+performance by duplicating the normal for each vertex, thereby giving
+<i>regular</i> data to the display list:
+
+<pre>
+    glBegin(GL_TRIANGLES);
+    glNormal3fv(&v); glVertex3fv(&p1);
+    glNormal3fv(&v); glVertex3fv(&p2);
+    glNormal3fv(&v); glVertex3fv(&p3);
+    ...
+    glEnd();
+</pre>
+
+The reason this is faster is the display list can optimize this type of
+primitive into a single, very efficient structure.  The small cost of adding
+extra data is offset by this optimization.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="TextureDownloadingPerformance"> Texture Downloading Performance</a></h3>
+
+This section includes some helpful hints for improving the performance of your
+program when downloading textures.
+
+<ul type=disc>
+<li>If you are downloading MIP maps, always begin with the base level (level
+    0) first.
+
+<li>If it is possible, you should use texture objects to store and bind
+    textures.
+
+<li>If you are doing dynamic downloading of texture maps, you will get better
+    performance by replacing the current texture with a texture of the same
+    width, height, border size, and format.  This should be done instead of
+    deleting the old texture and creating a new one.
+</ul>
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="SelectionPerformance"> Selection Performance</a></h3>
+
+To increase the performance of selection (<tt>glRenderMode GL_SELECTION</tt>)
+it is recommended that the following capabilities be disabled before entering
+the selection mode.
+
+<pre>
+    GL_TEXTURE_*
+    GL_TEXTURE_GEN_*
+    GL_FOG
+    GL_LIGHTING
+</pre>
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="StateChange"> State Change</a></h3>
+
+OpenGL state setting commands can be classified into to two different
+categories.  The first category is <b>vertex-data</b> commands.  These are the
+calls that can occur between a <tt>glBegin</tt>/<tt>glEnd</tt> pair:
+
+<pre>
+    glVertex
+    glColor
+    glIndex
+    glNormal
+    glEdgeFlag
+    glMaterial
+    glTexCoord
+</pre>
+
+The processing of these calls is very fast.  Restructuring a program to
+eliminate some vertex data commands will not significantly improve
+performance.
+
+<p>
+The second category is <b>modal state-setting</b> commands, or sometimes
+referred to as "mode changes."  These are the commands that:
+
+<ul type=disc>
+<li>Turn on/off capabilities,
+<li>Change attribute settings for capabilities,
+<li>Define lights,
+<li>Change matrices,
+<li>etc.
+</ul>
+
+These calls cannot occur between a <tt>glBegin</tt>/<tt>glEnd</tt> pair.
+Examples of such commands are:
+
+<pre>
+    glEnable(GL_LIGHTING);
+    glFogf(GL_FOG_MODE, GL_LINEAR);
+    glLightf(..);
+    glLoadMatrixf(..);
+</pre>
+
+Changes to the modal state are significantly more expensive to process than
+simple vertex-data commands.  Also, application performance can be optimized
+by grouping modal-state changes, and by minimizing the number of modal-state
+changes:
+
+<ul type=disc>
+<li>Grouping your state changes together (that is, several modal state changes
+    at one time), and then rendering primitives, will provide better
+    performance than doing the modal state changes one by one and intermixing
+    them with primitives.
+<p>
+<li>Grouping primitives that require the same modal state together to minimize
+    modal state changes.  For example, if only part of a scene's primitives
+    are lighted, draw all the lighted primitives, then turn off lighting and
+    draw all the unlighted primitives, rather than enabling/disabling lighting
+    many times.
+</ul>
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="LightingSpace"> Lighting Space</a></h3>
+
+OpenGL specifies that lighting operations should be done in Eye Coordinate
+space.  However, if the modelview matrix is isotropic, equivalent lighting
+calculations can be performed in Object Coordinate Space, by transforming
+stored light positions to Object Coordinates.  If there are many vertices
+between modelview-matrix changes, Object Coordinate Space lighting is faster
+than Eye Coordinate Space lighting since the transformation of vertices and
+normals from object to Eye Coordinates can be skipped.
+
+<p>
+Whether or not Object Coordinate lighting is faster than Eye Coordinate
+lighting depends on the command mode (immediate mode vs. execution of a
+display list or vertex array) as well as the number of vertices between
+modelview-matrix changes.
+
+<p>
+The selection of a lighting space occurs at the start of the next primitive
+(<tt>glBegin</tt> or vertex array) after any GL calls that could affect the
+choice of lighting space.  The choice of lighting space can be affected by
+those GL calls that:
+
+<ul type=disc>
+<li>Change Object Coordinates to Eye Coordinates (modelview matrix)
+<li>Turn on/off fog
+<li>Turn on/off spherical-texture-coordinate generation.
+</ul>
+
+If the modelview matrix is anisotropic, lighting must be done in Eye
+Coordinates.  Lighting will also be done in eye coordinates when fogging and
+spherical-texture-coordinate generation are done in Eye Coordinates.
+
+<p>
+If none of the above conditions which force Eye Coordinate Lighting are true,
+then HP's implementation of OpenGL chooses the lighting space depending on how
+OpenGL commands are being executed at the time a choice must be made.  If
+commands are being executed in immediate mode, Eye Space Lighting is chosen.
+If commands are being executed from a display list or if a vertex array is
+being executed, object space lighting is chosen.
+
+<p>
+Eye Space Lighting works well when commands are executed in immediate mode,
+and Object Space Lighting works well when:
+
+<p>
+<ul type=disc>
+<li>There are many (8 or more) vertices between changes to light definitions
+    or to the modelview matrix.
+
+<li>A display list or vertex array is used.
+</ul>
+
+You can override the above lighting space selection rules by setting the
+environment variable <tt>HPOGL_LIGHTING_SPACE</tt>. To set this environment
+variable, execute the following command:
+
+<pre>
+    export HPOGL_LIGHTING_SPACE=EC
+</pre>
+
+when any of the following are true:
+
+<ul type=disc>
+<li>The application uses display lists or vertex arrays, but makes frequent
+    changes to the modelview matrix or to light definitions (using
+    <tt>glLight()</tt>).
+
+<li>The application uses display lists or vertex arrays, but frequently turns
+    fogging or spherical-texture-coordinate generation on/off.
+
+<li>The application uses 4D data (for example, vertices, light positions) and
+    the <tt>w</tt> values are near the floating-point limits.  See the section
+    above on 4D values for more information.
+</ul>
+  
+It is appropriate to use
+
+<pre>
+    export HPOGL_LIGHTING_SPACE=OC
+</pre>
+
+when:
+
+<ul type=disc>
+<li>There are many (eight or more) vertices between light changes or
+    modelview-matrix changes.
+
+<li>Display lists or vertex arrays are used extensively.
+</ul>
+
+and any of the following are true:
+
+<ul type=disc>
+<li>There is alot of switching between immediate mode and display-list
+    execution (or vertex arrays) while lighting is on, and intermixed with
+    state changes that affect choice of lighting space (these were listed
+    above).
+
+<li>Display lists are used predominantly, but the first <tt>glBegin</tt> after
+    commands that affect choice of lighting space (which were listed above) is
+    an immediate mode command.
+    
+    <p>
+    For example, in a scenario like the following:
+    
+    <pre>
+    <img src="symbols/LAngle.xbm" alt="&lt;"><i>load a modelview matrix</i><img src="symbols/RAngle.xbm" alt="&gt;">
+    <img src="symbols/LAngle.xbm" alt="&lt;"><i>define lights</i><img src="symbols/RAngle.xbm" alt="&gt;">
+    <img src="symbols/LAngle.xbm" alt="&lt;"><i>enable lights and lighting</i><img src="symbols/RAngle.xbm" alt="&gt;">
+    
+    glBegin(...);  /* Some simple immediate mode rendering.
+                    * Lighing space gets chosen at this point. */
+    ...
+    glEnd();
+    
+    <img src="symbols/LAngle.xbm" alt="&lt;"><i>execution of many display lists or vertex arrays,
+    with no changes to the modelview matrix or light definitions</i><img src="symbols/RAngle.xbm" alt="&gt;">
+    </pre>
+    
+    <p>
+    Here the default-lighting space chosen at the time of the first
+    <tt>glBegin</tt> is Eye Space Lighting.  The display lists could have
+    benefited from setting <tt>HPOGL_LIGHTING_SPACE=OC</tt>.
+</ul>
+
+When tuning an application, first use just the default-lighting-space
+selection (do not set <tt>HPOGL_LIGHTING_SPACE</tt>). If the application
+matches the conditions listed above that indicate the need for setting
+<tt>HPOGL_LIGHTING_SPACE</tt>, then experiment with setting the environment
+variable.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="OptimizationOfLighting"> Optimization of Lighting</a></h3>
+
+HP's implementation of OpenGL optimizes the lighting case such that the
+performance degradation from one light to two or more lights is linear.
+Lighting performance does not degrade noticeably when you enable a second
+light.  In addition, the <tt>GL_SHININESS</tt> material parameter is not
+particularly expensive to change.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="OcclusionCulling"> Occlusion Culling</a></h3>
+
+The proper use of HP's occlusion culling extension can dramatically improve
+rendering performance.  This extension defines a mechanism for determining the
+non-visibility of complex geometry based on the non-visibility of a bounding
+geometry.  This feature can greatly reduce the amount of geometry processing
+and rendering required by an application, thereby, increasing the applications
+performance.  For more information on occlusion culling, see the section "<a
+href="01_Overview.html#OcclusionExtension">Occlusion
+Extension</a>" found in Chapter 1.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="RescalingNormals"> Rescaling Normals</a></h3>
+
+When normal rescaling is enabled, a new operation is added to the
+transformation of the normal vector into eye coordinates.  The normal vector
+is rescaled after it is multiplied by the inverse modelview matrix and before
+it is normalized.
+
+<p>
+The rescale factor is chosen so that in many cases, normal vectors with unit
+length in object coordinates will not need to be normalized as they are
+transformed into eye coordinates.
+
+<p>
+As of Release 1.05 of HP's implementation of OpenGL 1.1, the
+<tt>GL_RESCALE_NORMAL_EXT</tt> token is supported.  It is accepted by the
+<nobr><img src="symbols/LAngle.xbm" alt="&lt;"><i>cap</i><img
+src="symbols/RAngle.xbm" alt="&gt;"></nobr> parameter of <a
+href="../Reference/glEnable.html">glEnable</a>, <a
+href="../Reference/glEnable.html">glDisable</a>, and <a
+href="../Reference/glIsEnabled.html">glIsEnabled</a>, and by the <nobr><img
+src="symbols/LAngle.xbm" alt="&lt;"><i>pname</i><img
+src="symbols/RAngle.xbm" alt="&gt;"></nobr> parameter of <a
+href="../Reference/glGet.html">glGetBooleanv</a>, <a
+href="../Reference/glGet.html">glGetIntegerv</a>, <a
+href="../Reference/glGet.html">glGetFloatv</a>, and <a
+href="../Reference/glGet.html">glGetDoublev</a>.
+
+<p>
+
+Normals that have unit length when sent to the GL, have their length changed
+by the inverse of the scaling factor after transformation by the model-view
+inverse matrix when the model-view matrix represents a uniform scale. If
+rescaling is enabled, then normals specified with the Normal command are
+rescaled after transformation by the ModelView Inverse.
+
+<p>
+Normals sent to the GL may or may not have unit length.  In addition, the
+length of the normals after transformation might be altered due to
+transformation by the model-view inverse matrix.  If normalization is enabled,
+then normals specified with the <a
+href="../Reference/glNormal.html">glNormal3</a> command are normalized after
+transformation by the model-view inverse matrix and after rescaling if
+rescaling is enabled.  Normalization and rescaling are controlled with <a
+href="../Reference/glEnable.html">glEnable</a> and <a
+href="../Reference/glEnable.html">glDisable</a> with the target equal to
+<tt>NORMALIZE</tt> or <tt>RESCALE_NORMAL</tt>.  This requires two bits of
+state.  The initial state is for normals not to be normalized or rescaled.
+
+<p>
+Therefore, if the modelview matrix is M, the transformed plane equation is:
+
+<p align=center>
+<img src="equations/NsubXPrime.gif" border=0>
+
+<p>
+the rescaled normal is
+
+<p align=center>
+<img src="equations/NsubX2Prime.gif" border=0>
+
+<p>
+and the fully transformed normal is
+
+<p>
+<center>
+<table border=0>
+<tr><td><img src="equations/OneOverSqrt.gif" border=0></td>
+    <td width=100></td>
+    <td>(2.1)</td></tr>
+</table>
+</center>
+
+
+<p>
+If rescaling is disabled, <i>f</i> is 1, otherwise <i>f</i> is computed as
+follows:
+
+<p>
+Let <i>m<sub>ij</sub></i> denote the matrix element in row <i>i</i> and column
+<i>j</i> of <i>M</i><sup>-1</sup>, numbering the topmost row of the matrix as
+row 1, and the leftmost column as column 1. Then
+
+<p align=center>
+<img src="equations/fdef1.gif" border=0>
+
+<p>
+Alternatively, an implementation my chose to normalize the normal instead of
+rescaling the normal. Then
+
+<p align=center>
+<img src="equations/fdef2.gif" border=0>
+
+<p>
+If normalization is disabled, then the square root in equation 2.1 is replaced
+with 1; otherwise, it is calculated as dictated by the OpenGL Spec.  If both
+normalize and rescale are enabled, HP's implementation skips the rescale and
+does only the normalize.
+
+
+
+<p>
+<a href="04_CompLink.html"><img src="../buttons/ArrowLeft.gif"
+   alt="[Prev]" border=0></a>
+<a href="#TOC"><img src="../buttons/ArrowUp.gif"
+   alt="[Up]" border=0></a>
+<a href="../ImpGuide.html"><img src="../buttons/ArrowRight.gif"
+   alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html"><img src="../buttons/Reference.gif"
+   alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html"><img src="../buttons/ImpGuide.gif"
+   alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html"><img src="../buttons/Index.gif"
+   alt="[Index]" border=0></a>
+
+<spacer type=vertical size=500>
+
+</body>
+</html>

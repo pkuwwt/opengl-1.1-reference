@@ -1,0 +1,173 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: glClearAccum</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: glClearAccum">
+</head>
+<!-- Version: Version 1.1 -->
+<!-- Date:    1 April 1996 -->
+<!-- Release: Release 1.1.0 -->
+<!-- Dp:      Sep 09 19:51 -->
+<!-- Dm:      Aug 13 15:1 -->
+<!-- Xs:      12034 2 clearaccum.gl -->
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img name="Reference1"
+   src="../buttons/ReferenceOff.gif" alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img name="ImpGuide1"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img name="Index1"
+   src="../buttons/IndexOff.gif" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name">glClearAccum</a><br>
+<a href="glClear.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glClearColor.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+<tt>glClearAccum</tt>: specify clear values for the accumulation buffer.
+
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#Errors">Errors</a> |
+<a href="#AssociatedGets">Associated Gets</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+void glClearAccum(
+    GLfloat	 <i>red</i>,
+    GLfloat	 <i>green</i>,
+    GLfloat	 <i>blue</i>,
+    GLfloat	 <i>alpha</i>)
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+<dt><tt><i>red</i></tt>, <tt><i>green</i></tt>, <tt><i>blue</i></tt>,
+    <tt><i>alpha</i></tt>
+<dd>Specify the red, green, blue, and alpha values used when the accumulation
+    buffer is cleared.  The initial values are all 0.
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+<tt>glClearAccum</tt> specifies the red, green, blue, and alpha values used
+by <a href="glClear.html"><tt>glClear</tt></a> to clear the accumulation
+buffer.
+
+<p>
+Values specified by <tt>glClearAccum</tt> are clamped to the range <nobr>[-1,
+1]</nobr>.
+
+
+<!-- === Errors =========================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Errors">Errors</a></h2>
+
+<ul>
+<li><tt><b>GL_INVALID_OPERATION</b></tt> is generated if <a
+    href="glClearAccum.html"><tt>glClearAccum</tt></a> is executed between the
+    execution of <a href="glBegin.html"><tt>glBegin</tt></a> and the
+    corresponding execution of <a href="glBegin.html"><tt>glEnd</tt></a>.
+</ul>
+
+
+<!-- === Associated Gets ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp5', 1)"
+   onMouseOut="ChangeBtn('ArrowUp5', 0)"><img name="ArrowUp5"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="AssociatedGets">Associated Gets</a></h2>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_ACCUM_CLEAR_VALUE</b></tt>
+
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp6', 1)"
+   onMouseOut="ChangeBtn('ArrowUp6', 0)"><img name="ArrowUp6"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<tt><a href="glClear.html">glClear</a></tt>
+
+
+<p>
+<a href="glClear.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glClearColor.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img name="Reference2"
+   src="../buttons/ReferenceOff.gif" alt="Reference" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img name="ImpGuide2"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img name="Index2"
+   src="../buttons/IndexOff.gif" alt="Index" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>

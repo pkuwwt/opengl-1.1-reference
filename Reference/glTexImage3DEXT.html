@@ -1,0 +1,425 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: glTexImage3D</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: glTexImage3D">
+</head>
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img name="Reference1"
+   src="../buttons/ReferenceOff.gif" alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img name="ImpGuide1"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img name="Index1"
+   src="../buttons/IndexOff.gif" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name"><font color=green>glTexImage3DEXT</font></a><br>
+<a href="glTexImage2D.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glTexParameter.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+
+<tt>glTexImage3DEXT</tt>: Specify a three-dimensional texture image.
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#Notes">Notes</a> |
+<a href="#Errors">Errors</a> |
+<a href="#AssociatedGets">Associated Gets</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+void glTexImage3DEXT(
+    GLenum	<i>target</i>,
+    GLint	<i>level</i>,
+    GLenum	<i>internalformat</i>,
+    GLsizei	<i>width</i>,
+    GLsizei	<i>height</i>,
+    GLsizei	<i>depth</i>,
+    GLint	<i>border</i>,
+    GLenum	<i>format</i>,
+    GLenum	<i>type</i>,
+    const	GLvoid *<i>pixels</i>)
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+<dt><tt>target</tt>
+<dd>Specifies the target texture.  Must be <tt><b>GL_TEXTURE_3D_EXT</b></tt>
+    or <tt><b>GL_PROXY_TEXTURE_3D_EXT</b></tt>.
+
+<dt><tt>level</tt>
+<dd>Specifies the level-of-detail number.  Level 0 is the base image level.
+    Level <i>n</i> is the <i>n</i>th mipmap reduction image.
+
+<dd>Specifies the number of color components in the texture.  Must be 1, 2, 3,
+    or 4, or one of the following symbolic constants:
+    <tt><b>GL_ALPHA</b></tt>, <tt><b>GL_ALPHA4</b></tt>,
+    <tt><b>GL_ALPHA8</b></tt>, <tt><b>GL_ALPHA12</b></tt>,
+    <tt><b>GL_ALPHA16</b></tt>, <tt><b>GL_LUMINANCE</b></tt>,
+    <tt><b>GL_LUMINANCE4</b></tt>, <tt><b>GL_LUMINANCE8</b></tt>,
+    <tt><b>GL_LUMINANCE12</b></tt>, <tt><b>GL_LUMINANCE16</b></tt>,
+    <tt><b>GL_LUMINANCE_ALPHA</b></tt>, <tt><b>GL_LUMINANCE4_ALPHA4</b></tt>,
+    <tt><b>GL_LUMINANCE6_ALPHA2</b></tt>,
+    <tt><b>GL_LUMINANCE8_ALPHA8</b></tt>,
+    <tt><b>GL_LUMINANCE12_ALPHA4</b></tt>,
+    <tt><b>GL_LUMINANCE12_ALPHA12</b></tt>,
+    <tt><b>GL_LUMINANCE16_ALPHA16</b></tt>, <tt><b>GL_INTENSITY</b></tt>,
+    <tt><b>GL_INTENSITY4</b></tt>, <tt><b>GL_INTENSITY8</b></tt>,
+    <tt><b>GL_INTENSITY12</b></tt>, <tt><b>GL_INTENSITY16</b></tt>,
+    <tt><b>GL_R3_G3_B2</b></tt>, <tt><b>GL_RGB</b></tt>,
+    <tt><b>GL_RGB4</b></tt>, <tt><b>GL_RGB5</b></tt>, <tt><b>GL_RGB8</b></tt>,
+    <tt><b>GL_RGB10</b></tt>, <tt><b>GL_RGB12</b></tt>,
+    <tt><b>GL_RGB16</b></tt>, <tt><b>GL_RGBA</b></tt>,
+    <tt><b>GL_RGBA2</b></tt>, <tt><b>GL_RGBA4</b></tt>,
+    <tt><b>GL_RGB5_A1</b></tt>, <tt><b>GL_RGBA8</b></tt>,
+    <tt><b>GL_RGB10_A2</b></tt>, <tt><b>GL_RGBA12</b></tt>, or
+    <tt><b>GL_RGBA16</b></tt>.  <font color=green>Additionally, if the
+    extension <tt><b>GL_EXT_shadow</b></tt> is supported, may be one of the
+    symbolic constants <tt><b>GL_DEPTH_COMPONENT</b></tt>,
+    <tt><b>GL_DEPTH_COMPONENT16_EXT</b></tt>,
+    <tt><b>GL_DEPTH_COMPONENT24_EXT</b></tt>, or
+    <tt><b>GL_DEPTH_COMPONENT32_EXT</b></tt>.</font>
+
+<dt><tt>width</tt>
+<dd>Specifies the width of the texture image.  Must be
+    <nobr>2<sup><i>n</i></sup> + 2<img src="symbols/Times.xbm"
+    alt="x"><tt><i>border</i></tt></nobr> for some integer <i>n</i>.
+
+<dt><tt>height</tt>
+<dd>Specifies the height of the texture image.  Must be
+    <nobr>2<sup><i>m</i></sup> + 2 <img src="symbols/Times.xbm"
+    alt="x"><tt><i>border</i></tt></nobr> for some integer <i>m</i>.
+
+<dt><tt>depth</tt>
+<dd>Specifies the depth of the texture image.  Must be
+    <nobr>2<sup><i>l</i></sup> + 2<img src="symbols/Times.xbm"
+    alt="x"><tt><i>border</i></tt></nobr> for some integer <i>l</i>.
+
+<dt><tt>border</tt>
+<dd>Specifies the width of the border.  Must be either 0 or 1.
+
+<dt><tt>format</tt>
+<dd>Specifies the format of the pixel data.  The following symbolic values are
+    accepted: <tt><b>GL_COLOR_INDEX</b></tt>, <tt><b>GL_RED</b></tt>,
+    <tt><b>GL_GREEN</b></tt>, <tt><b>GL_BLUE</b></tt>,
+    <tt><b>GL_ALPHA</b></tt>, <tt><b>GL_RGB</b></tt>, <tt><b>GL_RGBA</b></tt>,
+    <tt><b>GL_LUMINANCE</b></tt>, and <tt><b>GL_LUMINANCE_ALPHA</b></tt>.
+    <font color=green>If the extension <tt><b>GL_EXT_shadow</b></tt> is
+    supported, the symbolic value <tt><b>GL_DEPTH_COMPONENT</b></tt> is also
+    accepted.</font>
+    
+<dt><tt>type</tt>
+<dd>Specifies the data type of the pixel data.  The following symbolic values
+    are accepted: <tt><b>GL_UNSIGNED_BYTE</b></tt>, <tt><b>GL_BYTE</b></tt>,
+    <tt><b>GL_BITMAP</b></tt>, <tt><b>GL_UNSIGNED_SHORT</b></tt>,
+    <tt><b>GL_SHORT</b></tt>, <tt><b>GL_UNSIGNED_INT</b></tt>,
+    <tt><b>GL_INT</b></tt>, and <tt><b>GL_FLOAT</b></tt>.
+
+<dt><tt>pixels</tt>
+<dd>Specifies a pointer to the image data in memory.
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+Texturing maps a portion of a specified texture image onto each graphical
+primitive for which texturing is enabled.  Three-dimensional texturing is
+enabled and disabled using glEnable and glDisable with argument
+<tt><b>GL_TEXTURE_3D_EXT</b></tt>.
+
+<p>
+Texture images are defined with <tt>glTexImage3DEXT</tt>. The arguments
+describe the parameters of the texture image, such as height, width, depth,
+width of the border, level-of-detail number (see <a
+href="glTexParameter.html"><tt>glTexParameter</tt></a>), and the internal
+resolution and format used to store the image.  The last three arguments
+describe the way the image is represented in memory, and they are identical to
+the pixel formats used for <a
+href="glDrawPixels.html"><tt>glDrawPixels</tt></a>.
+
+<p>
+If target is <tt><b>GL_PROXY_TEXTURE_3D_EXT</b></tt> no data is read from
+pixels, but all of the texture image state is recalculated, checked for
+consistency, and checked against the implementation's capabilities.  If the
+implementation cannot handle a texture of the requested texture size, it will
+set all of the texture image state to 0 (<tt><b>GL_TEXTURE_WIDTH</b></tt>,
+<tt><b>GL_TEXTURE_HEIGHT</b></tt>, <tt><b>GL_TEXTURE_BORDER</b></tt>,
+<tt><b>GL_TEXTURE_COMPONENTS</b></tt>), but no error will be generated.
+
+<p>
+If target is <tt><b>GL_TEXTURE_3D_EXT</b></tt>, data is read from pixels as a
+sequence of signed or unsigned bytes, shorts, or longs, or single-precision
+floating-point values, depending on type. These values are grouped into sets
+of one, two, three, or four values, depending on format, to form elements.
+
+<p>
+The first element corresponds to the lower-left-rear corner of the texture
+volume.  Subsequent elements progress left-to-right through the remaining
+texels in the lowest-rear row of the texture volume, then in successively
+higher rows of the rear 2D slice of the texture volume, then in successively
+closer 2D slices of the texture volume.  The final element corresponds to the
+upper-right-front corner of the texture volume.
+
+<p>
+Each element of pixels is converted to an RGBA element according to
+
+<dl><tt><b>GL_COLOR_INDEX</b></tt>
+<dd>Each element is a single value, a color index.  It is converted to fixed
+    point (with an unspecified number of zero bits to the right of the binary
+    point), shifted left or right depending on the value and sign of
+    <tt><b>GL_INDEX_SHIFT</b></tt>, and added to
+    <tt><b>GL_INDEX_OFFSET</b></tt> (see <a
+    href="glPixelTransfer.html"><tt>glPixelTransfer</tt></a>).  The resulting
+    index is converted to a set of color components using the
+    <tt><b>GL_PIXEL_MAP_I_TO_R</b></tt>, <tt><b>GL_PIXEL_MAP_I_TO_G</b></tt>,
+    <tt><b>GL_PIXEL_MAP_I_TO_B</b></tt>, and
+    <tt><b>GL_PIXEL_MAP_I_TO_A</b></tt> tables, and clamped to the range
+    <nobr>[0, 1]</nobr>.
+
+<dt><tt><b>GL_RED</b></tt>
+<dd>Each element is a single red component.  It is converted to floating-point
+    and assembled into an RGBA element by attaching 0.0 for green and blue,
+    and 1.0 for alpha.
+
+<dt><tt><b>GL_GREEN</b></tt>
+<dd>Each element is a single green component.  It is converted to
+    floating-point and assembled into an RGBA element by attaching 0.0 for
+    red and blue, and 1.0 for alpha.
+
+<dt><tt><b>GL_BLUE</b></tt>
+<dd>Each element is a single blue component.  It is converted to
+    floating-point and assembled into an RGBA element by attaching 0.0 for
+    red and green, and 1.0 for alpha.
+
+<dt><tt><b>GL_ALPHA</b></tt>
+<dd>Each element is a single alpha component.  It is converted to
+    floating-point and assembled into an RGBA element by attaching 0.0 for
+    red, green, and blue.
+
+<dt><tt><b>GL_RGB</b></tt>
+<dd>Each element is an RGB triple.  It is converted to floating-point and
+    assembled into an RGBA element by attaching 1.0 for alpha (see <a
+    href="glPixelTransfer.html"><tt>glPixelTransfer</tt></a>).
+
+<dt><tt><b>GL_RGBA</b></tt>, <tt><b>GL_ABGR_EXT</b></tt>
+<dd>Each element contains all four components; for <tt><b>GL_RGBA</b></tt>,
+    the red component is first, followed by green, then blue, and then alpha;
+    for <tt><b>GL_ABGR_EXT</b></tt> the order is alpha, blue, green, and then
+    red.
+
+<dt><tt><b>GL_LUMINANCE</b></tt>
+<dd>Each element is a single luminance value.  It is converted to
+    floating-point, then assembled into an RGBA element by replicating the
+    luminance value three times for red, green, and blue and attaching 1.0
+    for alpha.
+
+<tt><b>GL_LUMINANCE_ALPHA</b></tt>
+<dd>Each element is a luminance/alpha pair.  It is converted to
+    floating-point, then assembled into an RGBA element by replicating the
+    luminance value three times for red, green, and blue.
+</dl>
+
+Please refer to the <a href="glDrawPixels.html"><tt>glDrawPixels</tt></a>
+reference page for a description of the acceptable values for the type
+parameter.
+
+<p>
+An application may desire that the texture be stored at a certain resolution,
+or that it be stored in a certain format.  This resolution and format can be
+requested by <tt><i>internalformat</i></tt>, but the implementation may not
+support that resolution (the formats of <tt><b>GL_LUMINANCE</b></tt>,
+<tt><b>GL_LUMINANCE_ALPHA</b></tt>, <tt><b>GL_RGB</b></tt>, and
+<tt><b>GL_RGBA</b></tt> must be supported).  When a resolution and storage
+format is specified, the implementation will update the texture state to
+provide the best match to the requested resolution.  The
+<tt><b>GL_PROXY_TEXTURE_3D_EXT</b></tt> target can be used to try a
+resolution and format.  The implementation will compute its best match for
+the requested storage resolution and format; this state can then be queried
+using <a
+href="glGetTexLevelParameter.html"><tt>glGetTexLevelParameter</tt></a>.
+
+<p>
+A one-component texture image uses only the red component of the RGBA color
+extracted from pixels.  A two-component image uses the R and A values.  A
+three-component image uses the R, G, and B values.  A four-component image
+uses all of the RGBA components.
+
+
+<!-- === Notes ============================================================ -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Notes">Notes</a></h2>
+
+Texturing has no effect in color index mode.
+
+<p>
+The texture image can be represented by the same data formats and types as
+the pixels in a glDrawPixels command, except that formats
+<tt><b>GL_STENCIL_INDEX</b></tt> and <tt><b>GL_DEPTH_COMPONENT</b></tt>
+cannot be used, and type <tt><b>GL_BITMAP</b></tt> cannot be used.  <a
+href="glPixelStore.html"><tt>glPixelStore</tt></a> and <a
+href="glPixelTransfer.html"><tt>glPixelTransfer</tt></a> modes affect texture
+images in exactly the way they affect <a
+href="glDrawPixels.html"><tt>glDrawPixels</tt></a>.
+
+<p>
+A texture image with zero height, width, or depth indicates the null texture.
+If the null texture is specified for level-of-detail 0, it is as if texturing
+were disabled.
+
+<p>
+<a href="glTexImage3DEXT.html"><tt>glTexImage3DEXT</tt></a> is part of the
+<tt><b>EXT_texture3d</b></tt> extension.
+
+
+<!-- === Errors =========================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp5', 1)"
+   onMouseOut="ChangeBtn('ArrowUp5', 0)"><img name="ArrowUp5"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Errors">Errors</a></h2>
+
+<ul>
+<li><tt><b>GL_INVALID_ENUM</b></tt> is generated when <tt><i>target</i></tt>
+    is not an accepted value.
+
+<li><tt><b>GL_INVALID_ENUM</b></tt> is generated when <tt><i>format</i></tt>
+    is not an accepted value.
+
+<li><tt><b>GL_INVALID_ENUM</b></tt> is generated when <tt><i>type</i></tt> is
+    not an accepted value.
+
+<li><tt><b>GL_INVALID_VALUE</b></tt> is generated if <tt><i>level</i></tt> is
+    less than zero or greater than log<sub>2</sub><i>max</i>, where <i>max</i>
+    is the returned value of <tt><b>GL_MAX_3D_TEXTURE_SIZE_EXT</b></tt>.
+
+<li><tt><b>GL_INVALID_VALUE</b></tt> is generated if
+    <tt><i>internalformat</i></tt> is not an accepted value.
+
+<li><tt><b>GL_INVALID_VALUE</b></tt> is generated if <tt><i>width</i></tt>,
+    <tt><i>height</i></tt>, or <tt><i>depth</i></tt> is less than zero or
+    greater than <tt><b>GL_MAX_3D_TEXTURE_SIZE_EXT</b></tt>, when
+    <tt><i>width</i></tt>, <tt><i>height</i></tt>, or <tt><i>depth</i></tt>
+    cannot be represented as <nobr>2<sup><i>k</i></sup> + 2<img
+    src="symbols/Times.xbm" alt="x"><tt><i>border</i></tt></nobr> for some
+    integer <i>k</i>,
+
+<li><tt><b>GL_INVALID_VALUE</b></tt> is generated if border is not 0 or 1.
+
+<li><tt><b>GL_INVALID_OPERATION</b></tt> is generated if
+    <tt>glTexImage3DEXT</tt> is executed between the execution of <a
+    href="glBegin.html"><tt>glBegin</tt></a> and the corresponding execution
+    of <a href="glBegin.html"><tt>glEnd</tt></a>.
+
+<li><tt><b>GL_TEXTURE_TOO_LARGE_EXT</b></tt> is generated if the
+    implementation cannot accomodate a texture of the size requested.
+</ul>
+
+
+<!-- === Associated Gets ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp6', 1)"
+   onMouseOut="ChangeBtn('ArrowUp6', 0)"><img name="ArrowUp6"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="AssociatedGets">Associated Gets</a></h2>
+
+<a href="glGetTexImage.html"><tt>glGetTexImage</tt></a><br>
+
+<a href="glIsEnabled.html"><tt>glIsEnabled</tt></a> with argument
+<tt><b>GL_TEXTURE_3D_EXT</b></tt><br>
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp7', 1)"
+   onMouseOut="ChangeBtn('ArrowUp7', 0)"><img name="ArrowUp7"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<a href="glDrawPixels.html"><tt>glDrawPixels</tt></a>,<br>
+<a href="glFog.html"><tt>glFog</tt></a>,<br>
+<a href="glPixelStore.html"><tt>glPixelStore</tt></a>,<br>
+<a href="glPixelTransfer.html"><tt>glPixelTransfer</tt></a>,<br>
+<a href="glTexEnv.html"><tt>glTexEnv</tt></a>,<br>
+<a href="glTexGen.html"><tt>glTexGen</tt></a>,<br>
+<a href="glTexImage1D.html"><tt>glTexImage1D</tt></a>,<br>
+<a href="glTexImage2D.html"><tt>glTexImage2D</tt></a>,<br>
+<a href="glTexParameter.html"><tt>glTexParameter</tt></a>.
+
+
+<p>
+<a href="glTexImage2D.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glTexParameter.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img name="Reference2"
+   src="../buttons/ReferenceOff.gif" alt="Reference" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img name="ImpGuide2"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img name="Index2"
+   src="../buttons/IndexOff.gif" alt="Index" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>

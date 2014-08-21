@@ -1,0 +1,388 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: gluTessCallback</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: gluTessCallback">
+</head>
+<!-- Version: Version 1.2 -->
+<!-- Date:    1 April 1996 -->
+<!-- Release: Release 1.2.0 -->
+<!-- Dp:      Oct 25 19:26 -->
+<!-- Dm:      Oct 25 19:1 -->
+<!-- Xs:      48410 21 tesscallback.gl -->
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img name="Reference1"
+   src="../buttons/ReferenceOff.gif" alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img name="ImpGuide1"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img name="Index1"
+   src="../buttons/IndexOff.gif" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name">gluTessCallback</a><br>
+<a href="Reference/gluTessBeginPolygon.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="Reference/gluTessEndPolygon.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+<tt>gluTessCallback</tt>: define a callback for a tessellation object.
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+void gluTessCallback(
+    GLUtesselator*  <i>tess</i>,
+    GLenum	    <i>which</i>,
+    GLvoid          (*<i>CallBackFunc</i>)()
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+<dt><tt><i>tess</i></tt>
+<dd>Specifies the tessellation object (created with <tt>gluNewTess</tt>).
+
+<dt><tt><i>which</i></tt>
+<dd>Specifies the callback being defined. The following values are valid:
+    <tt><b>GLU_TESS_BEGIN</b></tt>, <tt><b>GLU_TESS_BEGIN_DATA</b></tt>,
+    <tt><b>GLU_TESS_EDGE_FLAG</b></tt>,
+    <tt><b>GLU_TESS_EDGE_FLAG_DATA</b></tt>, <tt><b>GLU_TESS_VERTEX</b></tt>,
+    <tt><b>GLU_TESS_VERTEX_DATA</b></tt>, <tt><b>GLU_TESS_END</b></tt>,
+    <tt><b>GLU_TESS_END_DATA</b></tt>, <tt><b>GLU_TESS_COMBINE</b></tt>,
+    <tt><b>GLU_TESS_COMBINE_DATA</b></tt>, <tt><b>GLU_TESS_ERROR</b></tt>, and
+    <tt><b>GLU_TESS_ERROR_DATA</b></tt>.
+
+<dt><tt><i>CallBackFunc</i></tt>
+<dd>Specifies the function to be called.
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+<tt>gluTessCallback</tt> is used to indicate a callback to be used by a
+tessellation object.  If the specified callback is already defined, then it is
+replaced. If <tt><i>CallBackFunc</i></tt> is <tt>NULL</tt>, then the existing
+callback becomes undefined.
+
+<p>
+These callbacks are used by the tessellation object to describe how a polygon
+specified by the user is broken into triangles. Note that there are two
+versions of each callback: one with user-specified polygon data and one
+without. If both versions of a particular callback are specified, then the
+callback with user-specified polygon data will be used. Note that the
+<tt><i>polygon_data</i></tt> parameter used by some of the functions is a copy
+of the pointer that was specified when <a
+href="Reference/gluTessBeginPolygon.html"><tt>gluTessBeginPolygon</tt></a> was
+called.  The legal callbacks are as follows:
+    
+<dl>
+<dt><tt><b>GLU_TESS_BEGIN</b></tt>
+<dd>The begin callback is invoked like <a
+    href="glBegin.html"><tt>glBegin</tt></a> to indicate the start of a
+    (triangle) primitive. The function takes a single argument of type
+    GLenum. If the <tt><b>GLU_TESS_BOUNDARY_ONLY</b></tt> property is set to
+    <tt><b>GL_FALSE</b></tt>, then the argument is set to either
+    <tt><b>GL_TRIANGLE_FAN</b></tt>, <tt><b>GL_TRIANGLE_STRIP</b></tt>, or
+    <tt><b>GL_TRIANGLES</b></tt>. If the
+    <tt><b>GLU_TESS_BOUNDARY_ONLY</b></tt> property is set to
+    <tt><b>GL_TRUE</b></tt>, then the argument will be set to
+    <tt><b>GL_LINE_LOOP</b></tt>. The function prototype for this callback is:
+    
+<pre>
+  void begin(GLenum type);
+</pre>
+
+<dt><tt><b>GLU_TESS_BEGIN_DATA</b></tt>
+<dd>The same as the
+    <tt><b>GLU_TESS_BEGIN</b></tt> callback except that it takes an additional
+    pointer argument. This pointer is identical to the opaque pointer provided
+    when <a href="Reference/gluTessBeginPolygon.html"><tt>gluTessBeginPolygon</tt></a>
+    was called. The function prototype for this callback is:
+    
+<pre>
+  void beginData(GLenum type, void *polygon_data);
+</pre>
+
+<dt><tt><b>GLU_TESS_EDGE_FLAG</b></tt>
+<dd>The edge flag callback is similar to <a
+    href="glEdgeFlag.html"><tt>glEdgeFlag</tt></a>. The function takes a
+    single boolean flag that indicates which edges lie on the polygon
+    boundary. If the flag is <tt><b>GL_TRUE</b></tt>, then each vertex that
+    follows begins an edge that lies on the polygon boundary, that is, an edge
+    that separates an interior region from an exterior one.  If the flag is
+    <tt><b>GL_FALSE</b></tt>, then each vertex that follows begins an edge
+    that lies in the polygon interior. The edge flag callback (if defined) is
+    invoked before the first vertex callback.
+    
+    <p>Since triangle fans and triangle strips do not support edge flags, the
+    begin callback is not called with <tt><b>GL_TRIANGLE_FAN</b></tt> or
+    <tt><b>GL_TRIANGLE_STRIP</b></tt> if a non-<tt>NULL</tt> edge flag
+    callback is provided. (If the callback is initialized to NULL, there is no
+    impact on performance). Instead, the fans and strips are converted to
+    independent triangles. The function prototype for this callback is:
+    
+<pre>
+  void edgeFlag(GLboolean flag);
+</pre>
+
+<dt><tt><b>GLU_TESS_EDGE_FLAG_DATA</b></tt>
+<dd>The same as the <tt><b>GLU_TESS_EDGE_FLAG</b></tt> callback except that it
+    takes an additional pointer argument. This pointer is identical to the
+    opaque pointer provided when <a
+    href="Reference/gluTessBeginPolygon.html"><tt>gluTessBeginPolygon</tt></a> was
+    called. The function prototype for this callback is:
+    
+<pre>
+  void edgeFlagData(GLboolean flag, void *polygon_data);
+</pre>
+
+<dt><tt><b>GLU_TESS_VERTEX</b></tt>
+<dd>The vertex callback is invoked between the begin and end callbacks.  It is
+    similar to <a href="Reference/glVertex.html"><tt>glVertex</tt></a>, and it defines
+    the vertices of the triangles created by the tessellation process. The
+    function takes a pointer as its only argument.  This pointer is identical
+    to the opaque pointer provided by the user when the vertex was described
+    (see <a href="gluTessVertex.html"><tt>gluTessVertex</tt></a>). The
+    function prototype for this callback is:
+    
+<pre>
+  void vertex (void *vertex_data);
+</pre>
+
+<dt><tt><b>GLU_TESS_VERTEX_DATA</b></tt>
+<dd>The same as the <tt><b>GLU_TESS_VERTEX</b></tt> callback except that it
+    takes an additional pointer argument. This pointer is identical to the
+    opaque pointer provided when <a
+    href="Reference/gluTessBeginPolygon.html"><tt>gluTessBeginPolygon</tt></a> was
+    called. The function prototype for this callback is:
+    
+<pre>
+  void vertexData (void *vertex_data, void *polygon_data);
+</pre>
+
+<dt><tt><b>GLU_TESS_END</b></tt>
+<dd>The end callback serves the same purpose as <a
+    href="glBegin.html"><tt>glEnd</tt></a>. It indicates the end of a
+    primitive and it takes no arguments. The function prototype for this
+    callback is:
+    
+<pre>
+  void end(void);
+</pre>
+
+<dt><tt><b>GLU_TESS_END_DATA</b></tt>
+<dd>The same as the <tt><b>GLU_TESS_END</b></tt> callback except that it takes
+    an additional pointer argument. This pointer is identical to the opaque
+    pointer provided when <a
+    href="Reference/gluTessBeginPolygon.html"><tt>gluTessBeginPolygon</tt></a> was
+    called. The function prototype for this callback is:
+    
+<pre>
+  void endData(void *polygon_data);
+</pre>
+
+<dt><tt><b>GLU_TESS_COMBINE</b></tt>
+<dd>The combine callback is called to create a new vertex when the
+    tessellation detects an intersection, or wishes to merge features. The
+    function takes four arguments: an array of three elements each of type
+    <tt>GLdouble</tt>, an array of four pointers, an array of four elements
+    each of type <tt>GLfloat</tt>, and a pointer to a pointer. The prototype
+    is:
+    
+<pre>
+  void combine(GLdouble coords[3], void *vertex_data[4], 
+               GLfloat weight[4], void **outData);
+</pre>
+
+    The vertex is defined as a linear combination of up to four existing
+    vertices, stored in <tt><i>vertex_data</i></tt>. The coefficients of the
+    linear combination are given by <tt><i>weight</i></tt>; these weights
+    always add up to 1.  All vertex pointers are valid even when some of the
+    weights are 0.  <tt><i>coords</i></tt> gives the location of the new
+    vertex.
+
+    <p>The user must allocate another vertex, interpolate parameters using
+    <tt><i>vertex_data</i></tt> and <tt><i>weight</i></tt>, and return the new
+    vertex pointer in <tt><i>outData</i></tt>. This handle is supplied during
+    rendering callbacks.  The user is responsible for freeing the memory some
+    time after <a href="Reference/gluTessEndPolygon.html"><tt>gluTessEndPolygon</tt></a>
+    is called.
+
+    <p>For example, if the polygon lies in an arbitrary plane in 3-space,
+    and a color is associated with each vertex, the
+    <tt><b>GLU_TESS_COMBINE</b></tt> callback might look like this:
+    
+<xmp>
+  void myCombine(GLdouble coords[3], VERTEX *d[4],
+                 GLfloat w[4], VERTEX **dataOut)
+  {
+      VERTEX *new = new_vertex();
+      
+      new->x = coords[0];
+      new->y = coords[1];
+      new->z = coords[2];
+      new->r = w[0]*d[0]->r + w[1]*d[1]->r + w[2]*d[2]->r + w[3]*d[3]->r;
+      new->g = w[0]*d[0]->g + w[1]*d[1]->g + w[2]*d[2]->g + w[3]*d[3]->g;
+      new->b = w[0]*d[0]->b + w[1]*d[1]->b + w[2]*d[2]->b + w[3]*d[3]->b;
+      new->a = w[0]*d[0]->a + w[1]*d[1]->a + w[2]*d[2]->a + w[3]*d[3]->a;
+      *dataOut = new;
+  }
+</xmp>
+
+    If the tessellation detects an intersection, then the
+    <tt><b>GLU_TESS_COMBINE</b></tt> or <tt><b>GLU_TESS_COMBINE_DATA</b></tt>
+    callback (see below) must be defined, and it must write a
+    non-<tt>NULL</tt> pointer into <tt><i>dataOut</i></tt>. Otherwise the
+    <tt><b>GLU_TESS_NEED_COMBINE_CALLBACK</b></tt> error occurs, and no output
+    is generated. (This is the only error that can occur during tessellation
+    and rendering.)
+
+<dt><tt><b>GLU_TESS_COMBINE_DATA</b></tt>
+<dd>The same as the <tt><b>GLU_TESS_COMBINE</b></tt> callback except that it
+    takes an additional pointer argument. This pointer is identical to the
+    opaque pointer provided when <a
+    href="Reference/gluTessBeginPolygon.html"><tt>gluTessBeginPolygon</tt></a> was
+    called. The function prototype for this callback is:
+    
+<pre>
+  void combineData (GLdouble coords[3], void *vertex_data[4], 
+                    GLfloat weight[4], void **outData, 
+                    void *polygon_data);
+</pre>
+
+<dt><tt><b>GLU_TESS_ERROR</b></tt>
+<dd>The error callback is called when an error is encountered. The one
+    argument is of type GLenum; it indicates the specific error that occurred
+    and will be set to one of <tt><b>GLU_TESS_MISSING_BEGIN_POLYGON</b></tt>,
+    <tt><b>GLU_TESS_MISSING_END_POLYGON</b></tt>,
+    <tt><b>GLU_TESS_MISSING_BEGIN_CONTOUR</b></tt>,
+    <tt><b>GLU_TESS_MISSING_END_CONTOUR</b></tt>,
+    <tt><b>GLU_TESS_COORD_TOO_LARGE</b></tt>,
+    <tt><b>GLU_TESS_NEED_COMBINE_CALLBACK</b></tt>. Character strings
+    describing these errors can be retrieved with the <a
+    href="gluErrorString.html"><tt>gluErrorString</tt></a> call. The function
+    prototype for this callback is:
+    
+<pre>
+   void error(GLenum errno);
+</pre>
+
+    The GLU library will recover from the first four errors by inserting the
+    missing call(s).  <tt><b>GLU_TESS_COORD_TOO_LARGE</b></tt> indicates that
+    some vertex coordinate exceeded the predefined constant
+    <tt><b>GLU_TESS_MAX_COORD</b></tt> in absolute value, and that the value
+    has been clamped. (Coordinate values must be small enough so that two can
+    be multiplied together without overflow.)
+    <tt><b>GLU_TESS_NEED_COMBINE_CALLBACK</b></tt> indicates that the
+    tessellation detected an intersection between two edges in the input data,
+    and the <tt><b>GLU_TESS_COMBINE</b></tt> or
+    <tt><b>GLU_TESS_COMBINE_DATA</b></tt> callback was not provided. No output
+    is generated.
+
+<dt><tt><b>GLU_TESS_ERROR_DATA</b></tt>
+<dd>The same as the <tt><b>GLU_TESS_ERROR</b></tt> callback except that it
+    takes an additional pointer argument. This pointer is identical to the
+    opaque pointer provided when <a
+    href="Reference/gluTessBeginPolygon.html"><tt>gluTessBeginPolygon</tt></a> was
+    called. The function prototype for this callback is:
+
+<pre>
+  void errorData(GLenum errno, void *polygon_data);
+</pre>
+</dl>
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<tt><a href="glBegin.html">glBegin</a></tt>,<br>
+<tt><a href="glEdgeFlag.html">glEdgeFlag</a></tt>,<br>
+<tt><a href="Reference/glVertex.html">glVertex</a></tt>,<br>
+<tt><a href="Reference/gluNewTess.html">gluNewTess</a></tt>,<br>
+<tt><a href="gluErrorString.html">gluErrorString</a></tt>,<br>
+<tt><a href="gluTessVertex.html">gluTessVertex</a></tt>,<br>
+
+<tt><a href="Reference/gluTessBeginPolygon.html">gluTessBeginPolygon</a></tt>,<br>
+<tt><a href="Reference/gluTessBeginContour.html">gluTessBeginContour</a></tt>,<br>
+<tt><a href="gluTessProperty.html">gluTessProperty</a></tt>,<br>
+<tt><a href="Reference/gluTessNormal.html">gluTessNormal</a></tt> 
+
+
+
+<p>
+<a href="Reference/gluTessBeginPolygon.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="Reference/gluTessEndPolygon.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img name="Reference2"
+   src="../buttons/ReferenceOff.gif" alt="Reference" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img name="ImpGuide2"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img name="Index2"
+   src="../buttons/IndexOff.gif" alt="Index" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>

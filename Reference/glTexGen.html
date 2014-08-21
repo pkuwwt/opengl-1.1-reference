@@ -1,0 +1,354 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: glTexGen</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: glTexGen">
+</head>
+<!-- Version: Version 1.1 -->
+<!-- Date:    1 April 1996 -->
+<!-- Release: Release 1.1.0 -->
+<!-- Dp:      Oct 30 00:01 -->
+<!-- Dm:      Oct 28 14:1 -->
+<!-- Xs:      31196 13 texgen.gl -->
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img name="Reference1"
+   src="../buttons/ReferenceOff.gif" alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img name="ImpGuide1"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img name="Index1"
+   src="../buttons/IndexOff.gif" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name">glTexGen</a><br>
+<a href="glTexEnv.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glTexImage1D.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+<tt>glTexGend</tt>, <tt>glTexGenf</tt>, <tt>glTexGeni</tt>,
+<tt>glTexGendv</tt>, <tt>glTexGenfv</tt>, <tt>glTexGeniv</tt>: control the
+generation of texture coordinates.
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#Errors">Errors</a> |
+<a href="#AssociatedGets">Associated Gets</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+void glTexGend(
+    GLenum	   <i>coord</i>,
+    GLenum	   <i>pname</i>,
+    GLdouble	   <i>param</i>)
+void glTexGenf(
+    GLenum	   <i>coord</i>,
+    GLenum	   <i>pname</i>,
+    GLfloat	   <i>param</i>)
+void glTexGeni(
+    GLenum	   <i>coord</i>,
+    GLenum	   <i>pname</i>,
+    GLint	   <i>param</i>)
+void glTexGendv(
+    GLenum	   <i>coord</i>,
+    GLenum	   <i>pname</i>,
+    const GLdouble <i>*params</i>) 
+void glTexGenfv(
+    GLenum	   <i>coord</i>,
+    GLenum	   <i>pname</i>,
+    const GLfloat  <i>*params</i>) 
+void glTexGeniv(
+    GLenum	   <i>coord</i>,
+    GLenum	   <i>pname</i>,
+    const GLint    <i>*params</i>) 
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+<dt><tt><i>coord</i></tt>
+<dd>Specifies a texture coordinate.  Must be one of <tt><b>GL_S</b></tt>,
+    <tt><b>GL_T</b></tt>, <tt><b>GL_R</b></tt>, or <tt><b>GL_Q</b></tt>.
+
+<dt><tt><i>pname</i></tt>
+<dd>Specifies the symbolic name of the texture-coordinate generation function.
+    Must be <tt><b>GL_TEXTURE_GEN_MODE</b></tt>.
+
+<dt><tt><i>param</i></tt>
+<dd>Specifies a single-valued texture generation parameter, one of
+    <tt><b>GL_OBJECT_LINEAR</b></tt>, <tt><b>GL_EYE_LINEAR</b></tt>, or
+    <tt><b>GL_SPHERE_MAP</b></tt>.
+
+<dt><tt><i>coord</i></tt>
+<dd>Specifies a texture coordinate.  Must be one of <tt><b>GL_S</b></tt>,
+    <tt><b>GL_T</b></tt>, <tt><b>GL_R</b></tt>, or <tt><b>GL_Q</b></tt>.
+
+<dt><tt><i>pname</i></tt>
+<dd>Specifies the symbolic name of the texture-coordinate generation function
+    or function parameters.  Must be <tt><b>GL_TEXTURE_GEN_MODE</b></tt>,
+    <tt><b>GL_OBJECT_PLANE</b></tt>, or <tt><b>GL_EYE_PLANE</b></tt>.
+
+<dt><tt><i>params</i></tt>
+<dd>Specifies a pointer to an array of texture generation parameters.  If
+    <tt><i>pname</i></tt> is <tt><b>GL_TEXTURE_GEN_MODE</b></tt>, then the
+    array must contain a single symbolic constant, one of
+    <tt><b>GL_OBJECT_LINEAR</b></tt>, <tt><b>GL_EYE_LINEAR</b></tt>, or
+    <tt><b>GL_SPHERE_MAP</b></tt>.  Otherwise, <tt><i>params</i></tt> holds
+    the coefficients for the texture-coordinate generation function specified
+    by <tt><i>pname</i></tt>.
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+<tt>glTexGen</tt> selects a texture-coordinate generation function or
+supplies coefficients for one of the functions. <tt><i>coord</i></tt> names
+one of the (<tt><i>s</i></tt>, <tt><i>t</i></tt>, <tt><i>r</i></tt>,
+<tt><i>q</i></tt>) texture coordinates; it must be one of the symbols
+<tt><b>GL_S</b></tt>, <tt><b>GL_T</b></tt>, <tt><b>GL_R</b></tt>, or
+<tt><b>GL_Q</b></tt>. <tt><i>pname</i></tt> must be one of three symbolic
+constants: <tt><b>GL_TEXTURE_GEN_MODE</b></tt>,
+<tt><b>GL_OBJECT_PLANE</b></tt>, or <tt><b>GL_EYE_PLANE</b></tt>.  If
+<tt><i>pname</i></tt> is <tt><b>GL_TEXTURE_GEN_MODE</b></tt>, then
+<tt><i>params</i></tt> chooses a mode, one of
+<tt><b>GL_OBJECT_LINEAR</b></tt>, <tt><b>GL_EYE_LINEAR</b></tt>, or
+<tt><b>GL_SPHERE_MAP</b></tt>.  If <tt><i>pname</i></tt> is either
+<tt><b>GL_OBJECT_PLANE</b></tt> or <tt><b>GL_EYE_PLANE</b></tt>,
+<tt><i>params</i></tt> contains coefficients for the corresponding texture
+generation function.
+
+<p> 
+If the texture generation function is <tt><b>GL_OBJECT_LINEAR</b></tt>, the
+function
+
+<p align=center>
+<i>g</i> = <i>p</i><sub>1</sub><i>x<sub>o</sub></i> +
+           <i>p</i><sub>2</sub><i>y<sub>o</sub></i> +
+           <i>p</i><sub>3</sub><i>z<sub>o</sub></i> +
+           <i>p</i><sub>4</sub><i>w<sub>o</sub></i>
+
+<p>
+is used, where <i>g</i> is the value computed for the coordinate named in
+<tt><i>coord</i></tt>, <i>p</i><sub>1</sub>, <i>p</i><sub>2</sub>,
+<i>p</i><sub>3</sub>, and <i>p</i><sub>4</sub> are the four values supplied in
+<tt><i>params</i></tt>, and <i>x<sub>o</sub></i>, <i>y<sub>o</sub></i>,
+<i>z<sub>o</sub></i>, and <i>w<sub>o</sub></i> are the object coordinates of
+the vertex. This function can be used, for example, to texture-map terrain
+using sea level as a reference plane (defined by <i>p</i><sub>1</sub>,
+<i>p</i><sub>2</sub>, <i>p</i><sub>3</sub>, and <i>p</i><sub>4</sub>).  The
+altitude of a terrain vertex is computed by the
+<tt><b>GL_OBJECT_LINEAR</b></tt> coordinate generation function as its
+distance from sea level; that altitude can then be used to index the texture
+image to map white snow onto peaks and green grass onto foothills.
+
+<p>
+If the texture generation function is <tt><b>GL_EYE_LINEAR</b></tt>, the
+function
+
+<p align=center>
+<i>g</i> = <i>p</i><sub>1'</sub> <i>x<sub>e</sub></i> +
+           <i>p</i><sub>2'</sub> <i>y<sub>e</sub></i> +
+           <i>p</i><sub>3'</sub> <i>z<sub>e</sub></i> +
+           <i>p</i><sub>4'</sub> <i>w<sub>e</sub></i>
+
+<p>
+is used, where 
+
+<p align=center>
+( <i>p</i><sub>1'</sub> <i>p</i><sub>2'</sub>
+  <i>p</i><sub>3'</sub> <i>p</i><sub>4'</sub> ) =
+( <i>p</i><sub>1</sub> <i>p</i><sub>2</sub>
+  <i>p</i><sub>3</sub> <i>p</i><sub>4</sub>) <i>M</i><sup>-1</sup>
+
+<p>
+and <i>x<sub>e</sub></i>, <i>y<sub>e</sub></i>, <i>z<sub>e</sub></i>, and
+<i>w<sub>e</sub></i> are the eye coordinates of the vertex,
+<i>p</i><sub>1</sub>, <i>p</i><sub>2</sub>, <i>p</i><sub>3</sub>, and
+<i>p</i><sub>4</sub> are the values supplied in <tt><i>params</i></tt>, and
+<i>M</i> is the modelview matrix when <tt>glTexGen</tt> is invoked. If
+<i>M</i> is poorly conditioned or singular, texture coordinates generated by
+the resulting function may be inaccurate or undefined.
+
+<p>
+Note that the values in <tt><i>params</i></tt> define a reference plane in eye
+coordinates.  The modelview matrix that is applied to them may not be the same
+one in effect when the polygon vertices are transformed.  This function
+establishes a field of texture coordinates that can produce dynamic contour
+lines on moving objects.
+
+<p>
+If <tt><i>pname</i></tt> is <tt><b>GL_SPHERE_MAP</b></tt> and
+<tt><i>coord</i></tt> is either <tt><b>GL_S</b></tt> or <tt><b>GL_T</b></tt>,
+<i>s</i> and <i>t</i> texture coordinates are generated as follows.  Let
+<tt><i>u</i></tt> be the unit vector pointing from the origin to the polygon
+vertex (in eye coordinates).  Let <b>n'</b> be the current normal, after
+transformation to eye coordinates.  Let <nobr><b>f</b> = (<i>f<sub>x</sub>
+f<sub>y</sub> f<sub>z</sub></i>)<sup><i>T</i></sup></nobr> be the reflection
+vector such that
+
+<p align=center>
+<b>f</b> = <b>u</b> <img src="symbols/Minus.xbm" alt="-"> 2<b>n' n'</b><sup>T</sup><b>u</b>
+
+<p>
+Finally, let <nobr><i>m</i> = 2 sqrt(<i>f<sub>x</sub></i><sup>2</sup> +
+<i>f<sub>y</sub></i><sup>2</sup> + (<i>f<sub>z</sub></i> +
+1)<sup>2</sup>)</nobr>.  Then the values assigned to the <i>s</i> and <i>t</i>
+texture coordinates are
+
+<p align=center>
+<i>s</i> = <i>f<sub>x</sub></i>/<i>m</i> + 1/2<br>
+<i>t</i> = <i>f<sub>y</sub></i>/<i>m</i> + 1/2
+
+<p>
+To enable or disable a texture-coordinate generation function, call <a
+href="glEnable.html"><tt>glEnable</tt></a> or <a
+href="glEnable.html"><tt>glDisable</tt></a> with one of the symbolic
+texture-coordinate names (<tt><b>GL_TEXTURE_GEN_S</b></tt>,
+<tt><b>GL_TEXTURE_GEN_T</b></tt>, <tt><b>GL_TEXTURE_GEN_R</b></tt>, or
+<tt><b>GL_TEXTURE_GEN_Q</b></tt>) as the argument.  When enabled, the
+specified texture coordinate is computed according to the generating function
+associated with that coordinate.  When disabled, subsequent vertices take the
+specified texture coordinate from the current set of texture
+coordinates. Initially, all texture generation functions are set to
+<tt><b>GL_EYE_LINEAR</b></tt> and are disabled. Both <i>s</i> plane equations
+are <nobr>(1, 0, 0, 0)</nobr>, both <i>t</i> plane equations are <nobr>(0, 1,
+0, 0)</nobr>, and all <i>r</i> and <i>q</i> plane equations are <nobr>(0, 0,
+0, 0)</nobr>.
+
+
+<!-- === Errors =========================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Errors">Errors</a></h2>
+
+<ul>
+<li><tt><b>GL_INVALID_ENUM</b></tt> is generated when <tt><i>coord</i></tt>
+    or <tt><i>pname</i></tt> is not an accepted defined value, or when
+    <tt><i>pname</i></tt> is <tt><b>GL_TEXTURE_GEN_MODE</b></tt> and
+    <tt><i>params</i></tt> is not an accepted defined value.
+
+<li><tt><b>GL_INVALID_ENUM</b></tt> is generated when <tt><i>pname</i></tt>
+    is <tt><b>GL_TEXTURE_GEN_MODE</b></tt>, <tt><i>params</i></tt> is
+    <tt><b>GL_SPHERE_MAP</b></tt>, and <tt><i>coord</i></tt> is either
+    <tt><b>GL_R</b></tt> or <tt><b>GL_Q</b></tt>.
+
+<li><tt><b>GL_INVALID_OPERATION</b></tt> is generated if <a
+    href="glTexGen.html"><tt>glTexGen</tt></a> is executed between the
+    execution of <a href="glBegin.html"><tt>glBegin</tt></a> and the
+    corresponding execution of <a href="glBegin.html"><tt>glEnd</tt></a>.
+</ul>
+
+
+<!-- === Associated Gets ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp5', 1)"
+   onMouseOut="ChangeBtn('ArrowUp5', 0)"><img name="ArrowUp5"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="AssociatedGets">Associated Gets</a></h2>
+
+<tt><a href="glGetTexGen.html">glGetTexGen</a></tt><br>
+
+<tt><a href="glIsEnabled.html">glIsEnabled</a></tt> with argument
+<tt><b>GL_TEXTURE_GEN_S</b></tt><br>
+
+<tt><a href="glIsEnabled.html">glIsEnabled</a></tt> with argument
+<tt><b>GL_TEXTURE_GEN_T</b></tt><br>
+
+<tt><a href="glIsEnabled.html">glIsEnabled</a></tt> with argument
+<tt><b>GL_TEXTURE_GEN_R</b></tt><br>
+
+<tt><a href="glIsEnabled.html">glIsEnabled</a></tt> with argument
+<tt><b>GL_TEXTURE_GEN_Q</b></tt>
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp6', 1)"
+   onMouseOut="ChangeBtn('ArrowUp6', 0)"><img name="ArrowUp6"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<tt><a href="glCopyPixels.html">glCopyPixels</a></tt>,<br>
+<tt><a href="glCopyTexImage2D.html">glCopyTexImage2D</a></tt>,<br>
+<tt><a href="glCopyTexSubImage1D.html">glCopyTexSubImage1D</a></tt>,<br>
+<tt><a href="glCopyTexSubImage2D.html">glCopyTexSubImage2D</a></tt>,<br>
+<tt><a href="glTexEnv.html">glTexEnv</a></tt>,<br>
+<tt><a href="glTexImage1D.html">glTexImage1D</a></tt>,<br>
+<tt><a href="glTexImage2D.html">glTexImage2D</a></tt>,<br>
+<tt><a href="glTexParameter.html">glTexParameter</a></tt>,<br>
+<tt><a href="glTexSubImage1D.html">glTexSubImage1D</a></tt>,<br>
+<tt><a href="glTexSubImage2D.html">glTexSubImage2D</a></tt>
+
+
+<p>
+<a href="glTexEnv.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glTexImage1D.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img name="Reference2"
+   src="../buttons/ReferenceOff.gif" alt="Reference" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img name="ImpGuide2"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img name="Index2"
+   src="../buttons/IndexOff.gif" alt="Index" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>

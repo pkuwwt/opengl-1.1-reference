@@ -1,0 +1,294 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: glAccum</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: glAccum">
+</head>
+<!-- Version: Version 1.1 -->
+<!-- Date:    1 April 1996 -->
+<!-- Release: Release 1.1.0 -->
+<!-- Dp:      Oct 25 19:23 -->
+<!-- Dm:      Oct 25 19:1 -->
+<!-- Xs:      30170 10 accum.gl -->
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img
+   src="../buttons/ReferenceOff.gif" name="Reference1" alt="[Reference]"
+   border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img
+   src="../buttons/ImpGuideOff.gif" name="ImpGuide1" alt="[Imp. Guide]"
+   border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img
+   src="../buttons/IndexOff.gif" name="Index1" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name">glAccum</a><br>
+<a href="../Reference.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glAlphaFunc.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+<tt>glAccum</tt>: operate on the accumulation buffer.
+
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#Notes">Notes</a> |
+<a href="#Errors">Errors</a> |
+<a href="#AssociatedGets">Associated Gets</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+void glAccum(
+    GLenum	 <i>op</i>,
+    GLfloat	 <i>value</i>)
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+
+<dt><tt><i>op</i></tt>
+<dd>Specifies the accumulation buffer operation.  Symbolic constants
+    <tt><b>GL_ACCUM</b></tt>, <tt><b>GL_LOAD</b></tt>, <tt><b>GL_ADD</b></tt>,
+    <tt><b>GL_MULT</b></tt>, and <tt><b>GL_RETURN</b></tt> are accepted.
+
+<dt><tt><i>value</i></tt>
+<dd>Specifies a floating-point value used in the accumulation buffer
+    operation.  <tt><i>op</i></tt> determines how <tt><i>value</i></tt> is
+    used.
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+The accumulation buffer is an extended-range color buffer.  Images are not
+rendered into it.  Rather, images rendered into one of the color buffers are
+added to the contents of the accumulation buffer after rendering.  Effects
+such as antialiasing (of points, lines, and polygons), motion blur, and depth
+of field can be created by accumulating images generated with different
+transformation matrices.
+
+<p>
+Each pixel in the accumulation buffer consists of red, green, blue, and alpha
+values.  The number of bits per component in the accumulation buffer depends
+on the implementation. You can examine this number by calling <a
+href="glGet.html"><tt>glGetIntegerv</tt></a> four times, with
+arguments <tt><b>GL_ACCUM_RED_BITS</b></tt>,
+<tt><b>GL_ACCUM_GREEN_BITS</b></tt>, <tt><b>GL_ACCUM_BLUE_BITS</b></tt>, and
+<tt><b>GL_ACCUM_ALPHA_BITS</b></tt>.  Regardless of the number of bits per
+component, the range of values stored by each component is <nobr>[<img
+src="symbols/Minus.xbm" alt="-">1, 1]</nobr>.  The accumulation buffer
+pixels are mapped one-to-one with frame buffer pixels.
+
+<p>
+<tt>glAccum</tt> operates on the accumulation buffer.
+The first argument, <tt><i>op</i></tt>, is a symbolic constant that selects an
+accumulation buffer operation.  The second argument, <tt><i>value</i></tt>, is
+a floating-point value to be used in that operation.  Five operations are
+specified: <tt><b>GL_ACCUM</b></tt>, <tt><b>GL_LOAD</b></tt>,
+<tt><b>GL_ADD</b></tt>, <tt><b>GL_MULT</b></tt>, and
+<tt><b>GL_RETURN</b></tt>.
+
+<p>
+All accumulation buffer operations are limited to the area of the current
+scissor box and applied identically to the red, green, blue, and alpha
+components of each pixel.  If a <tt>glAccum</tt> operation results in a value
+outside the range <nobr>[<img src="symbols/Minus.xbm" alt="-">1, 1]</nobr>,
+the contents of an accumulation buffer pixel component are undefined.
+
+<p>
+The operations are as follows:
+    
+<dl>
+<dt><tt><b>GL_ACCUM</b></tt>
+<dd>Obtains R, G, B, and A values from the buffer currently selected for
+    reading (see <a href="glReadBuffer.html"><tt>glReadBuffer</tt></a>).  Each
+    component value is divided by <nobr>2<sup><i>n</i></sup><img
+    src="symbols/Minus.xbm" alt="-">1</nobr>, where <nobr><i>n</i></nobr>
+    is the number of bits allocated to each color component in the currently
+    selected buffer.  The result is a floating-point value in the range
+    <nobr>[0, 1]</nobr>, which is multiplied by <tt><i>value</i></tt> and
+    added to the corresponding pixel component in the accumulation buffer,
+    thereby updating the accumulation buffer.
+
+<dt><tt><b>GL_LOAD</b></tt>
+<dd>Similar to <tt><b>GL_ACCUM</b></tt>, except that the current value in the
+    accumulation buffer is not used in the calculation of the new value.  That
+    is, the R, G, B, and A values from the currently selected buffer are
+    divided by <nobr> 2<sup><i>n</i></sup><img src="symbols/Minus.xbm"
+    alt="-">1</nobr>, multiplied by <tt><i>value</i></tt>, and then stored in
+    the corresponding accumulation buffer cell, overwriting the current value.
+
+<dt><tt><b>GL_ADD</b></tt>
+<dd>Adds <tt><i>value</i></tt> to each R, G, B, and A in the accumulation
+    buffer.
+
+<dt><tt><b>GL_MULT</b></tt>
+<dd>Multiplies each R, G, B, and A in the accumulation buffer by
+    <tt><i>value</i></tt> and returns the scaled component to its
+    corresponding accumulation buffer location.
+
+<dt><tt><b>GL_RETURN</b></tt>
+<dd>Transfers accumulation buffer values to the color buffer or buffers
+    currently selected for writing.  Each R, G, B, and A component is
+    multiplied by <tt><i>value</i></tt>, then multiplied by <nobr>
+    2<sup><i>n</i></sup><img src="symbols/Minus.xbm" alt="-">1</nobr>,
+    clamped to the range <nobr>[0,<nobr> 2<sup><i>n</i></sup><img
+    src="symbols/Minus.xbm" alt="-">1 </nobr>]</nobr>, and stored in the
+    corresponding display buffer cell.  The only fragment operations that are
+    applied to this transfer are pixel ownership, scissor, dithering, and
+    color writemasks.
+</dl>
+
+To clear the accumulation buffer, call <a
+href="glClearAccum.html"><tt>glClearAccum</tt></a> with R, G, B, and A values
+to set it to, then call <a href="glClear.html"><tt>glClear</tt></a> with the
+accumulation buffer enabled.
+
+
+<!-- === Notes ============================================================ -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Notes">Notes</a></h2>
+
+Only pixels within the current scissor box are updated by a <tt>glAccum</tt>
+operation.
+
+
+<!-- === Errors =========================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp5', 1)"
+   onMouseOut="ChangeBtn('ArrowUp5', 0)"><img name="ArrowUp5"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Errors">Errors</a></h2>
+
+<ul>
+<li><tt><b>GL_INVALID_ENUM</b></tt> is generated if <tt><i>op</i></tt> is not
+    an accepted value.
+
+<li><tt><b>GL_INVALID_OPERATION</b></tt> is generated if there is no
+    accumulation buffer.
+
+<li><tt><b>GL_INVALID_OPERATION</b></tt> is generated if <a
+    href="glAccum.html"><tt>glAccum</tt></a> is executed between the execution
+    of <a href="glBegin.html"><tt>glBegin</tt></a> and the corresponding
+    execution of <a href="glBegin.html"><tt>glEnd</tt></a>.
+</ul>
+
+
+<!-- === Associated Gets ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp6', 1)"
+   onMouseOut="ChangeBtn('ArrowUp6', 0)"><img name="ArrowUp6"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="AssociatedGets">Associated Gets</a></h2>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_ACCUM_RED_BITS</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_ACCUM_GREEN_BITS</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_ACCUM_BLUE_BITS</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_ACCUM_ALPHA_BITS</b></tt>
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp7', 1)"
+   onMouseOut="ChangeBtn('ArrowUp7', 0)"><img name="ArrowUp7"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<tt><a href="glBlendFunc.html">glBlendFunc</a></tt>,<br>
+<tt><a href="glClear.html">glClear</a></tt>,<br>
+<tt><a href="glClearAccum.html">glClearAccum</a></tt>,<br>
+<tt><a href="glCopyPixels.html">glCopyPixels</a></tt>,<br>
+<tt><a href="glGet.html">glGet</a></tt>,<br>
+<tt><a href="glLogicOp.html">glLogicOp</a></tt>,<br>
+<tt><a href="glPixelStore.html">glPixelStore</a></tt>,<br>
+<tt><a href="glPixelTransfer.html">glPixelTransfer</a></tt>,<br>
+<tt><a href="glReadBuffer.html">glReadBuffer</a></tt>,<br>
+<tt><a href="glReadPixels.html">glReadPixels</a></tt>,<br>
+<tt><a href="glScissor.html">glScissor</a></tt>,<br>
+<tt><a href="glStencilOp.html">glStencilOp</a></tt>
+
+
+<p>
+<a href="../Reference.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glAlphaFunc.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img
+   src="../buttons/ReferenceOff.gif" name="Reference2" alt="[Reference]"
+   border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img
+   src="../buttons/ImpGuideOff.gif" name="ImpGuide2" alt="[Imp. Guide]"
+   border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img
+   src="../buttons/IndexOff.gif" name="Index2" alt="[Index]" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>

@@ -1,0 +1,302 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: glFog</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: glFog">
+</head>
+<!-- Version: Version 1.1 -->
+<!-- Date:    1 April 1996 -->
+<!-- Release: Release 1.1.0 -->
+<!-- Dp:      Oct 25 19:24 -->
+<!-- Dm:      Oct 25 19:1 -->
+<!-- Xs:      59589 9 fog.gl -->
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img name="Reference1"
+   src="../buttons/ReferenceOff.gif" alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img name="ImpGuide1"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img name="Index1"
+   src="../buttons/IndexOff.gif" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name">glFog</a><br>
+<a href="glFlush.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glXFreeContextEXT.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+<tt>glFogf</tt>, <tt>glFogi</tt>, <tt>glFogfv</tt>, <tt>glFogiv</tt>: specify
+fog parameters.
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#Errors">Errors</a> |
+<a href="#AssociatedGets">Associated Gets</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+void glFogf(
+    GLenum	  <i>pname</i>,
+    GLfloat	  <i>param</i>)
+void glFogi(
+    GLenum	  <i>pname</i>,
+    GLint	  <i>param</i>)
+void glFogfv(
+    GLenum	  <i>pname</i>,
+    const GLfloat <i>*params</i>) 
+void glFogiv(
+    GLenum	  <i>pname</i>,
+    const GLint   <i>*params</i>) 
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+<dt><tt><i>pname</i></tt>
+<dd>Specifies a single-valued fog parameter.  <tt><b>GL_FOG_MODE</b></tt>,
+    <tt><b>GL_FOG_DENSITY</b></tt>, <tt><b>GL_FOG_START</b></tt>,
+    <tt><b>GL_FOG_END</b></tt>, and <tt><b>GL_FOG_INDEX</b></tt> are accepted.
+
+<dt><tt><i>param</i></tt>
+<dd>Specifies the value that <tt><i>pname</i></tt> will be set to.
+
+<dt><tt><i>pname</i></tt>
+<dd>Specifies a fog parameter.  <tt><b>GL_FOG_MODE</b></tt>,
+    <tt><b>GL_FOG_DENSITY</b></tt>, <tt><b>GL_FOG_START</b></tt>,
+    <tt><b>GL_FOG_END</b></tt>, <tt><b>GL_FOG_INDEX</b></tt>, and
+    <tt><b>GL_FOG_COLOR</b></tt> are accepted.
+
+<dt><tt><i>params</i></tt>
+<dd>Specifies the value or values to be assigned to <tt><i>pname</i></tt>.
+    <tt><b>GL_FOG_COLOR</b></tt> requires an array of four values.  All other
+    parameters accept an array containing only a single value.
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+Fog is initially disabled.  While enabled, fog affects rasterized geometry,
+bitmaps, and pixel blocks, but not buffer clear operations. To enable and
+disable fog, call <a href="glEnable.html"><tt>glEnable</tt></a> and <a
+href="glEnable.html"><tt>glDisable</tt></a> with argument
+<tt><b>GL_FOG</b></tt>.
+
+<p>
+<tt>glFog</tt> assigns the value or values in <tt><i>params</i></tt> to the
+fog parameter specified by <tt><i>pname</i></tt>.  The following values are
+accepted for <tt><i>pname</i></tt>:
+    
+<dl>
+<dt><tt><b>GL_FOG_MODE</b></tt>
+<dd><tt><i>params</i></tt> is a single integer or floating-point value that
+    specifies the equation to be used to compute the fog blend factor,
+    <i>f</i>.  Three symbolic constants are accepted:
+    <tt><b>GL_LINEAR</b></tt>, <tt><b>GL_EXP</b></tt>, and
+    <tt><b>GL_EXP2</b></tt>.  The equations corresponding to these symbolic
+    constants are defined below.  The initial fog mode is
+    <tt><b>GL_EXP</b></tt>.
+
+<dt><tt><b>GL_FOG_DENSITY</b></tt>
+<dd><tt><i>params</i></tt> is a single integer or floating-point value that
+    specifies <i>density</i>, the fog density used in both exponential fog
+    equations.  Only nonnegative densities are accepted.  The initial fog
+    density is 1.
+
+<dt><tt><b>GL_FOG_START</b></tt>
+<dd><tt><i>params</i></tt> is a single integer or floating-point value that
+    specifies <i>start</i>, the near distance used in the linear fog equation.
+    The initial near distance is 0.
+
+<dt><tt><b>GL_FOG_END</b></tt>
+<dd><tt><i>params</i></tt> is a single integer or floating-point value that
+    specifies <i>end</i>, the far distance used in the linear fog equation.
+    The initial far distance is 1.
+
+<dt><tt><b>GL_FOG_INDEX</b></tt>
+<dd><tt><i>params</i></tt> is a single integer or floating-point value that
+    specifies <i>i<sub>f</sub></i>, the fog color index.  The initial fog
+    index is 0.
+
+<dt><tt><b>GL_FOG_COLOR</b></tt>
+<dd><tt><i>params</i></tt> contains four integer or floating-point values that
+    specify <i>C<sub>f</sub></i>, the fog color.  Integer values are mapped
+    linearly such that the most positive representable value maps to 1.0, and
+    the most negative representable value maps to <img
+    src="symbols/Minus.xbm" alt="-">1.0.  Floating-point values are mapped
+    directly.  After conversion, all color components are clamped to the range
+    <nobr>[0, 1]</nobr>.  The initial fog color is <nobr>(0, 0, 0, 0)</nobr>.
+</dl>
+
+Fog blends a fog color with each rasterized pixel fragment's posttexturing
+color using a blending factor <i>f</i>.  Factor <i>f</i> is computed in one of
+three ways, depending on the fog mode.  Let <i>z</i> be the distance in eye
+coordinates from the origin to the fragment being fogged.  The equation for
+<tt><b>GL_LINEAR</b></tt> fog is
+
+<p align=center>
+<i>f</i> = (<i>end</i> <img src="symbols/Minus.xbm" alt="-"> <i>z</i> ) /
+  (<i>end</i> <img src="symbols/Minus.xbm" alt="-"> <i>start</i> )
+
+<p>
+The equation for <tt><b>GL_EXP</b></tt> fog is
+
+<p align=center>
+<i>f</i> = e<sup>-(<i>density</i> &middot; <i>z</i> )</sup>
+
+<p>
+The equation for <tt><b>GL_EXP2</b></tt> fog is
+
+<p align=center>
+<i>f</i> = e<sup>-(<i>density</i> &middot; <i>z</i> )<sup>2</sup></sup>
+
+<p>
+Regardless of the fog mode, <i>f</i> is clamped to the range <nobr>[0,
+1]</nobr> after it is computed.  Then, if the GL is in RGBA color mode, the
+fragment's color <i>C<sub>r</sub></i> is replaced by
+
+<p align=center>
+<i>C<sub>r'</sub></i> = <i>f C<sub>r</sub></i> +
+  (1 <img src="symbols/Minus.xbm" alt="-"> <i>f</i> ) <i>C<sub>f</sub></i> 
+
+<p>
+In color index mode, the fragment's color index <i>i<sub>r</sub></i> is
+replaced by
+
+<p align=center>
+<i>i<sub>r'</sub></i> = <i>i<sub>r</sub></i> +
+  (1 <img src="symbols/Minus.xbm" alt="-"> <i>f</i> ) <i>i<sub>f</sub></i> 
+
+
+<!-- === Errors =========================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Errors">Errors</a></h2>
+
+<ul>
+<li><tt><b>GL_INVALID_ENUM</b></tt> is generated if <tt><i>pname</i></tt> is
+    not an accepted value, or if <tt><i>pname</i></tt> is
+    <tt><b>GL_FOG_MODE</b></tt> and <tt><i>params</i></tt> is not an accepted
+    value.
+
+<li><tt><b>GL_INVALID_VALUE</b></tt> is generated if <tt><i>pname</i></tt> is
+    <tt><b>GL_FOG_DENSITY</b></tt>, and <tt><i>params</i></tt> is negative.
+
+<li><tt><b>GL_INVALID_OPERATION</b></tt> is generated if <a
+    href="glFog.html"><tt>glFog</tt></a> is executed between the execution of
+    <a href="glBegin.html"><tt>glBegin</tt></a> and the corresponding
+    execution of <a href="glBegin.html"><tt>glEnd</tt></a>.
+</ul>
+
+
+<!-- === Associated Gets ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp5', 1)"
+   onMouseOut="ChangeBtn('ArrowUp5', 0)"><img name="ArrowUp5"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="AssociatedGets">Associated Gets</a></h2>
+
+<tt><a href="glIsEnabled.html">glIsEnabled</a></tt> with argument
+<tt><b>GL_FOG</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_FOG_COLOR</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_FOG_INDEX</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_FOG_DENSITY</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_FOG_START</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_FOG_END</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_FOG_MODE</b></tt>
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp6', 1)"
+   onMouseOut="ChangeBtn('ArrowUp6', 0)"><img name="ArrowUp6"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<tt><a href="glEnable.html">glEnable</a></tt>
+
+
+<p>
+<a href="glFlush.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glXFreeContextEXT.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img name="Reference2"
+   src="../buttons/ReferenceOff.gif" alt="Reference" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img name="ImpGuide2"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img name="Index2"
+   src="../buttons/IndexOff.gif" alt="Index" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>

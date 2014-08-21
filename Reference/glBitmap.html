@@ -1,0 +1,268 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: glBitmap</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: glBitmap">
+</head>
+<!-- Version: Version 1.1 -->
+<!-- Date:    1 April 1996 -->
+<!-- Release: Release 1.1.0 -->
+<!-- Dp:      Oct 25 19:24 -->
+<!-- Dm:      Oct 25 19:1 -->
+<!-- Xs:      14415 8 bitmap.gl -->
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img name="Reference1"
+   src="../buttons/ReferenceOff.gif" alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img name="ImpGuide1"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img name="Index1"
+   src="../buttons/IndexOff.gif" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name">glBitmap</a><br>
+<a href="glBindTexture.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glBlendColorEXT.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+<tt>glBitmap</tt>: draw a bitmap.
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#Notes">Notes</a> |
+<a href="#Errors">Errors</a> |
+<a href="#AssociatedGets">Associated Gets</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+void glBitmap(
+    GLsizei	  <i>width</i>,
+    GLsizei	  <i>height</i>,
+    GLfloat	  <i>xorig</i>,
+    GLfloat	  <i>yorig</i>,
+    GLfloat	  <i>xmove</i>,
+    GLfloat	  <i>ymove</i>,
+    const GLubyte <i>*bitmap</i>) 
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+
+<dt><tt><i>width</i></tt>, <tt><i>height</i></tt>
+<dd>Specify the pixel width and height of the bitmap image.
+
+<dt><tt><i>xorig</i></tt>, <tt><i>yorig</i></tt>
+<dd>Specify the location of the origin in the bitmap image.  The origin is
+    measured from the lower left corner of the bitmap, with right and up being
+    the positive axes.
+
+<dt><tt><i>xmove</i></tt>, <tt><i>ymove</i></tt>
+<dd>Specify the <tt><i>x</i></tt> and <tt><i>y</i></tt> offsets to be added to
+    the current raster position after the bitmap is drawn.
+
+<dt><tt><i>bitmap</i></tt>
+<dd>Specifies the address of the bitmap image.
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+A bitmap is a binary image.  When drawn, the bitmap is positioned relative to
+the current raster position, and frame buffer pixels corresponding to 1s in
+the bitmap are written using the current raster color or index.  Frame buffer
+pixels corresponding to 0s in the bitmap are not modified.
+
+<p>
+<tt>glBitmap</tt> takes seven arguments.  The first pair specifies the width
+and height of the bitmap image.  The second pair specifies the location of the
+bitmap origin relative to the lower left corner of the bitmap image.  The
+third pair of arguments specifies <tt><i>x</i></tt> and <tt><i>y</i></tt>
+offsets to be added to the current raster position after the bitmap has been
+drawn.  The final argument is a pointer to the bitmap image itself.
+
+<p>
+The bitmap image is interpreted like image data for the <a
+href="glDrawPixels.html"><tt>glDrawPixels</tt></a> command, with
+<tt><i>width</i></tt> and <tt><i>height</i></tt> corresponding to the width
+and height arguments of that command, and with <tt><i>type</i></tt> set to
+<tt><b>GL_BITMAP</b></tt> and <tt><i>format</i></tt> set to
+<tt><b>GL_COLOR_INDEX</b></tt>.
+
+<p>
+Modes specified using <a href="glPixelStore.html"><tt>glPixelStore</tt></a>
+affect the interpretation of bitmap image data; modes specified using <a
+href="glPixelTransfer.html"><tt>glPixelTransfer</tt></a> do not.
+
+<p>
+If the current raster position is invalid, <tt>glBitmap</tt> is ignored.
+Otherwise, the lower left corner of the bitmap image is positioned at the
+window coordinates
+
+<p align=center>
+<i>x<sub>w</sub></i> =
+  <img src="symbols/LFloor.xbm" alt="floor("> <i>x<sub>r</sub></i>
+  <img src="symbols/Minus.xbm" alt="-">
+  <i>x<sub>o</sub></i> <img src="symbols/RFloor.xbm" alt=")"><br>
+<i>y<sub>w</sub></i> =
+  <img src="symbols/LFloor.xbm" alt="floor("> <i>y<sub>r</sub></i>
+  <img src="symbols/Minus.xbm" alt="-">
+  <i>y<sub>o</sub></i> <img src="symbols/RFloor.xbm" alt=")">
+
+<p>
+where <nobr>( <i>x<sub>r</sub></i> , <i>y<sub>r</sub></i> )</nobr> is the
+raster position and <nobr>( <i>x<sub>o</sub></i> , <i>y<sub>o</sub></i>
+)</nobr> is the bitmap origin.  Fragments are then generated for each pixel
+corresponding to a 1 (one) in the bitmap image.  These fragments are generated
+using the current raster <tt><i>z</i></tt> coordinate, color or color index,
+and current raster texture coordinates.  They are then treated just as if they
+had been generated by a point, line, or polygon, including texture mapping,
+fogging, and all per-fragment operations such as alpha and depth testing.
+
+<p>
+After the bitmap has been drawn, the <tt><i>x</i></tt> and <tt><i>y</i></tt>
+coordinates of the current raster position are offset by <tt><i>xmove</i></tt>
+and <tt><i>ymove</i></tt>.  No change is made to the <tt><i>z</i></tt>
+coordinate of the current raster position, or to the current raster color,
+texture coordinates, or index.
+
+
+<!-- === Notes ============================================================ -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Notes">Notes</a></h2>
+
+To set a valid raster position outside the viewport, first set a valid raster
+position inside the viewport, then call <tt>glBitmap</tt> with <tt>NULL</tt>
+as the <tt><i>bitmap</i></tt> parameter and with <tt><i>xmove</i></tt> and
+<tt><i>ymove</i></tt> set to the offsets of the new raster position. This
+technique is useful when panning an image around the viewport.
+
+
+<!-- === Errors =========================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp5', 1)"
+   onMouseOut="ChangeBtn('ArrowUp5', 0)"><img name="ArrowUp5"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Errors">Errors</a></h2>
+
+<ul>
+<li><tt><b>GL_INVALID_VALUE</b></tt> is generated if <tt><i>width</i></tt> or
+    <tt><i>height</i></tt> is negative.
+
+<li><tt><b>GL_INVALID_OPERATION</b></tt> is generated if <a
+    href="glBitmap.html"><tt>glBitmap</tt></a> is executed between the
+    execution of <a href="glBegin.html"><tt>glBegin</tt></a> and the
+    corresponding execution of <a href="glBegin.html"><tt>glEnd</tt></a>.
+</ul>
+
+
+<!-- === Associated Gets ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp6', 1)"
+   onMouseOut="ChangeBtn('ArrowUp6', 0)"><img name="ArrowUp6"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="AssociatedGets">Associated Gets</a></h2>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_CURRENT_RASTER_POSITION</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_CURRENT_RASTER_COLOR</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_CURRENT_RASTER_INDEX</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_CURRENT_RASTER_TEXTURE_COORDS</b></tt><br>
+
+<tt><a href="glGet.html">glGet</a></tt> with argument
+<tt><b>GL_CURRENT_RASTER_POSITION_VALID</b></tt>
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp7', 1)"
+   onMouseOut="ChangeBtn('ArrowUp7', 0)"><img name="ArrowUp7"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<tt><a href="glDrawPixels.html">glDrawPixels</a></tt>,<br>
+<tt><a href="glPixelStore.html">glPixelStore</a></tt>,<br>
+<tt><a href="glPixelTransfer.html">glPixelTransfer</a></tt>,<br>
+<tt><a href="glRasterPos.html">glRasterPos</a></tt>
+
+
+<p>
+<a href="glBindTexture.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glBlendColorEXT.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img name="Reference2"
+   src="../buttons/ReferenceOff.gif" alt="Reference" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img name="ImpGuide2"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img name="Index2"
+   src="../buttons/IndexOff.gif" alt="Index" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>

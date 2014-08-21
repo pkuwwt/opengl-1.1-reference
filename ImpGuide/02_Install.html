@@ -1,0 +1,275 @@
+<html><head>
+<title>Installation and Setup</title>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="Installation and Setup">
+</head>
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html"><img src="../buttons/Reference.gif"
+   alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html"><img src="../buttons/ImpGuide.gif"
+   alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html"><img src="../buttons/Index.gif"
+   alt="[Index]" border=0></a>
+
+
+<h1>Chapter 2: Installation and Setup<br>
+<a href="01_Overview.html"><img src="../buttons/ArrowLeft.gif"
+   alt="[Prev]" border=0></a>
+<a href="03_RunProg.html"><img src="../buttons/ArrowRight.gif"
+   alt="[Next]" border=0></a></h1>
+
+
+<h2>Table of Contents</h2>
+
+<ul type=disc>
+<li><a href="#Introduction">Introduction</a>
+<li><a href="#VerificationInstructions">Verification Instructions</a>
+    <ul type=disc>
+    <li><a href="#IsYourSystemSoftwarePreloadedWithInstantIgnition">Is Your
+        System Software Preloaded with Instant Ignition?</a>
+    <li><a href="#VerifyThatOpenGLIsOnYourWorkstation">Verify that OpenGL is
+        on Your Workstation</a>
+    </ul>
+<li><a href="#InstallingOpenGL"> Installing OpenGL</a>
+    <ol>
+    <li><a href="#ReadThisEntireProcedure"> Read this entire procedure</a>
+    <li><a href="#InstallHPUX1020AndTheWorkstationACEForHPUX1020July1997PatchBundle">
+        Install HP-UX 10.20 and the Workstation ACE for HP-UX 10.20 (July
+        1997) patch bundle</a>
+    <li><a href="#InstallOpenGL"> Install OpenGL</a>
+    <li><a href="#CheckLogFile"> Check log file</a>
+    <li><a href="#VerifyTheProduct"> Verify the product</a>
+    </ol>
+<li><a href="#TheOpenGLFileStructure">The OpenGL File Structure</a>
+</ul>
+
+
+<hr>
+
+<h2><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="Introduction"> Introduction</a></h2>
+
+If you are setting up a new workstation, all software is preloaded for you if
+you purchased the Instant Ignition option.  A subsequent section will explain
+how to determine if OpenGL has been installed.  If you did not order Instant
+Ignition, then you will need to install the OpenGL filesets from the C/ANSI C
+Developer's Toolkit.
+
+
+<h2><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="VerificationInstructions"> Verification Instructions</a></h2>
+
+This section provides you with the necessary information for determining
+if your OpenGL product has been installed.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="IsYourSystemSoftwarePreloadedWithInstantIgnition"> Is Your System Software Preloaded with Instant Ignition?</a></h3>
+
+
+Your workstation is preloaded with software, which may include OpenGL, if it
+was ordered with the Instant Ignition option.  A yellow label attached to the
+workstation in its shipping carton confirms the workstation is preloaded:
+
+<p align=center>
+<img src="images/Label.gif" alt="| Workstation is Preloaded |" border=3>
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="VerifyThatOpenGLIsOnYourWorkstation"> Verify that OpenGL is on Your Workstation</a></h3>
+
+To verify that OpenGL is installed correctly on your system, execute:
+
+<pre>
+    /usr/sbin/swlist -l product
+</pre>
+
+This will give you a list of all of the products on the system, and in that
+product list you will see lines similar to the following if HP OpenGL has been
+installed on your system.
+
+<pre>
+    OpenGLDevKit     B.10.20     HP-UX OpenGL Developer's Kit
+    B6196AA          B.10.20     HP-UX 700 OpenGL Run Time Environment
+</pre>
+
+If OpenGL is <i>not</i> preloaded, you will need to install it by following
+the steps in the subsequent sections.
+
+
+<h2><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="InstallingOpenGL"> Installing OpenGL</a></h2>
+
+Installing the software involves the following steps:
+
+<p>
+<ol>
+<li> Read this entire procedure
+<li> Install Workstation ACE for HP-UX 10.20 (July 1997) patch bundle
+<li> Install OpenGL
+<li> Check log file
+<li> Verify the product.
+</ol>
+
+<p>
+Each step is described on the subsequent sections.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="ReadThisEntireProcedure"> 1. Read this entire procedure</a></h3>
+
+Read all of this procedure to ensure the proper installation of your OpenGL
+product.
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" align=left border=0><spacer type=block height=40 width=1 align=left></a><a name="InstallHPUX1020AndTheWorkstationACEForHPUX1020July1997PatchBundle"> 2. Install HP-UX 10.20 and the Workstation ACE for HP-UX 10.20 (July 1997) patch bundle</a></h3>
+
+Before installing OpenGL, install HP-UX 10.20 and the Workstation ACE for
+HP-UX 10.20 (July 1997) patch bundle shipped with your developer's toolkit.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="InstallOpenGL"> 3. Install OpenGL</a></h3>
+
+Once you have installed HP-UX 10.20, you can install the OpenGL programming
+environment.  This programming environment is bundled with the C/ANSI C
+Developer's product.  If your system is Instantly Ignited, your OpenGL product
+is already installed.  To verify that the OpenGL developer's programming
+environment has been installed on your system, read the section "Verify that
+OpenGL is on Your Workstation" above.
+
+<p>
+If OpenGL is installed, you are done with the section.  If OpenGL is not
+installed, execute this command (as <tt>root</tt>):
+
+<pre>
+  /usr/sbin/swinstall
+</pre>
+
+...and follow the installation instructions provided in the document
+<i>Managing HP-UX Software with SD-UX</i>.  <tt>OpenGLDevKit</tt> is the
+product to install.
+
+<p>
+The OpenGL development environment product includes the filesets shown in
+Table 2-1.  To list these filesets, execute this command:
+
+<pre>
+    /usr/sbin/swlist -l fileset OpenGLDevKit
+</pre>
+
+<p>
+<center>
+<table border>
+<caption><b>Table 2-1: OpenGL Development Environment Filesets</b></caption>
+<tr><th>OpenGL Fileset</th>
+    <th>Contains</th></tr>
+<tr><td><tt>OPENGL-CONTRIB</tt></td>
+    <td>Contributed or unsupported program files</td></tr>
+<tr><td><tt>OPENGL-EXAMPLE</tt></td>
+    <td>Example program source code</td></tr>
+<tr><td><tt>OPENGL-PRG</tt></td>
+    <td>Files necessary for the OpenGL programming environment</td></tr>
+<tr><td><tt>OPENGL-WEBDOC</tt></td>
+    <td>Online documentation files</td></tr>
+</table>
+</center>
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="CheckLogFile"> 4. Check log file</a></h3>
+
+Once you have completed the installation process, look at the contents of the
+file <tt>/var/adm/sw/swinstall.log</tt>.  This file lists the filesets loaded,
+the customize scripts that ran during the installation process, and
+informative messages.  Error messages that resulted from attempts to write
+across an NFS mount point may appear in this file and, if present, may be
+ignored.
+
+
+<h3><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="VerifyTheProduct"> 5. Verify the product</a></h3>
+
+Here are three methods for determining if you have correctly installed
+OpenGL on your system.
+
+<ul type=disc>
+<li>Run the program <tt>/opt/graphics/OpenGL/demos/verify_install</tt>.  If
+    OpenGL has been correctly installed on your system, running
+    <tt>verify_install</tt> will cause a window containing a 3D rendering of
+    the text "OpenGL" to open on your monitor.
+
+<li>Run any of the demos located in the directory
+    <tt>/opt/graphics/OpenGL/examples</tt>.  This directory is installed with
+    the <tt>OPENGL-EXAMPLE</tt> fileset.
+
+<li>Compile, link and run one of your existing OpenGL programs.
+</ul>
+
+
+The <tt>README</tt> file in the <tt>examples</tt> directory contains
+instructions on how to set up and run the examples.
+
+<p>
+Example programs from the <i><a href="../AddisonWesley.html">OpenGL
+Programming Guide</a></i> are installed in
+<tt>/opt/graphics/OpenGL/contrib/glut_samples</tt> directory, which also
+contains a <tt>README</tt> file.
+
+
+<h2><a href="#TOC"><img  src="../buttons/ArrowUp.gif" alt="[Up]" border=0></a><a name="TheOpenGLFileStructure"> The OpenGL File Structure</a></h2>
+
+The OpenGL file structure is compliant with the file structure of the HP-UX
+10.<i>x</i> file system.  Here is a list of files and directories that are a
+part of the OpenGL file structure.
+
+<dl>
+<dt><tt>/opt/graphics/OpenGL/contrib/libwidget</tt>
+<dd>This directory contains a Motif widget library and source code.<p>
+
+<dt><tt>/opt/graphics/OpenGL/include/GL</tt>
+<dd>This directory contains header files needed for OpenGL development.<p>
+
+<dt><tt>/opt/graphics/OpenGL/contrib/glut_samples</tt>
+<dd>This directory contains example OpenGL programs that are referenced in the
+    <a href="../AddisonWesley.html"><i>OpenGL Programming Guide</i></a>,
+    Second Edition published by Addison-Wesley.<p>
+
+<dt><tt>/opt/graphics/OpenGL/contrib/libglut</tt>
+<dd>This directory contains Mark Kilgard's OpenGL Utility ToolKit (GLUT),
+    which is a window-system-independent toolkit for writing simple OpenGL
+    programs.<p>
+
+<dt><tt>/opt/graphics/OpenGL/lib</tt>
+<dd>This directory contains the following run-time shared libraries:
+    <ul type=disc>
+    <li><tt>libGLU.sl</tt>
+    <li><tt>libGL.sl</tt>
+    <li><tt>libddvisxgl.sl</tt>
+    </ul><p>
+
+<dt><tt>/usr/lib/X11/Xserver/brokers/extensions/Glx.1</tt><br>
+    <tt>/usr/lib/X11/Xserver/modules/extensions/hp/glx.1</tt>
+<dd>These are libraries for the GLX extension to X windows.
+</dl>
+
+
+<p>
+<a href="01_Overview.html"><img src="../buttons/ArrowLeft.gif"
+   alt="[Prev]" border=0></a>
+<a href="#TOC"><img src="../buttons/ArrowUp.gif"
+   alt="[Up]" border=0></a>
+<a href="03_RunProg.html"><img src="../buttons/ArrowRight.gif"
+   alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html"><img src="../buttons/Reference.gif"
+   alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html"><img src="../buttons/ImpGuide.gif"
+   alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html"><img src="../buttons/Index.gif"
+   alt="[Index]" border=0></a>
+
+<spacer type=vertical size=500>
+
+</body>
+</html>

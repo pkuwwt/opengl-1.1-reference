@@ -1,0 +1,373 @@
+<html>
+<head>
+<title>OpenGL 1.1 Reference: glTexEnv</title>
+<script language="JavaScript">
+<!--
+//=== change the button appearance and update the status message =============
+function ChangeBtn(Btn, State) {
+    var Doc = Btn;
+    while ("0123456789".indexOf(Doc.substring(Doc.length - 1)) >= 0)
+	Doc = Doc.substring(0, Doc.length - 1);	// truncate last character
+    eval("document." + Btn + ".src=\042../buttons/" + Doc +
+      (State?"On":"Off") + ".gif\042");
+}
+// -->
+</script>
+
+<meta name="collname" content="unixwork">
+<meta name="colltitle" content="unixwork">
+<meta name="collsubn" content="unixwork">
+<meta name="searchtitle" content="OpenGL 1.1 Reference: glTexEnv">
+</head>
+<!-- Version: Version 1.1 -->
+<!-- Date:    1 April 1996 -->
+<!-- Release: Release 1.1.0 -->
+<!-- Dp:      Oct 25 19:25 -->
+<!-- Dm:      Oct 25 19:1 -->
+<!-- Xs:      53149 11 texenv.gl -->
+
+<body background="../images/WhiteMarble.jpg"
+      text=000000 link=0000ff alink=ff0000 vlink=aa00aa>
+<a name="TOC"></a>
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="[Front]" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference1', 1)"
+   onMouseOut="ChangeBtn('Reference1', 0)"><img name="Reference1"
+   src="../buttons/ReferenceOff.gif" alt="[Reference]" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide1', 1)"
+   onMouseOut="ChangeBtn('ImpGuide1', 0)"><img name="ImpGuide1"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index1', 1)"
+   onMouseOut="ChangeBtn('Index1', 0)"><img name="Index1"
+   src="../buttons/IndexOff.gif" alt="[Index]" border=0></a>
+
+
+<!-- === Name ============================================================= -->
+<h1><a name="Name">glTexEnv</a><br>
+<a href="glTexCoordPointer.html" onMouseOver="ChangeBtn('ArrowLeft1', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft1', 0)"><img name="ArrowLeft1"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glTexGen.html" onMouseOver="ChangeBtn('ArrowRight1', 1)"
+   onMouseOut="ChangeBtn('ArrowRight1', 0)"><img name="ArrowRight1"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a></h1>
+
+<tt>glTexEnvf</tt>, <tt>glTexEnvi</tt>, <tt>glTexEnvfv</tt>,
+<tt>glTexEnviv</tt>: set texture environment parameters.
+<p>
+<center>
+<a href="#CSpecification">C Specification</a> |
+<a href="#Parameters">Parameters</a> |
+<a href="#Description">Description</a> |
+<a href="#Notes">Notes</a> |
+<a href="#Errors">Errors</a> |
+<a href="#AssociatedGets">Associated Gets</a> |
+<a href="#SeeAlso">See Also</a>
+</center>
+
+
+<!-- === C Specification ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp1', 1)"
+   onMouseOut="ChangeBtn('ArrowUp1', 0)"><img name="ArrowUp1"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="CSpecification">C Specification</a></h2>
+
+<pre>
+void glTexEnvf(
+    GLenum	  <i>target</i>,
+    GLenum	  <i>pname</i>,
+    GLfloat	  <i>param</i>)
+void glTexEnvi(
+    GLenum	  <i>target</i>,
+    GLenum	  <i>pname</i>,
+    GLint	  <i>param</i>)
+void glTexEnvfv(
+    GLenum	  <i>target</i>,
+    GLenum	  <i>pname</i>,
+    const GLfloat <i>*params</i>) 
+void glTexEnviv(
+    GLenum	  <i>target</i>,
+    GLenum	  <i>pname</i>,
+    const GLint   <i>*params</i>) 
+</pre>
+
+
+<!-- === Parameters ======================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp2', 1)"
+   onMouseOut="ChangeBtn('ArrowUp2', 0)"><img name="ArrowUp2"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Parameters">Parameters</a></h2>
+
+<dl compact>
+<dt><tt><i>target</i></tt>
+<dd>Specifies a texture environment.  Must be <tt><b>GL_TEXTURE_ENV</b></tt>.
+
+<dt><tt><i>pname</i></tt> (for <tt>glTexEnvf</tt> and <tt>glTexEnvi</tt>)
+<dd>Specifies the symbolic name of a single-valued texture environment
+    parameter.  Must be <tt><b>GL_TEXTURE_ENV_MODE</b></tt>.
+
+<dt><tt><i>pname</i></tt> (for <tt>glTexEnvfv</tt> and <tt>glTexEnviv</tt>)
+<dd>Specifies the symbolic name of a texture environment parameter.  Accepted
+    values are <tt><b>GL_TEXTURE_ENV_MODE</b></tt> and
+    <tt><b>GL_TEXTURE_ENV_COLOR</b></tt> <font color=green>and
+    <tt><b>GL_TEXTURE_LIGHTING_MODE_HP</b></tt></font>.
+
+<dt><tt><i>param</i></tt>
+<dd>Specifies a single symbolic constant, one of <tt><b>GL_MODULATE</b></tt>,
+    <tt><b>GL_DECAL</b></tt>, <tt><b>GL_BLEND</b></tt>, or
+    <tt><b>GL_REPLACE</b></tt>.  <font color=green>If <tt><i>pname</i></tt> is
+    <tt><b>GL_TEXTURE_LIGHTING_MODE_HP</b></tt>, specifies a single symbolic
+    constant, either <tt><b>GL_TEXTURE_POST_SPECULAR_HP</b></tt> or
+    <tt><b>GL_TEXTURE_PRE_SPECULAR_HP</b></tt>.</font>
+
+<dt><tt><i>params</i></tt>
+<dd>Specifies a pointer to a parameter array that contains either a single
+    symbolic constant or an RGBA color.
+</dl>
+
+
+<!-- === Description ====================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp3', 1)"
+   onMouseOut="ChangeBtn('ArrowUp3', 0)"><img name="ArrowUp3"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Description">Description</a></h2>
+
+A texture environment specifies how texture values are interpreted when a
+fragment is textured. <tt><i>target</i></tt> must be
+<tt><b>GL_TEXTURE_ENV</b></tt>. <tt><i>pname</i></tt> can be either
+<tt><b>GL_TEXTURE_ENV_MODE</b></tt>, <tt><b>GL_TEXTURE_ENV_COLOR</b></tt>
+<font color=green>or <tt><b>GL_TEXTURE_LIGHTING_MODE_HP</b></tt> (if the
+extension <tt><b>GL_HP_texture_lighting</b></tt> is supported).</font>
+
+<p>
+If <tt><i>pname</i></tt> is <tt><b>GL_TEXTURE_ENV_MODE</b></tt>, then
+<tt><i>params</i></tt> is (or points to) the symbolic name of a texture
+function.  Four texture functions may be specified:
+<tt><b>GL_MODULATE</b></tt>, <tt><b>GL_DECAL</b></tt>,
+<tt><b>GL_BLEND</b></tt>, and <tt><b>GL_REPLACE</b></tt>.  If
+<tt><i>pname</i></tt> is <tt><b>GL_TEXTURE_LIGHTING_MODE_HP</b></tt>, two
+possible values for <tt><i>param</i></tt> may be specified: either
+<tt><b>GL_TEXTURE_PRE_SPECULAR_HP</b></tt> or
+<tt><b>GL_TEXTURE_POST_SPECULAR_HP</b></tt>.
+
+<p>
+A texture function acts on the fragment to be textured using the texture image
+value that applies to the fragment (see <a
+href="glTexParameter.html"><tt>glTexParameter</tt></a>) and produces an RGBA
+color for that fragment.  The following table shows how the RGBA color is
+produced for each of the three texture functions that can be chosen. <i>C</i>
+is a triple of color values (RGB) and <i>A</i> is the associated alpha value.
+RGBA values extracted from a texture image are in the range <nobr>[0,
+1]</nobr>.  The subscript <i>f</i> refers to the incoming fragment, the
+subscript <i>t</i> to the texture image, the subscript <i>c</i> to the texture
+environment color, and subscript <i>v</i> indicates a value produced by the
+texture function.
+
+<p>
+A texture image can have up to four components per texture element (see <a
+href="glTexImage1D.html"><tt>glTexImage1D</tt></a>, <a
+href="glTexImage2D.html"><tt>glTexImage2D</tt></a>, <a
+href="glCopyTexImage1D.html"><tt>glCopyTexImage1D</tt></a>, and <a
+href="glCopyTexImage2D.html"><tt>glCopyTexImage2D</tt></a>).  In a
+one-component image, <i>L<sub>t</sub></i> indicates that single component.  A
+two-component image uses <i>L<sub>t</sub></i> and <i>A<sub>t</sub></i>.  A
+three-component image has only a color value, <i>C<sub>t</sub></i>.  A
+four-component image has both a color value <i>C<sub>t</sub></i> and an alpha
+value <i>A<sub>t</sub></i>.
+
+<p>
+
+<center>
+<table border>
+<tr><th rowspan=2>Base Internal<br>Format</th>
+    <th colspan=4>Texture Functions</th></tr>
+<tr><th><tt><b>GL_MODULATE</b></tt></th>
+    <th><tt><b>GL_DECAL</b></tt></th>
+    <th><tt><b>GL_BLEND</b></tt></th>
+    <th><tt><b>GL_REPLACE</b></tt></tr>
+<tr></tr>
+<tr align=center><td rowspan=2><tt><b>GL_ALPHA</b></tt></td>
+    <td><i>C<sub>v</sub></i> = <i>C<sub>f</sub></i></td>
+    <td rowspan=2>(<i>undefined</i> )</td>
+    <td><i>C<sub>v</sub></i> = <i>C<sub>f</sub></i></td>
+    <td><i>C<sub>v</sub></i> = <i>C<sub>f</sub></i></td></tr>
+<tr align=center>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>f</sub></i> <i>A<sub>t</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>f</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>t</sub></i></td></tr>
+<tr></tr>
+<tr align=center><td rowspan=2><tt><b>GL_LUMINANCE</b><br>1</tt></td>
+    <td><i>C<sub>v</sub></i> = <i>L<sub>t</sub></i> <i>C<sub>f</sub></i></td>
+    <td rowspan=2>(<i>undefined</i> )</td>
+    <td><i>C<sub>v</sub></i> = (1 <img src="symbols/Minus.xbm" alt="-">
+        <i>L<sub>t</sub></i> ) <i>C<sub>f</sub></i> +
+        <i>L<sub>t</sub></i> <i>C<sub>c</sub></i></td>
+    <td><i>C<sub>v</sub></i> = <i>L<sub>t</sub></i></td></tr>
+<tr align=center><td><i>A<sub>v</sub></i> = <i>A<sub>f</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>f</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>f</sub></i></td></tr>
+<tr></tr>
+<tr align=center><td rowspan=2><tt><b>GL_LUMINANCE_ALPHA</b></tt><br>2</td>
+    <td><i>C<sub>v</sub></i> = <i>L<sub>t</sub></i> <i>C<sub>f</sub></i></td>
+    <td rowspan=2>(<i>undefined</i> )</td>
+    <td><i>C<sub>v</sub></i> = (1 <img src="symbols/Minus.xbm" alt="-">
+        <i>L<sub>t</sub></i> ) <i>C<sub>f</sub></i> +
+        <i>L<sub>t</sub></i> <i>C<sub>c</sub></i></td>
+    <td><i>C<sub>v</sub></i> = <i>L<sub>t</sub></i></td></tr>
+<tr align=center>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>t</sub></i> <i>A<sub>f</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>t</sub></i> <i>A<sub>f</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>t</sub></i></td></tr>
+<tr></tr>
+<tr align=center><td rowspan=2><tt><b>GL_INTENSITY</b></tt></td>
+    <td><i>C<sub>v</sub></i> = <i>C<sub>f</sub></i> <i>I<sub>t</sub></i></td>
+    <td rowspan=2>(<i>undefined</i> )</td>
+    <td><i>C<sub>v</sub></i> = (1 <img src="symbols/Minus.xbm" alt="-">
+        <i>I<sub>t</sub></i> ) <i>C<sub>f</sub></i> +
+        <i>I<sub>t</sub></i> <i>C<sub>c</sub></i></td>
+    <td><i>C<sub>v</sub></i> = <i>I<sub>t</sub></i></td></tr>
+<tr align=center>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>f</sub></i> <i>I<sub>t</sub></i></td>
+    <td><i>A<sub>v</sub></i> = (1 <img src="symbols/Minus.xbm" alt="-">
+        <i>I<sub>t</sub></i> ) <i>A<sub>f</sub></i> +
+        <i>I<sub>t</sub></i> <i>A<sub>c</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>I<sub>t</sub></i></td></tr>
+<tr></tr>
+<tr align=center><td rowspan=2><tt><b>GL_RGB</b></tt><br>3</td>
+    <td><i>C<sub>v</sub></i> = <i>C<sub>t</sub></i> <i>C<sub>f</sub></i></td>
+    <td><i>C<sub>v</sub></i> = <i>C<sub>t</sub></i></td>
+    <td><i>C<sub>v</sub></i> = (1 <img src="symbols/Minus.xbm" alt="-">
+        <i>C<sub>t</sub></i> ) <i>C<sub>f</sub></i> +
+        <i>C<sub>t</sub></i> <i>C<sub>c</sub></i></td>
+    <td><i>C<sub>v</sub></i> = <i>C<sub>t</sub></i></td></tr>
+<tr align=center>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>f</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>f</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>f</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>f</sub></i></td></tr>
+<tr></tr>
+<tr align=center><td rowspan=2><tt><b>GL_RGBA</b></tt><br>4</td>
+    <td><i>C<sub>v</sub></i> = <i>C<sub>t</sub></i> <i>C<sub>f</sub></i></td>
+    <td><i>C<sub>v</sub></i> = (1 <img src="symbols/Minus.xbm" alt="-">
+        <i>A<sub>t</sub></i> ) <i>C<sub>f</sub></i> +
+        <i>A<sub>t</sub></i> <i>C<sub>t</sub></i></td>
+    <td><i>C<sub>v</sub></i> = (1 <img src="symbols/Minus.xbm" alt="-">
+        <i>C<sub>t</sub></i> ) <i>C<sub>f</sub></i> +
+        <i>C<sub>t</sub></i> <i>C<sub>c</sub></i></td>
+    <td><i>C<sub>v</sub></i> = <i>C<sub>t</sub></i></td></tr>
+<tr align=center>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>t</sub></i> <i>A<sub>f</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>f</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>t</sub></i> <i>A<sub>f</sub></i></td>
+    <td><i>A<sub>v</sub></i> = <i>A<sub>t</sub></i></td></tr>
+</table>
+</center>
+
+<p>
+If <tt><i>pname</i></tt> is <tt><b>GL_TEXTURE_ENV_COLOR</b></tt>,
+<tt><i>params</i></tt> is a pointer to an array that holds an RGBA color
+consisting of four values.  Integer color components are interpreted linearly
+such that the most positive integer maps to 1.0, and the most negative integer
+maps to -1.0.  The values are clamped to the range <nobr>[0, 1]</nobr> when
+they are specified. <i>C<sub>c</sub></i> takes these four values.
+
+<p>
+<tt><b>GL_TEXTURE_ENV_MODE</b></tt> defaults to <tt><b>GL_MODULATE</b></tt>
+and <tt><b>GL_TEXTURE_ENV_COLOR</b></tt> defaults to <nobr>(0, 0, 0,
+0)</nobr>.  <font color=green><tt><b>GL_TEXTURE_LIGHTING_HP</b></tt> defaults
+to <tt><b>GL_TEXTURE_POST_SPECULAR_HP</b></tt>.</font>
+
+
+<!-- === Notes ============================================================ -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp4', 1)"
+   onMouseOut="ChangeBtn('ArrowUp4', 0)"><img name="ArrowUp4"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Notes">Notes</a></h2>
+
+<tt><b>GL_REPLACE</b></tt> may only be used if the GL version is 1.1 or
+greater.
+
+<p>
+<font color=green><tt><b>GL_TEXTURE_LIGHTING_MODE_HP</b></tt> may only be used
+if the <tt><b>GL_HP_texture_lighting</b></tt> extension is supported.</font>
+
+<p>
+Internal formats other than 1, 2, 3, or 4 may only be used if the GL version
+is 1.1 or greater.
+
+
+<!-- === Errors =========================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp5', 1)"
+   onMouseOut="ChangeBtn('ArrowUp5', 0)"><img name="ArrowUp5"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="Errors">Errors</a></h2>
+
+<ul>
+<li><tt><b>GL_INVALID_ENUM</b></tt> is generated when <tt><i>target</i></tt>
+    or <tt><i>pname</i></tt> is not one of the accepted defined values, or
+    when <tt><i>params</i></tt> should have a defined constant value (based on
+    the value of <tt><i>pname</i></tt>) and does not.
+
+<li><tt><b>GL_INVALID_OPERATION</b></tt> is generated if <a
+    href="glTexEnv.html"><tt>glTexEnv</tt></a> is executed between the
+    execution of <a href="glBegin.html"><tt>glBegin</tt></a> and the
+    corresponding execution of <a href="glBegin.html"><tt>glEnd</tt></a>.
+</ul>
+
+
+<!-- === Associated Gets ================================================== -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp6', 1)"
+   onMouseOut="ChangeBtn('ArrowUp6', 0)"><img name="ArrowUp6"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="AssociatedGets">Associated Gets</a></h2>
+
+<tt><a href="glGetTexEnv.html">glGetTexEnv</a></tt>
+
+
+<!-- === See Also ========================================================= -->
+
+<h2><a href="#TOC" onMouseOver="ChangeBtn('ArrowUp7', 1)"
+   onMouseOut="ChangeBtn('ArrowUp7', 0)"><img name="ArrowUp7"
+   src="buttons/ArrowUpOff.gif" alt="[Up]" border=0></a>
+   <a name="SeeAlso">See Also</a></h2>
+
+<tt><a href="glCopyPixels.html">glCopyPixels</a></tt>,<br>
+<tt><a href="glCopyTexImage1D.html">glCopyTexImage1D</a></tt>,<br>
+<tt><a href="glCopyTexImage2D.html">glCopyTexImage2D</a></tt>,<br>
+<tt><a href="glCopyTexSubImage1D.html">glCopyTexSubImage1D</a></tt>,<br>
+<tt><a href="glCopyTexSubImage2D.html">glCopyTexSubImage2D</a></tt>,<br>
+<tt><a href="glTexImage1D.html">glTexImage1D</a></tt>,<br>
+<tt><a href="glTexImage2D.html">glTexImage2D</a></tt>,<br>
+<tt><a href="glTexParameter.html">glTexParameter</a></tt>,<br>
+<tt><a href="glTexSubImage1D.html">glTexSubImage1D</a></tt>,<br>
+<tt><a href="glTexSubImage2D.html">glTexSubImage2D</a></tt>
+
+
+<p>
+<a href="glTexCoordPointer.html" onMouseOver="ChangeBtn('ArrowLeft2', 1)"
+   onMouseOut="ChangeBtn('ArrowLeft2', 0)"><img name="ArrowLeft2"
+   src="buttons/ArrowLeftOff.gif" alt="[Prev]" border=0></a>
+<a href="glTexGen.html" onMouseOver="ChangeBtn('ArrowRight2', 1)"
+   onMouseOut="ChangeBtn('ArrowRight2', 0)"><img name="ArrowRight2"
+   src="buttons/ArrowRightOff.gif" alt="[Next]" border=0></a><br>
+
+<a href="../OpenGL.html"><img src="images/OpenGL3.gif"
+   alt="Front" border=0></a>
+<a href="../Reference.html" onMouseOver="ChangeBtn('Reference2', 1)"
+   onMouseOut="ChangeBtn('Reference2', 0)"><img name="Reference2"
+   src="../buttons/ReferenceOff.gif" alt="Reference" border=0></a>
+<a href="../ImpGuide.html" onMouseOver="ChangeBtn('ImpGuide2', 1)"
+   onMouseOut="ChangeBtn('ImpGuide2', 0)"><img name="ImpGuide2"
+   src="../buttons/ImpGuideOff.gif" alt="[Imp. Guide]" border=0></a>
+<a href="../Index.html" onMouseOver="ChangeBtn('Index2', 1)"
+   onMouseOut="ChangeBtn('Index2', 0)"><img name="Index2"
+   src="../buttons/IndexOff.gif" alt="Index" border=0></a>
+<spacer type=vertical size=500>
+
+</body>
+</html>
