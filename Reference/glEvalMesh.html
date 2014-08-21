@@ -140,16 +140,16 @@ the following code fragment were executed:
 
 <pre>
   glBegin (<i>type</i>);
-  for (<i>i</i> = <i>i1</i>; <i>i</i> <img src="symbols/LessEq.xbm" alt=".le."> <i>i2</i>; <i>i</i> += 1) 
-    glEvalCoord1(<i>i</i>&middot;<img src="symbols/Delta.xbm" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>)
+  for (<i>i</i> = <i>i1</i>; <i>i</i> <img src="symbols/LessEq.png" alt=".le."> <i>i2</i>; <i>i</i> += 1) 
+    glEvalCoord1(<i>i</i>&middot;<img src="symbols/Delta.png" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>)
   glEnd();
 </pre>
 
 where 
 
 <p align=center>
-<img src="symbols/Delta.xbm" alt="DELTA"><i>u</i> =
-  (<i>u</i><sub>2</sub> <img src="symbols/Minus.xbm" alt="-">
+<img src="symbols/Delta.png" alt="DELTA"><i>u</i> =
+  (<i>u</i><sub>2</sub> <img src="symbols/Minus.png" alt="-">
    <i>u</i><sub>1</sub>) / <i>n</i> 
 
 <p>
@@ -159,18 +159,18 @@ command. <i>type</i> is <tt><b>GL_POINTS</b></tt> if <tt><i>mode</i></tt> is
 <tt><b>GL_POINT</b></tt>, or <tt><b>GL_LINES</b></tt> if <tt><i>mode</i></tt>
 is <tt><b>GL_LINE</b></tt>.  The one absolute numeric requirement is that if
 <i>i</i>=<i>n</i>, then the value computed from <nobr><i>i</i>&middot;<img
-src="symbols/Delta.xbm" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub></nobr>
+src="symbols/Delta.png" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub></nobr>
 is exactly <i>u</i><sub>2</sub>.
 
 <p>
 In the two-dimensional case, <tt>glEvalMesh2</tt>, let 
 
 <p align=center>
-<img src="symbols/Delta.xbm" alt="DELTA"><i>u</i> =
-  (<i>u</i><sub>2</sub> <img src="symbols/Minus.xbm" alt="-">
+<img src="symbols/Delta.png" alt="DELTA"><i>u</i> =
+  (<i>u</i><sub>2</sub> <img src="symbols/Minus.png" alt="-">
   <i>u</i><sub>1</sub>) / <i>n</i><br> 
-<img src="symbols/Delta.xbm" alt="DELTA"><i>v</i> =
-  (<i>v</i><sub>2</sub> <img src="symbols/Minus.xbm" alt="-">
+<img src="symbols/Delta.png" alt="DELTA"><i>v</i> =
+  (<i>v</i><sub>2</sub> <img src="symbols/Minus.png" alt="-">
   <i>v</i><sub>1</sub>) / <i>m</i>,
 
 <p>
@@ -183,9 +183,9 @@ command is equivalent to:
 <pre>
   for (<i>j</i> = <i>j1</i>;  <i>j</i> &lt; <i>j2</i>; <i>j</i> += 1) {
     glBegin (<b>GL_QUAD_STRIP</b>);
-    for (<i>i</i> = <i>i1</i>; <i>i</i> <img src="symbols/LessEq.xbm" alt=".le."> <i>i2</i>; <i>i</i> += 1) {
-      glEvalCoord2(<i>i</i>&middot;<img src="symbols/Delta.xbm" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>, <i>j</i>&middot;<img src="symbols/Delta.xbm" alt="DELTA"><i>v</i> + <i>v</i><sub>1</sub>);
-      glEvalCoord2(<i>i</i>&middot;<img src="symbols/Delta.xbm" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>, (<i>j</i> + 1)&middot;<img src="symbols/Delta.xbm" alt="DELTA"><i>v</i> + <i>v</i><sub>1</sub>);
+    for (<i>i</i> = <i>i1</i>; <i>i</i> <img src="symbols/LessEq.png" alt=".le."> <i>i2</i>; <i>i</i> += 1) {
+      glEvalCoord2(<i>i</i>&middot;<img src="symbols/Delta.png" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>, <i>j</i>&middot;<img src="symbols/Delta.png" alt="DELTA"><i>v</i> + <i>v</i><sub>1</sub>);
+      glEvalCoord2(<i>i</i>&middot;<img src="symbols/Delta.png" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>, (<i>j</i> + 1)&middot;<img src="symbols/Delta.png" alt="DELTA"><i>v</i> + <i>v</i><sub>1</sub>);
     }
     glEnd();
   }
@@ -196,16 +196,16 @@ If <tt><i>mode</i></tt> is <tt><b>GL_LINE</b></tt>, then a call to
 <tt>glEvalMesh2</tt> is equivalent to:
 
 <pre>
-  for (<i>j</i> = <i>j1</i>; <i>j</i> <img src="symbols/LessEq.xbm" alt=".le."> <i>j2</i>; <i>j</i> += 1) {
+  for (<i>j</i> = <i>j1</i>; <i>j</i> <img src="symbols/LessEq.png" alt=".le."> <i>j2</i>; <i>j</i> += 1) {
     glBegin(<b>GL_LINE_STRIP</b>);
-    for (<i>i</i> = <i>i1</i>; <i>i</i> <img src="symbols/LessEq.xbm" alt=".le."> <i>i2</i>; <i>i</i> += 1)
-      glEvalCoord2(<i>i</i>&middot;<img src="symbols/Delta.xbm" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>, <i>j</i>&middot;<img src="symbols/Delta.xbm" alt="DELTA"><i>v</i> + <i>v</i><sub>1</sub>);
+    for (<i>i</i> = <i>i1</i>; <i>i</i> <img src="symbols/LessEq.png" alt=".le."> <i>i2</i>; <i>i</i> += 1)
+      glEvalCoord2(<i>i</i>&middot;<img src="symbols/Delta.png" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>, <i>j</i>&middot;<img src="symbols/Delta.png" alt="DELTA"><i>v</i> + <i>v</i><sub>1</sub>);
     glEnd();
   }
-  for (<i>i</i> = <i>i1</i>;  <i>i</i> <img src="symbols/LessEq.xbm" alt=".le."> <i>i2</i>; <i>i</i> += 1) {
+  for (<i>i</i> = <i>i1</i>;  <i>i</i> <img src="symbols/LessEq.png" alt=".le."> <i>i2</i>; <i>i</i> += 1) {
     glBegin(<tt><b>GL_LINE_STRIP</b></tt>);
-    for (<i>j</i> = <i>j1</i>; <i>j</i> <img src="symbols/LessEq.xbm" alt=".le."> <i>j1</i>; <i>j</i> += 1)
-      glEvalCoord2(<i>i</i>&middot;<img src="symbols/Delta.xbm" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>, <i>j</i>&middot;<img src="symbols/Delta.xbm" alt="DELTA"><i>v</i> + <i>v</i><sub>1</sub>);
+    for (<i>j</i> = <i>j1</i>; <i>j</i> <img src="symbols/LessEq.png" alt=".le."> <i>j1</i>; <i>j</i> += 1)
+      glEvalCoord2(<i>i</i>&middot;<img src="symbols/Delta.png" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>, <i>j</i>&middot;<img src="symbols/Delta.png" alt="DELTA"><i>v</i> + <i>v</i><sub>1</sub>);
     glEnd();
   }
 </pre>
@@ -216,9 +216,9 @@ to <tt>glEvalMesh2</tt> is equivalent to:
 
 <pre>
   glBegin(<tt><b>GL_POINTS</b></tt>);
-  for (<i>j</i> = <i>j1</i>; <i>j</i> <img src="symbols/LessEq.xbm" alt=".le."> <i>j2</i>; <i>j</i> += 1) {
-    for (<i>i</i> = <i>i1</i>; <i>i</i> <img src="symbols/LessEq.xbm" alt=".le."> <i>i2</i>; <i><i>i</i> += 1) {
-      glEvalCoord2(<i>i</i>&middot;<img src="symbols/Delta.xbm" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>,  j</i> &middot;<img src="symbols/Delta.xbm" alt="DELTA"><i>v</i> + <i>v</i><sub>1</sub>);
+  for (<i>j</i> = <i>j1</i>; <i>j</i> <img src="symbols/LessEq.png" alt=".le."> <i>j2</i>; <i>j</i> += 1) {
+    for (<i>i</i> = <i>i1</i>; <i>i</i> <img src="symbols/LessEq.png" alt=".le."> <i>i2</i>; <i><i>i</i> += 1) {
+      glEvalCoord2(<i>i</i>&middot;<img src="symbols/Delta.png" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub>,  j</i> &middot;<img src="symbols/Delta.png" alt="DELTA"><i>v</i> + <i>v</i><sub>1</sub>);
     }
   }
   glEnd();
@@ -228,9 +228,9 @@ to <tt>glEvalMesh2</tt> is equivalent to:
 <p>
 In all three cases, the only absolute numeric requirements are that if
 <i>i</i>=<i>n</i>, then the value computed from <i>i</i>&middot;<img
-src="symbols/Delta.xbm" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub> is
+src="symbols/Delta.png" alt="DELTA"><i>u</i> + <i>u</i><sub>1</sub> is
 exactly <i>u</i><sub>2</sub>, and if <i>j</i>=<i>m</i>, then the value
-computed from <i>j</i>&middot;<img src="symbols/Delta.xbm"
+computed from <i>j</i>&middot;<img src="symbols/Delta.png"
 alt="DELTA"><i>v</i> + <i>v</i><sub>1</sub> is exactly <i>v</i><sub>2</sub>.
 
 

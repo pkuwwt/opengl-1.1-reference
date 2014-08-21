@@ -162,12 +162,12 @@ both dimensions are continually halved until it fits.
 <p>
 Next, <tt>gluBuild2DMipmaps</tt> builds a series of images; it halves a copy
 of <tt><i>type</i></tt> (or a scaled version of <tt><i>type</i></tt>, if
-necessary) along both dimensions until size 1<img src="symbols/Times.xbm"
+necessary) along both dimensions until size 1<img src="symbols/Times.png"
 alt="x">1 is reached. At each level, each texel in the halved mipmap is an
 average of the corresponding four texels in the larger mipmap. (In the case of
 rectangular images, halving the images repeatedly eventually results in an
-<i>n</i><img src="symbols/Times.xbm" alt="x">1 or 1<img
-src="symbols/Times.xbm" alt="x"><i>n</i> configuration.  Here, two texels
+<i>n</i><img src="symbols/Times.png" alt="x">1 or 1<img
+src="symbols/Times.png" alt="x"><i>n</i> configuration.  Here, two texels
 are averaged instead.)
 
 <p>
@@ -177,11 +177,11 @@ are both powers of 2 which fit in the implementation, level 0 is a copy of
 <tt><i>data</i></tt>, and the highest level is
 <nobr>log<sub>2</sub>(max(<tt><i>width</i></tt>,
 <tt><i>height</i></tt>))</nobr>.  For example, if width is 64 and height is
-16, the following mipmaps are built: 64<img src="symbols/Times.xbm"
-alt="x">16, 32<img src="symbols/Times.xbm" alt="x">8, 16<img
-src="symbols/Times.xbm" alt="x">4, 8<img src="symbols/Times.xbm"
-alt="x">2, 4<img src="symbols/Times.xbm" alt="x">1, 2<img
-src="symbols/Times.xbm" alt="x">1 and 1<img src="symbols/Times.xbm"
+16, the following mipmaps are built: 64<img src="symbols/Times.png"
+alt="x">16, 32<img src="symbols/Times.png" alt="x">8, 16<img
+src="symbols/Times.png" alt="x">4, 8<img src="symbols/Times.png"
+alt="x">2, 4<img src="symbols/Times.png" alt="x">1, 2<img
+src="symbols/Times.png" alt="x">1 and 1<img src="symbols/Times.png"
 alt="x">1. These correspond to levels 0 through 6, respectively.
 
 <p>

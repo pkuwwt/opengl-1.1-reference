@@ -104,7 +104,7 @@ void glLightiv(
 <dd>Specifies a light.  The number of lights depends on the implementation,
     but at least eight lights are supported.  They are identified by symbolic
     names of the form <tt><b>GL_LIGHT</b></tt><i>i</i> where <nobr>0 <img
-    src="symbols/LessEq.xbm" alt=".le."><i>i</i> &lt;
+    src="symbols/LessEq.png" alt=".le."><i>i</i> &lt;
     <tt><b>GL_MAX_LIGHTS</b></tt></nobr>.
 
 <dt><tt><i>pname</i></tt>
@@ -122,7 +122,7 @@ void glLightiv(
 <dd>Specifies a light.  The number of lights depends on the implementation,
     but at least eight lights are supported.  They are identified by symbolic
     names of the form <tt><b>GL_LIGHT</b></tt><i>i</i> where <nobr>0 <img
-    src="symbols/LessEq.xbm" alt=".le."> <i>i</i> &lt;
+    src="symbols/LessEq.png" alt=".le."> <i>i</i> &lt;
     <tt><b>GL_MAX_LIGHTS</b></tt></nobr>.
 
 <dt><tt><i>pname</i></tt>
@@ -151,7 +151,7 @@ void glLightiv(
 <tt>glLight</tt> sets the values of individual light source parameters.
 <tt><i>light</i></tt> names the light and is a symbolic name of the form
 <tt><b>GL_LIGHT</b></tt><nobr><i>i</i></nobr>, where <nobr>0 <img
-src="symbols/LessEq.xbm" alt=".le."> i &lt;
+src="symbols/LessEq.png" alt=".le."> i &lt;
 <tt><b>GL_MAX_LIGHTS</b></tt></nobr>.  <tt><i>pname</i></tt> specifies one of
 ten light source parameters, again by symbolic name.  <tt><i>params</i></tt>
 is either a single value or a pointer to an array that contains the new
@@ -177,7 +177,7 @@ The ten light parameters are as follows:
     specify the ambient RGBA intensity of the light.  Integer values are
     mapped linearly such that the most positive representable value maps to
     1.0, and the most negative representable value maps to <img
-    src="symbols/Minus.xbm" alt="-">1.0.  Floating-point values are mapped
+    src="symbols/Minus.png" alt="-">1.0.  Floating-point values are mapped
     directly.  Neither integer nor floating-point values are clamped.  The
     initial ambient light intensity is <nobr>(0, 0, 0, 1)</nobr>.
 
@@ -186,7 +186,7 @@ The ten light parameters are as follows:
     specify the diffuse RGBA intensity of the light.  Integer values are
     mapped linearly such that the most positive representable value maps to
     1.0, and the most negative representable value maps to <img
-    src="symbols/Minus.xbm" alt="-">1.0.  Floating-point values are mapped
+    src="symbols/Minus.png" alt="-">1.0.  Floating-point values are mapped
     directly.  Neither integer nor floating-point values are clamped.  The
     initial value for <tt><b>GL_LIGHT0</b></tt> is <nobr>(1, 1, 1, 1)</nobr>;
     for other lights, the initial value is <nobr>(0, 0, 0, 0)</nobr>.
@@ -196,7 +196,7 @@ The ten light parameters are as follows:
     specify the specular RGBA intensity of the light.  Integer values are
     mapped linearly such that the most positive representable value maps to
     1.0, and the most negative representable value maps to <img
-    src="symbols/Minus.xbm" alt="-">1.0.  Floating-point values are mapped
+    src="symbols/Minus.png" alt="-">1.0.  Floating-point values are mapped
     directly.  Neither integer nor floating-point values are clamped.  The
     initial value for <tt><b>GL_LIGHT0</b></tt> is <nobr>(1, 1, 1, 1)</nobr>;
     for other lights, the initial value is <nobr>(0, 0, 0, 0)</nobr>.
@@ -216,7 +216,7 @@ The ten light parameters are as follows:
     lighting calculations are based on the actual location of the light in eye
     coordinates, and attenuation is enabled.  The initial position is
     <nobr>(0, 0, 1, 0)</nobr>; thus, the initial light source is directional,
-    parallel to, and in the direction of the <img src="symbols/Minus.xbm"
+    parallel to, and in the direction of the <img src="symbols/Minus.png"
     alt="-">Z axis.
 
 <dt><tt><b>GL_SPOT_DIRECTION</b></tt>
@@ -228,7 +228,7 @@ The ten light parameters are as follows:
     is called (just as if it were a normal), and it is stored in eye
     coordinates.  It is significant only when <tt><b>GL_SPOT_CUTOFF</b></tt>
     is not 180, which it is initially.  The initial direction is <nobr>(0, 0,
-    <img src="symbols/Minus.xbm" alt="-">1)</nobr>.
+    <img src="symbols/Minus.png" alt="-">1)</nobr>.
 
 <dt><tt><b>GL_SPOT_EXPONENT</b></tt>
 <dd><tt><i>params</i></tt> is a single integer or floating-point value that

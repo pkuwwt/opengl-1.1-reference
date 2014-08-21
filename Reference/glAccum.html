@@ -125,7 +125,7 @@ arguments <tt><b>GL_ACCUM_RED_BITS</b></tt>,
 <tt><b>GL_ACCUM_GREEN_BITS</b></tt>, <tt><b>GL_ACCUM_BLUE_BITS</b></tt>, and
 <tt><b>GL_ACCUM_ALPHA_BITS</b></tt>.  Regardless of the number of bits per
 component, the range of values stored by each component is <nobr>[<img
-src="symbols/Minus.xbm" alt="-">1, 1]</nobr>.  The accumulation buffer
+src="symbols/Minus.png" alt="-">1, 1]</nobr>.  The accumulation buffer
 pixels are mapped one-to-one with frame buffer pixels.
 
 <p>
@@ -141,7 +141,7 @@ specified: <tt><b>GL_ACCUM</b></tt>, <tt><b>GL_LOAD</b></tt>,
 All accumulation buffer operations are limited to the area of the current
 scissor box and applied identically to the red, green, blue, and alpha
 components of each pixel.  If a <tt>glAccum</tt> operation results in a value
-outside the range <nobr>[<img src="symbols/Minus.xbm" alt="-">1, 1]</nobr>,
+outside the range <nobr>[<img src="symbols/Minus.png" alt="-">1, 1]</nobr>,
 the contents of an accumulation buffer pixel component are undefined.
 
 <p>
@@ -152,7 +152,7 @@ The operations are as follows:
 <dd>Obtains R, G, B, and A values from the buffer currently selected for
     reading (see <a href="glReadBuffer.html"><tt>glReadBuffer</tt></a>).  Each
     component value is divided by <nobr>2<sup><i>n</i></sup><img
-    src="symbols/Minus.xbm" alt="-">1</nobr>, where <nobr><i>n</i></nobr>
+    src="symbols/Minus.png" alt="-">1</nobr>, where <nobr><i>n</i></nobr>
     is the number of bits allocated to each color component in the currently
     selected buffer.  The result is a floating-point value in the range
     <nobr>[0, 1]</nobr>, which is multiplied by <tt><i>value</i></tt> and
@@ -163,7 +163,7 @@ The operations are as follows:
 <dd>Similar to <tt><b>GL_ACCUM</b></tt>, except that the current value in the
     accumulation buffer is not used in the calculation of the new value.  That
     is, the R, G, B, and A values from the currently selected buffer are
-    divided by <nobr> 2<sup><i>n</i></sup><img src="symbols/Minus.xbm"
+    divided by <nobr> 2<sup><i>n</i></sup><img src="symbols/Minus.png"
     alt="-">1</nobr>, multiplied by <tt><i>value</i></tt>, and then stored in
     the corresponding accumulation buffer cell, overwriting the current value.
 
@@ -180,9 +180,9 @@ The operations are as follows:
 <dd>Transfers accumulation buffer values to the color buffer or buffers
     currently selected for writing.  Each R, G, B, and A component is
     multiplied by <tt><i>value</i></tt>, then multiplied by <nobr>
-    2<sup><i>n</i></sup><img src="symbols/Minus.xbm" alt="-">1</nobr>,
+    2<sup><i>n</i></sup><img src="symbols/Minus.png" alt="-">1</nobr>,
     clamped to the range <nobr>[0,<nobr> 2<sup><i>n</i></sup><img
-    src="symbols/Minus.xbm" alt="-">1 </nobr>]</nobr>, and stored in the
+    src="symbols/Minus.png" alt="-">1 </nobr>]</nobr>, and stored in the
     corresponding display buffer cell.  The only fragment operations that are
     applied to this transfer are pixel ownership, scissor, dithering, and
     color writemasks.

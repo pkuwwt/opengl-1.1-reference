@@ -95,7 +95,7 @@ void glGetLightiv(
 <dd>Specifies a light source.  The number of possible lights depends on the
     implementation, but at least eight lights are supported.  They are
     identified by symbolic names of the form <tt><b>GL_LIGHT</b></tt><i>i</i>
-    where <nobr>0 <img src="symbols/LessEq.xbm" alt=".le."> <i>i</i> &lt;
+    where <nobr>0 <img src="symbols/LessEq.png" alt=".le."> <i>i</i> &lt;
     <tt><b>GL_MAX_LIGHTS</b></tt></nobr>.
 
 <dt><tt><i>pname</i></tt>
@@ -122,7 +122,7 @@ void glGetLightiv(
 <tt>glGetLight</tt> returns in <tt><i>params</i></tt> the value or values of
 a light source parameter.  <tt><i>light</i></tt> names the light and is a
 symbolic name of the form <tt><b>GL_LIGHT</b></tt><i>i</i> for <nobr>0 <img
-src="symbols/LessEq.xbm" alt=".le."> <i>i</i> &lt;
+src="symbols/LessEq.png" alt=".le."> <i>i</i> &lt;
 <tt><b>GL_MAX_LIGHTS</b></tt></nobr>, where
 <tt><b>GL_MAX_LIGHTS</b></tt> is an implementation-dependent constant that is
 greater than or equal to eight.  <tt><i>pname</i></tt> specifies one of ten
@@ -137,9 +137,9 @@ The following parameters are defined:
     representing the ambient intensity of the light source.  Integer values,
     when requested, are linearly mapped from the internal floating-point
     representation such that 1.0 maps to the most positive representable
-    integer value, and <img src="symbols/Minus.xbm" alt="-">1.0 maps to the
+    integer value, and <img src="symbols/Minus.png" alt="-">1.0 maps to the
     most negative representable integer value.  If the internal value is
-    outside the range <nobr>[<img src="symbols/Minus.xbm" alt="-">1,
+    outside the range <nobr>[<img src="symbols/Minus.png" alt="-">1,
     1]</nobr>, the corresponding integer return value is undefined. The
     initial value is <nobr>(0, 0, 0, 1)</nobr>.
 
@@ -148,9 +148,9 @@ The following parameters are defined:
     representing the diffuse intensity of the light source.  Integer values,
     when requested, are linearly mapped from the internal floating-point
     representation such that 1.0 maps to the most positive representable
-    integer value, and <img src="symbols/Minus.xbm" alt="-">1.0 maps to the
+    integer value, and <img src="symbols/Minus.png" alt="-">1.0 maps to the
     most negative representable integer value.  If the internal value is
-    outside the range <nobr>[<img src="symbols/Minus.xbm" alt="-">1,
+    outside the range <nobr>[<img src="symbols/Minus.png" alt="-">1,
     1]</nobr>, the corresponding integer return value is undefined. The
     initial value for <tt><b>GL_LIGHT0</b></tt> is <nobr>(1, 1, 1, 1)</nobr>;
     for other lights, the initial value is <nobr>(0, 0, 0, 0)</nobr>.
@@ -160,9 +160,9 @@ The following parameters are defined:
     representing the specular intensity of the light source.  Integer values,
     when requested, are linearly mapped from the internal floating-point
     representation such that 1.0 maps to the most positive representable
-    integer value, and <img src="symbols/Minus.xbm" alt="-">1.0 maps to the
+    integer value, and <img src="symbols/Minus.png" alt="-">1.0 maps to the
     most negative representable integer value.  If the internal value is
-    outside the range <nobr>[<img src="symbols/Minus.xbm" alt="-">1,
+    outside the range <nobr>[<img src="symbols/Minus.png" alt="-">1,
     1]</nobr>, the corresponding integer return value is undefined. The
     initial value for <tt><b>GL_LIGHT0</b></tt> is <nobr>(1, 1, 1, 1)</nobr>;
     for other lights, the initial value is <nobr>(0, 0, 0, 0)</nobr>.
@@ -188,7 +188,7 @@ The following parameters are defined:
     called.  Although spot direction is normalized before being used in the
     lighting equation, the returned values are the transformed versions of the
     specified values prior to normalization. The initial value is <nobr>(0,
-    0, <img src="symbols/Minus.xbm" alt="-">1)</nobr>.
+    0, <img src="symbols/Minus.png" alt="-">1)</nobr>.
 
 <dt><tt><b>GL_SPOT_EXPONENT</b></tt>
 <dd><tt><i>params</i></tt> returns a single integer or floating-point value

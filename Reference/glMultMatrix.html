@@ -92,7 +92,7 @@ void glMultMatrixf(
 
 <dt><tt><i>m</i></tt>
 <dd>Points to 16 consecutive values that are used as the elements of a
-    4<img src="symbols/Times.xbm" alt="x">4 column-major matrix.
+    4<img src="symbols/Times.png" alt="x">4 column-major matrix.
 </dl>
 
 
@@ -121,7 +121,7 @@ projection matrix, modelview matrix, or the texture matrix.
 
 If the current matrix is <i>C</i>, and the coordinates to be transformed are,
 <nobr><i>v</i> = (<i>v</i>[0], <i>v</i>[1], <i>v</i>[2], <i>v</i>[3]</nobr>.
-Then the current transformation is <i>C</i><img src="symbols/Times.xbm"
+Then the current transformation is <i>C</i><img src="symbols/Times.png"
 alt="x"><i>v</i>, or
 
 <p>
@@ -145,7 +145,7 @@ alt="x"><i>v</i>, or
             <td><tt><i>C</i></tt>[11]</td>
             <td><tt><i>C</i></tt>[15]</td></tr>
         </table></td>
-    <td><img src="symbols/Times.xbm" alt="x"></td>
+    <td><img src="symbols/Times.png" alt="x"></td>
     <td><table>
         <tr><td><i>v</i>[0]</td></tr>
         <tr><td><i>v</i>[1]</td></tr>
@@ -158,8 +158,8 @@ alt="x"><i>v</i>, or
 <p>
 Calling <tt>glMultMatrix</tt> with an argument of <nobr><tt><i>m</i></tt> =
 m[0], m[1], . . ., m[15]</nobr> replaces the current transformation with
-<nobr>(<i>C</i><img src="symbols/Times.xbm" alt="x"><tt><i>m</i></tt> )<img
-src="symbols/Times.xbm" alt="x"><i>v</i></nobr>, or
+<nobr>(<i>C</i><img src="symbols/Times.png" alt="x"><tt><i>m</i></tt> )<img
+src="symbols/Times.png" alt="x"><i>v</i></nobr>, or
 
 <p>
 <center>
@@ -182,7 +182,7 @@ src="symbols/Times.xbm" alt="x"><i>v</i></nobr>, or
             <td><tt><i>C</i></tt>[11]</td>
             <td><tt><i>C</i></tt>[15]</td></tr>
         </table></td>
-    <td><img src="symbols/Times.xbm" alt="x"></td>
+    <td><img src="symbols/Times.png" alt="x"></td>
     <td><table>
         <tr><td><tt><i>m</i></tt>[0]</td>
             <td><tt><i>m</i></tt>[4]</td>
@@ -201,7 +201,7 @@ src="symbols/Times.xbm" alt="x"><i>v</i></nobr>, or
             <td><tt><i>m</i></tt>[11]</td>
             <td><tt><i>m</i></tt>[15]</td></tr>
         </table></td>
-    <td><img src="symbols/Times.xbm" alt="x"></td>
+    <td><img src="symbols/Times.png" alt="x"></td>
     <td><table>
         <tr><td><i>v</i>[0]</td></tr>
         <tr><td><i>v</i>[1]</td></tr>
@@ -212,9 +212,9 @@ src="symbols/Times.xbm" alt="x"><i>v</i></nobr>, or
 </center>
 
 <p>
-Where "<img src="symbols/Times.xbm" alt="x">" denotes matrix
+Where "<img src="symbols/Times.png" alt="x">" denotes matrix
 multiplication, and <i>v</i> is represented as a 4<img
-src="symbols/Times.xbm" alt="x">1 matrix.
+src="symbols/Times.png" alt="x">1 matrix.
 
 
 <!-- === Notes ============================================================ -->
@@ -229,7 +229,7 @@ precision, the GL may store or operate on these values in less than single
 precision.
 
 <p>
-In many computer languages, 4<img src="symbols/Times.xbm" alt="x">4 arrays
+In many computer languages, 4<img src="symbols/Times.png" alt="x">4 arrays
 are represented in row-major order. The transformations just described
 represent these matrices in column-major order.  The order of the
 multiplication is important. For example, if the current transformation is a

@@ -127,32 +127,32 @@ coordinates using <tt><i>model</i></tt>, <tt><i>proj</i></tt>, and
 To compute the coordinates, let <nobr><i>v</i> = (<tt><i>objX</i></tt>,
 <tt><i>objY</i></tt>, <tt><i>objZ</i></tt>, 1.0)</nobr> represented as a
 matrix with 4 rows and 1 column.  Then <tt>gluProject</tt> computes
-<i>v</i><img src="symbols/Prime.xbm" alt="'"> as follows:
+<i>v</i><img src="symbols/Prime.png" alt="'"> as follows:
 
 <p align=center>
-<i>v</i><img src="symbols/Prime.xbm" alt="'"> = <i>P</i> <img
-src="symbols/Times.xbm" alt="x"> <i>M</i> <img src="symbols/Times.xbm"
+<i>v</i><img src="symbols/Prime.png" alt="'"> = <i>P</i> <img
+src="symbols/Times.png" alt="x"> <i>M</i> <img src="symbols/Times.png"
 alt="x"> <i>v</i>
 
 <p>
 where <i>P</i> is the current projection matrix <tt><i>proj</i></tt>, <i>M</i>
 is the current modelview matrix <tt><i>model</i></tt> (both represented as
-4<img src="symbols/Times.xbm" alt="x">4 matrices in column-major order) and
-"<img src="symbols/Times.xbm" alt="x">" represents matrix multiplication.
+4<img src="symbols/Times.png" alt="x">4 matrices in column-major order) and
+"<img src="symbols/Times.png" alt="x">" represents matrix multiplication.
 
 <p> 
 The window coordinates are then computed as follows: 
 
 <p align=center>
 <tt><i>winX</i></tt> = <tt><i>view</i></tt>(0) + <tt><i>view</i></tt>(2) <img
-src="symbols/Times.xbm" alt="x"> (<i>v</i><img src="symbols/Prime.xbm"
+src="symbols/Times.png" alt="x"> (<i>v</i><img src="symbols/Prime.png"
 alt="'">(0) + 1)/2<br>
 
 <tt><i>winY</i></tt> = <tt><i>view</i></tt>(1) + <tt><i>view</i></tt>(3) <img
-src="symbols/Times.xbm" alt="x"> (<i>v</i><img src="symbols/Prime.xbm"
+src="symbols/Times.png" alt="x"> (<i>v</i><img src="symbols/Prime.png"
 alt="'">(1) + 1)/2<br>
 
-<tt><i>winZ</i></tt> = (<i>v</i><img src="symbols/Prime.xbm" alt="'">(2) +
+<tt><i>winZ</i></tt> = (<i>v</i><img src="symbols/Prime.png" alt="'">(2) +
 1)/ 2
 
 
